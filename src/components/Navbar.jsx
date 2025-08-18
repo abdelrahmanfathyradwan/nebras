@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react"
 import { Link } from "react-router-dom"
-import { FaPhone, FaEnvelope, FaChevronDown, FaChevronUp, FaBars } from "react-icons/fa"
+import { FaEnvelope, FaChevronDown, FaChevronUp, FaBars } from "react-icons/fa"
 
 const Navbar = () => {
   const [isCoursesOpen, setIsCoursesOpen] = useState(false)
@@ -65,12 +65,14 @@ const Navbar = () => {
               </div>
 
               {/* Login Button */}
-              <Link
-                to='/login'
-                className='bg-orange-500 hover:bg-orange-600 text-white px-4 py-1 rounded text-sm transition-colors'
-              >
-                Login Student
-              </Link>
+                <a
+                  href='https://wa.me/201146162847?text=Peace%20be%20upon%20you%20and%20God%27s%20mercy%20and%20blessings.%20We%20are%20the%20Nebras%20team%20for%20Quran%20education.%20How%20can%20we%20help%20you%3F'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='bg-orange-500 hover:bg-orange-600 text-white px-4 py-1 rounded text-sm transition-colors'
+                >
+                    Login Student
+                </a>
             </div>
           </div>
 

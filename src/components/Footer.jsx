@@ -4,34 +4,20 @@ import { FaPhone, FaGlobe, FaFileAlt, FaQuestionCircle, FaBriefcase, FaBlog, FaE
 const Footer = () => {
   return (
     <footer className="bg-green-800 text-white pt-12 pb-6 px-4">
-      <div className="container mx-auto flex flex-col">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mb-8"> {/* تغيير إلى 5 أعمدة */}
-          
-          {/* العمود الجديد - أيقونة الشعار والوصف */}
-          <div className="flex flex-col items-start">
-             <Link to="/">
-            <img 
-              src="/Logo.jpg" // مسار شعار الأكاديمية
-              alt="Nebras Academy Logo"
-              className="h-[150px] w-[150px] mb-2 rounded-full" // يمكن تعديل الحجم حسب الحاجة
-            />
-           </Link>
-            <p className="text-sm pt-1 text-start">
-              <span className='text-orange-300 font-semibold'>Nebras Academy</span> is a trusted provider of online Quran classes worldwide.
-            </p>
-          </div>
+      <div className="container mx-auto flex flex-col justify-center">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8"> {/* تغيير إلى 5 أعمدة */}
 
           {/* About Section */}
           <div>
             <h3 className="text-xl font-bold mb-4 text-orange-300">About Nebras</h3>
-            <p className="mb-4">NA online is a trusted provider of online Quran classes worldwide.</p>
+            <p className="mb-4"><strong className='text-orange-300 font-bold'>Nebras Academy</strong> is a trusted provider of online Quran classes worldwide.</p>
             <div className="flex items-center mb-2">
               <FaPhone className="mr-2 text-orange-300" />
               <span>+20 114 616 2847</span>
             </div>
             <div className="flex items-center">
               <FaEnvelope className="mr-2 text-orange-300" />
-              <span>nebrasacademey2025@gmail.com</span>
+              <span>nebrasacademey2025<br></br>@gmail.com</span>
             </div>
           </div>
 
