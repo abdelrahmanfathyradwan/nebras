@@ -50,7 +50,7 @@ const MainContent = () => {
                   <img 
                     src="/images/muslim.png" 
                     alt="Quran and Arabic Learning"
-                    className="rounded-lg shadow-lg w-full h-auto"
+                    className="rounded-lg shadow-lg w-full h-[400px] object-cover object-bottom"
                   />
                 </div>
                 <div className="md:w-1/2 md:pl-8 order-1 md:order-2">
@@ -82,7 +82,7 @@ const MainContent = () => {
                   <img 
                     src="/images/Modesty.jpg" 
                     alt="Online Quran Learning"
-                    className="rounded-lg shadow-lg w-full h-auto"
+                    className="rounded-lg shadow-lg w-full h-[400px] object-cover object-center"
                   />
                 </div>
               </div>
