@@ -5,13 +5,13 @@ const Policy = () => {
    <div className="max-w-4xl mx-auto px-4 py-12">
   {/* Header Section */}
   <div className="text-center mb-16">
-    <h1 className="text-4xl font-bold text-green-700 mb-4">Student Policy</h1>
+    <h1 className="text-4xl font-bold text-secondary-700 mb-4">Student Policy</h1>
     <div className="w-24 h-1.5 bg-amber-500 mx-auto rounded-full"></div>
   </div>
 
   {/* Class Timings Section */}
   <section className="mb-12 bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
-    <div className="bg-green-700 p-4">
+    <div className="bg-secondary-700 p-4">
       <h2 className="text-xl font-bold text-white">Class Timings and Rescheduling</h2>
     </div>
     <div className="p-6">
@@ -31,13 +31,13 @@ const Policy = () => {
 
   {/* Payment Section */}
   <section className="mb-12 bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
-    <div className="bg-green-700 p-4">
+    <div className="bg-secondary-700 p-4">
       <h2 className="text-xl font-bold text-white">Payment Policy</h2>
     </div>
     <div className="p-6">
       <div className="grid md:grid-cols-2 gap-8">
         <div>
-          <h3 className="text-lg font-semibold text-green-800 mb-3">Pricing Structure</h3>
+          <h3 className="text-lg font-semibold text-secondary-800 mb-3">Pricing Structure</h3>
           <ul className="space-y-2 text-gray-700">
             <li className="flex items-start">
               <span className="text-amber-500 mr-2">•</span>
@@ -50,7 +50,7 @@ const Policy = () => {
           </ul>
         </div>
         <div>
-          <h3 className="text-lg font-semibold text-green-800 mb-3">Payment Terms</h3>
+          <h3 className="text-lg font-semibold text-secondary-800 mb-3">Payment Terms</h3>
           <ul className="space-y-2 text-gray-700">
             <li className="flex items-start">
               <span className="text-amber-500 mr-2">•</span>
@@ -75,7 +75,7 @@ const Policy = () => {
 
   {/* Lateness Policy */}
   <section className="mb-12 bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
-    <div className="bg-green-700 p-4">
+    <div className="bg-secondary-700 p-4">
       <h2 className="text-xl font-bold text-white">Attendance Policy</h2>
     </div>
     <div className="p-6">
@@ -92,7 +92,7 @@ const Policy = () => {
 
   {/* Arbitration Clause */}
   <section className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
-    <div className="bg-green-700 p-4">
+    <div className="bg-secondary-700 p-4">
       <h2 className="text-xl font-bold text-white">Dispute Resolution</h2>
     </div>
     <div className="p-6">

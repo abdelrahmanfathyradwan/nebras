@@ -8,12 +8,12 @@ import { courses } from '../data/data';
       {/* Hero Section */}
       <div className="relative w-full h-[200px] overflow-hidden">
         <img 
-          src="/images/celebrateEid .jfif" 
+          src="/images/celebrateEid.jpg" 
           alt="Courses Banner" 
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover object-top"
         />
-        <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-start pl-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-white relative pl-4 border-l-4 border-green-500">
+        <div className="absolute inset-0 flex items-center justify-start pl-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-white relative pl-4 border-l-4 border-secondary-500">
             Courses
           </h1>
         </div>
@@ -24,7 +24,7 @@ import { courses } from '../data/data';
         <nav className="flex" aria-label="Breadcrumb">
           <ol className="inline-flex items-center space-x-1 md:space-x-3">
             <li className="inline-flex items-center">
-              <Link to="/" className="inline-flex items-center text-sm font-medium text-green-600 hover:text-green-800">
+              <Link to="/" className="inline-flex items-center text-sm font-medium text-secondary-600 hover:text-secondary-800">
                 Home
               </Link>
             </li>
@@ -57,7 +57,7 @@ import { courses } from '../data/data';
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-orange-500 group-hover:text-orange-700 transition-colors duration-200">
+                <h3 className="text-xl font-bold text-primary-500 group-hover:text-primary-700 transition-colors duration-200">
                   {course.title}
                 </h3>
               </div>

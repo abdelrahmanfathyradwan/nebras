@@ -6,7 +6,7 @@ const Contact = () => {
    <div className="max-w-7xl mx-auto px-4 py-12">
   {/* القسم العلوي */}
   <div className="text-center mb-16">
-    <h1 className="text-5xl font-bold text-green-700 mb-4">Contact Us</h1>
+    <h1 className="text-5xl font-bold text-secondary-700 mb-4">Contact Us</h1>
     <p className="text-xl text-gray-600 max-w-3xl mx-auto">
       Welcome to Nebras Academy. We're honored to be part of your Quranic journey.
     </p>
@@ -17,10 +17,10 @@ const Contact = () => {
     {/* معلومات الاتصال */}
     <div className="space-y-8">
       {/* بطاقة الهاتف */}
-      <div className="bg-white p-8 rounded-2xl shadow-lg border-l-4 border-green-600">
+      <div className="bg-white p-8 rounded-2xl shadow-lg border-l-4 border-secondary-600">
         <div className="flex items-start">
-          <div className="bg-green-100 p-3 rounded-full mr-4">
-            <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="bg-secondary-100 p-3 rounded-full mr-4">
+            <svg className="w-6 h-6 text-secondary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
             </svg>
           </div>
@@ -79,7 +79,7 @@ const Contact = () => {
         type="text" 
         id="name" 
         name="name"  // مهم لإرسال البيانات
-        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all"
+        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary-500 focus:border-secondary-500 transition-all"
         required
       />
     </div>
@@ -90,7 +90,7 @@ const Contact = () => {
         type="email" 
         id="email" 
         name="email"  // مهم لإرسال البيانات
-        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all"
+        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary-500 focus:border-secondary-500 transition-all"
         required
       />
     </div>
@@ -101,7 +101,7 @@ const Contact = () => {
         type="text" 
         id="subject" 
         name="subject"  // مهم لإرسال البيانات
-        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all"
+        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary-500 focus:border-secondary-500 transition-all"
         required
       />
     </div>
@@ -112,14 +112,14 @@ const Contact = () => {
         id="message" 
         name="message"  // مهم لإرسال البيانات
         rows="5" 
-        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all"
+        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary-500 focus:border-secondary-500 transition-all"
         required
       ></textarea>
     </div>
     
     <button 
       type="submit" 
-      className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg shadow-md transition-colors"
+      className="w-full bg-secondary-600 hover:bg-secondary-700 text-white font-bold py-3 px-4 rounded-lg shadow-md transition-colors"
     >
       Send Message
     </button>
@@ -130,7 +130,7 @@ const Contact = () => {
   {/* قسم الأسئلة الشائعة */}
   <div className="max-w-4xl mx-auto mt-24">
     <div className="text-center mb-12">
-      <h2 className="text-3xl font-bold text-green-700 mb-4">Frequently Asked Questions</h2>
+      <h2 className="text-3xl font-bold text-secondary-700 mb-4">Frequently Asked Questions</h2>
       <p className="text-gray-600">Quick answers to common questions</p>
       <div className="w-20 h-1 bg-amber-500 mx-auto mt-4"></div>
     </div>
@@ -138,28 +138,28 @@ const Contact = () => {
     <div className="grid md:grid-cols-2 gap-6">
       {/* الأسئلة */}
       <div className="bg-white p-6 rounded-xl shadow-md">
-        <h3 className="text-xl font-bold text-green-800 mb-3">Who are your teachers?</h3>
+        <h3 className="text-xl font-bold text-secondary-800 mb-3">Who are your teachers?</h3>
         <p className="text-gray-700">
-          All our teachers are highly qualified, university-educated instructors with ijazah certification in Quran or Islamic sciences, fluent in English and Arabic.
+          All our teachers are highly qualified, university-educated instructors with ijazah certification in Quran or secondary sciences, fluent in English and Arabic.
         </p>
       </div>
       
       <div className="bg-white p-6 rounded-xl shadow-md">
-        <h3 className="text-xl font-bold text-green-800 mb-3">What courses do you offer?</h3>
+        <h3 className="text-xl font-bold text-secondary-800 mb-3">What courses do you offer?</h3>
         <p className="text-gray-700">
-          We offer Quran Recitation (Tajweed), Memorization (Hifz), Ijazah Programs, Arabic Language, and Islamic Studies for all ages.
+          We offer Quran Recitation (Tajweed), Memorization (Hifz), Ijazah Programs, Arabic Language, and secondary Studies for all ages.
         </p>
       </div>
       
       <div className="bg-white p-6 rounded-xl shadow-md">
-        <h3 className="text-xl font-bold text-green-800 mb-3">Do you offer classes for kids?</h3>
+        <h3 className="text-xl font-bold text-secondary-800 mb-3">Do you offer classes for kids?</h3>
         <p className="text-gray-700">
           Yes! We specialize in teaching children from age 4+ using engaging, interactive methods tailored for young learners.
         </p>
       </div>
       
       <div className="bg-white p-6 rounded-xl shadow-md">
-        <h3 className="text-xl font-bold text-green-800 mb-3">How is Nebras Academy different?</h3>
+        <h3 className="text-xl font-bold text-secondary-800 mb-3">How is Nebras Academy different?</h3>
         <p className="text-gray-700">
           We focus on quality education through handpicked teachers, structured curriculum, and progress tracking for optimal learning outcomes.
         </p>
@@ -169,7 +169,7 @@ const Contact = () => {
     {/* زر الحجز */}
     <div className="text-center mt-12">
       <Link 
-        to="/signUp" 
+        to="https://wa.me/201146162847" 
         className="inline-block bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-8 rounded-lg shadow-lg transition-colors text-lg"
       >
         SCHEDULE YOUR FREE TRIAL CLASS

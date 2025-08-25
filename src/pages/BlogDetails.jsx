@@ -12,7 +12,7 @@ const BlogDetails = () => {
       {/* قسم الخلفية العلوية */}
       <div className="bg-black/90 h-[150px] flex items-center justify-center mb-12">
         <div className="pl-5 w-full">
-          <h1 className="text-4xl font-bold text-orange-600 text-start relative pl-6 before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:h-12 before:w-1 before:bg-green-600">
+          <h1 className="text-4xl font-bold text-primary-600 text-start relative pl-6 before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:h-12 before:w-1 before:bg-secondary-600">
             Blog {post.id}
           </h1>
         </div>
@@ -28,7 +28,7 @@ const BlogDetails = () => {
         />
 
         {/* عنوان المقال */}
-        <h1 className="text-3xl font-bold text-green-800 mb-3 text-center">{post.title}</h1>
+        <h1 className="text-3xl font-bold text-secondary-800 mb-3 text-center">{post.title}</h1>
         
         {/* وصف المقال */}
         {post.excerpt && (
@@ -41,10 +41,10 @@ const BlogDetails = () => {
         <div className="space-y-8">
           {post.content?.map((item, index) => (
             <div key={index} className="mb-8 bg-gray-50 p-6 rounded-lg">
-              <h2 className="text-xl font-bold text-orange-600 mb-3">
+              <h2 className="text-xl font-bold text-primary-600 mb-3">
                 {item.question}
               </h2>
-              <p className="text-gray-700 pl-4 border-l-4 border-green-200 pr-4">
+              <p className="text-gray-700 pl-4 border-l-4 border-secondary-200 pr-4">
                 {item.answer}
               </p>
             </div>

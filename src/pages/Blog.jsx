@@ -13,12 +13,12 @@ const Blog = () => {
       {/* Hero Section */}
       <div className="relative">
         <img 
-          src="/images/celebrateEid .jfif" // استبدل بمسار صورتك
+          src="/images/celebrateEid.jpg" // استبدل بمسار صورتك
           alt="Blog Banner"
           className="w-full h-[200px] object-cover"
         />
         <div className="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-start px-6 md:px-12">
-          <h1 className="text-3xl md:text-4xl font-bold text-white border-l-4 border-orange-500 pl-4 py-2">
+          <h1 className="text-3xl md:text-4xl font-bold text-white border-l-4 border-primary-500 pl-4 py-2">
             Blog
           </h1>
         </div>
@@ -29,7 +29,7 @@ const Blog = () => {
         <nav className="text-sm">
           <ol className="flex items-center space-x-2">
             <li>
-              <Link to="/" className="text-green-600 hover:text-green-800">Home</Link>
+              <Link to="/" className="text-secondary-600 hover:text-secondary-800">Home</Link>
             </li>
             <li>
               <span className="text-gray-500">/</span>
@@ -52,14 +52,14 @@ const Blog = () => {
               <div className="p-6">
                 <Link 
                   to={`/blog/${post.id}`} 
-                  className="text-xl font-bold text-green-800 hover:text-orange-600 transition duration-300 block mb-2"
+                  className="text-xl font-bold text-secondary-800 hover:text-primary-600 transition duration-300 block mb-2"
                 >
                   {post.title}
                 </Link>
                 <p className="text-gray-600 mb-4">{post.excerpt}</p>
                 <Link 
                   to={`/blog/${post.id}`} 
-                  className="text-orange-500 hover:text-orange-700 font-medium transition duration-300 inline-flex items-center"
+                  className="text-primary-500 hover:text-primary-700 font-medium transition duration-300 inline-flex items-center"
                 >
                   Read More
                   <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -75,7 +75,7 @@ const Blog = () => {
           <div className="text-center mt-12">
             <button 
               onClick={loadMore}
-              className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 inline-block"
+              className="bg-primary-500 hover:bg-primary-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 inline-block"
             >
               Load More Articles
             </button>

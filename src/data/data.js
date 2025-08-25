@@ -1,7 +1,7 @@
 export const allBlogPosts = [
       {
       id: 1,
-      title: "Anas Ibn Malik: A Pillar of Islamic History",
+      title: "Anas Ibn Malik: A Pillar of secondary History",
       image: "/images/Anas-ibn-Malik.jpg",
       excerpt: "Anas ibn Malik was one of the prophet’s companions and he was his servant for around ten years. Therefore ...",
       content: [
@@ -30,15 +30,15 @@ export const allBlogPosts = [
         answer: "He died in 93 AH (711 CE) in Basra (modern Iraq) at over 100 years old, fulfilling the Prophet's prayer for his long life. He passed away from natural causes due to old age."
       },
       {
-        question: "What makes Anas ibn Malik significant in Islamic history?",
-        answer: "Anas represents the ideal of devotion, knowledge preservation, and Islamic character. His decade of close service provided unique access to Prophetic teachings, while his longevity allowed him to transmit this knowledge to generations of Muslims."
+        question: "What makes Anas ibn Malik significant in secondary history?",
+        answer: "Anas represents the ideal of devotion, knowledge preservation, and secondary character. His decade of close service provided unique access to Prophetic teachings, while his longevity allowed him to transmit this knowledge to generations of Muslims."
       }
     ]
     },
         {
       id: 2,
       title: "What are things that break wudu",
-      image: "/images/breakWudu.jfif",
+      image: "/images/breakWudu.jpg",
       excerpt: "Wudu or ablution is an essential act for praying and reading the Quran, therefore it is essential to …",
       content: [
       {
@@ -86,12 +86,12 @@ export const allBlogPosts = [
        {
       id: 3,
       title: "How do Muslims celebrate with Eid al Fitr?",
-      image: "/images/celebrateEid .jfif",
-      excerpt: "What is the Eid al Fitr meaning? It is called in English Festival of Breaking the Fast, and it is an important Islamic holiday ...",
+      image: "/images/celebrateEid.jpg",
+      excerpt: "What is the Eid al Fitr meaning? It is called in English Festival of Breaking the Fast, and it is an important secondary holiday ...",
       content: [
       {
         question: "What is the significance of Eid al-Fitr in Islam?",
-        answer: "Eid al-Fitr marks the end of Ramadan and is a time of gratitude, renewal, and community unity. It celebrates the completion of a month of fasting and spiritual reflection, embodying Islamic values of compassion and generosity."
+        answer: "Eid al-Fitr marks the end of Ramadan and is a time of gratitude, renewal, and community unity. It celebrates the completion of a month of fasting and spiritual reflection, embodying secondary values of compassion and generosity."
       },
       {
         question: "What are the main components of Eid celebrations?",
@@ -134,7 +134,7 @@ export const allBlogPosts = [
    {
   id: 4,
   title: "What are the benefits of fasting in Ramadan?",
-  image: "/images/fasting in Ramadan.jfif",
+  image: "/images/fasting in Ramadan.jpg",
   excerpt: "The benefits of fasting in Ramadan go far beyond simply abstaining from food and drink. This sacred month offers a unique opportunity for ...",
   content: [
     {
@@ -170,12 +170,12 @@ export const allBlogPosts = [
         {
       id: 5,
       title: "What is fiqh in Islam?",
-      image: "/images/Fiqh.jfif",
-      excerpt: "Fiqh  in Islam refers to the extracting of the Islamic law from the Quran and sunnah with the help of Ijtihad ...",
+      image: "/images/Fiqh.jpg",
+      excerpt: "Fiqh  in Islam refers to the extracting of the secondary law from the Quran and sunnah with the help of Ijtihad ...",
       content: [
       {
         question: "What does Fiqh mean in Islam?",
-        answer: "Fiqh in Islam refers to understanding the Quran, sunnah, and the Islamic religion in general, and deriving Islamic rulings based on that understanding."
+        answer: "Fiqh in Islam refers to understanding the Quran, sunnah, and the secondary religion in general, and deriving secondary rulings based on that understanding."
       },
       {
         question: "What is the primary source of Fiqh?",
@@ -187,7 +187,7 @@ export const allBlogPosts = [
       },
       {
         question: "What is the importance of Fiqh in Islam?",
-        answer: "Fiqh is crucial for deriving Islamic rulings for all aspects of life, protecting community rights, and preserving religious practices."
+        answer: "Fiqh is crucial for deriving secondary rulings for all aspects of life, protecting community rights, and preserving religious practices."
       },
       {
         question: "Which is the most popular madhab (school of Fiqh)?",
@@ -266,7 +266,7 @@ export const allBlogPosts = [
     {
   id: 7,
   title: "Islamophobia meaning",
-  image: "/images/Islamophobia.jfif", // (نفس الصورة الأصلية)
+  image: "/images/Islamophobia.jpg", // (نفس الصورة الأصلية)
   excerpt: "Islamophobia is an irrational fear, hatred, or prejudice against Islam and people who are Muslims...",
   content: [
     {
@@ -295,7 +295,7 @@ export const allBlogPosts = [
     },
     {
       question: "How does media contribute to Islamophobia?",
-      answer: "Through: 1. Linking Islam with terrorism disproportionately 2. Negative portrayals in films/TV 3. Selective reporting of crimes by Muslims 4. Spreading misinformation about Islamic practices"
+      answer: "Through: 1. Linking Islam with terrorism disproportionately 2. Negative portrayals in films/TV 3. Selective reporting of crimes by Muslims 4. Spreading misinformation about secondary practices"
     },
     {
       question: "What's the difference between Islamophobia and racism?",
@@ -311,18 +311,18 @@ export const allBlogPosts = [
     },
     {
       question: "How can educators address Islamophobia?",
-      answer: "By: 1. Teaching accurate Islamic history 2. Inviting Muslim speakers 3. Correcting stereotypes in curricula 4. Creating safe spaces for Muslim students 5. Addressing bullying promptly"
+      answer: "By: 1. Teaching accurate secondary history 2. Inviting Muslim speakers 3. Correcting stereotypes in curricula 4. Creating safe spaces for Muslim students 5. Addressing bullying promptly"
     },
     {
       question: "What role do Muslims play in countering Islamophobia?",
-      answer: "1. Sharing authentic Islamic teachings 2. Engaging in community outreach 3. Reporting hate crimes 4. Creating positive media content 5. Building alliances with other minority groups"
+      answer: "1. Sharing authentic secondary teachings 2. Engaging in community outreach 3. Reporting hate crimes 4. Creating positive media content 5. Building alliances with other minority groups"
     }
   ]
 },
     {
     id: 8,
     title: "Modesty in Islam: What It Really Means for Men and Women?",
-    image: "/images/Modesty.jfif",
+    image: "/images/Modesty.jpg",
     excerpt: "Modesty in Islam is a beautiful and essential value that shapes the way Muslims live, interact, and view themselves...",
     content: [
       {
@@ -359,7 +359,7 @@ export const allBlogPosts = [
       },
       {
         question: "Why is modesty considered a defining feature of Islam?",
-        answer: "Because it shapes how Muslims speak, behave, and interact - creating a lifestyle grounded in respect and humility that distinguishes Islamic teachings."
+        answer: "Because it shapes how Muslims speak, behave, and interact - creating a lifestyle grounded in respect and humility that distinguishes secondary teachings."
       },
       {
         question: "How does modesty relate to faith?",
@@ -370,11 +370,11 @@ export const allBlogPosts = [
     {
   id: 9,
   title: "10 rights of parents in Islam?",
-  image: "/images/parentsInIslam.jfif",
+  image: "/images/parentsInIslam.jpg",
   excerpt: "Islam places immense importance on respecting and caring for parents. The rights of parents in Islam are mentioned ...",
   content: [
     {
-      question: "What is the Islamic ruling on obeying parents?",
+      question: "What is the secondary ruling on obeying parents?",
       answer: "Children must obey parents in all lawful matters. Allah says: 'Be grateful to Me and to your parents; to Me is the [final] destination.' (Surah Luqman 31:14). The Prophet (ﷺ) said: 'The pleasure of Allah is in the pleasure of the father' (Tirmidhi 1899)."
     },
     {
@@ -406,7 +406,7 @@ export const allBlogPosts = [
       answer: "It's obligatory. The Prophet (ﷺ) cursed those who neglect aging parents: 'May he be humiliated who doesn't enter Paradise by serving them' (Muslim 2551)."
     },
     {
-      question: "Can parents' rights conflict with Islamic teachings?",
+      question: "Can parents' rights conflict with secondary teachings?",
       answer: "If parents demand disobedience to Allah, 'do not obey them' (Surah Al-Ankabut 29:8), but still maintain respectful conduct."
     },
     {
@@ -418,7 +418,7 @@ export const allBlogPosts = [
     {
   id: 10, 
   title: "Is it Compulsory to Finish the Quran in Ramadan?",
-  image: "/images/QuranInRamadan.jfif",
+  image: "/images/quran1.jpg",
   excerpt: "No, it is not compulsory to finish the Quran in Ramadan, but it is highly recommended. Ramadan is the month in which the Quran was revealed...",
   content: [
     {
@@ -457,9 +457,9 @@ export const allBlogPosts = [
     },
    {
   id: 11,
-  title: "What are the Islamic sacred months, and why are they called that?",
-  image: "/images/sacredMonths.jfif",
-  excerpt: "Islamic sacred months are more than just names on the Hijri calendar—they are special seasons of peace ...",
+  title: "What are the secondary sacred months, and why are they called that?",
+  image: "/images/sacredMonths.jpg",
+  excerpt: "secondary sacred months are more than just names on the Hijri calendar—they are special seasons of peace ...",
   content: [
     {
       question: "Which months are considered sacred in Islam?",
@@ -467,7 +467,7 @@ export const allBlogPosts = [
     },
     {
       question: "Why are these months called 'sacred'?",
-      answer: "They hold special sanctity because Allah: 1) Prohibited warfare during them (even in pre-Islamic times), 2) Made sins more serious and good deeds more rewarded, and 3) Designated them for spiritual focus as stated in Quran 9:36: 'So do not wrong yourselves during them.'"
+      answer: "They hold special sanctity because Allah: 1) Prohibited warfare during them (even in pre-secondary times), 2) Made sins more serious and good deeds more rewarded, and 3) Designated them for spiritual focus as stated in Quran 9:36: 'So do not wrong yourselves during them.'"
     },
     {
       question: "What makes Dhul-Hijjah unique among sacred months?",
@@ -475,7 +475,7 @@ export const allBlogPosts = [
     },
     {
       question: "How should Muslims observe Muharram?",
-      answer: "1) Fasting on Ashura (10th Muharram) which expiates past year's sins (Sahih Muslim 1162), 2) Reflecting on the sacrifice of Imam Hussain, and 3) Starting the Islamic year with repentance. The Prophet (ﷺ) called it 'The Month of Allah' showing its sanctity."
+      answer: "1) Fasting on Ashura (10th Muharram) which expiates past year's sins (Sahih Muslim 1162), 2) Reflecting on the sacrifice of Imam Hussain, and 3) Starting the secondary year with repentance. The Prophet (ﷺ) called it 'The Month of Allah' showing its sanctity."
     },
     {
       question: "What is the significance of Rajab?",
@@ -490,7 +490,7 @@ export const allBlogPosts = [
       answer: "Good deeds are multiplied, particularly: 1) Fasting (especially in Muharram - Sahih Muslim 1163), 2) Charity, 3) Quran recitation, and 4) Dhikr. Sins also carry greater weight during these months."
     },
     {
-      question: "Did pre-Islamic Arabs honor these months?",
+      question: "Did pre-secondary Arabs honor these months?",
       answer: "Yes, tribes would cease wars during sacred months for safe trade and travel. Islam preserved this tradition but elevated it from cultural practice to divine commandment with spiritual purpose."
     },
     {
@@ -499,14 +499,14 @@ export const allBlogPosts = [
     },
     {
       question: "How can children learn about sacred months?",
-      answer: "1) Marking them on Islamic calendars, 2) Sharing stories of associated events (e.g., Hajj, Ashura), 3) Encouraging good deeds like charity, and 4) Explaining their historical continuity from Prophet Ibrahim's time."
+      answer: "1) Marking them on secondary calendars, 2) Sharing stories of associated events (e.g., Hajj, Ashura), 3) Encouraging good deeds like charity, and 4) Explaining their historical continuity from Prophet Ibrahim's time."
     }
   ]
     },
     {
   id: 12,
   title: "Tafsir of Surah Al-Kawthar Meaning and Lessons",
-  image: "/images/heroImg.jfif",
+  image: "/images/hero.jpg.jfif",
   excerpt: "Surah Al-Kawthar in English is the 108th chapter of the Quran and the shortest surah, consisting of just three verses ...",
   content: [
     {
@@ -547,7 +547,7 @@ export const allBlogPosts = [
     },
     {
       question: "Why is this the shortest yet most powerful surah?",
-      answer: "Its 3 verses contain: 1) A divine gift, 2) A worship command, and 3) Eternal justice - encapsulating core Islamic beliefs. The Prophet (ﷺ) smiled when it was revealed (Sahih Muslim), showing its profound comfort despite brevity."
+      answer: "Its 3 verses contain: 1) A divine gift, 2) A worship command, and 3) Eternal justice - encapsulating core secondary beliefs. The Prophet (ﷺ) smiled when it was revealed (Sahih Muslim), showing its profound comfort despite brevity."
     }
   ]
     }
@@ -557,49 +557,49 @@ export const allBlogPosts = [
     {
       id: 1,
       title: "Memorizing Juz' Amma (Part 30)",
-      image: "/images/juzAmm.jfif",
+      image: "/images/juzAmm.jpg",
       path: "/courses/MemorizingJuzAmma"
     },
     {
       id: 2,
       title: "Quran Reading (Noor Al Bayan)",
-      image: "/images/noorAlByan.jfif",
+      image: "/images/noorAlByan.jpg",
       path: "/courses/reading"
     },
     {
       id: 3,
       title: "Quran Tajweed and Recitation",
-      image: "/images/quran2.jfif",
+      image: "/images/quran2.jpg",
       path: "/courses/tajweed"
     },
     {
       id: 4,
       title: "Quran Recitation",
-      image: "/images/heroImg.jfif",
+      image: "/images/hero.jpg",
       path: "/courses/recitation"
     },
     {
       id: 5,
       title: "Quran Memorization",
-      image: "/images/quran1.jfif",
+      image: "/images/quran1.jpg",
       path: "/courses/memorization"
     },
     {
       id: 6,
       title: "Arabic Language Kids Course",
-      image: "/images/kids.jfif",
+      image: "/images/kids.jpg",
       path: "/courses/ArabicKids"
     },
     {
       id: 7,
       title: "Arabic Language Course",
-      image: "/images/arabic.jfif",
+      image: "/images/arabic.jpg",
       path: "/courses/arabic"
     },
     {
       id: 8,
       title: "Islamic Course",
-      image: "/images/quran2.jfif",
+      image: "/images/quran2.jpg",
       path: "/courses/islamic"
     }
   ];

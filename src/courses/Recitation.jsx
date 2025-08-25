@@ -109,11 +109,11 @@ const Recitation = () => {
                     </li>
                   </ul>
                 </div>
-                <div className="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
-                  <h3 className="font-semibold text-green-800 mb-2">Techniques</h3>
+                <div className="bg-secondary-50 p-4 rounded-lg border-l-4 border-secondary-500">
+                  <h3 className="font-semibold text-secondary-800 mb-2">Techniques</h3>
                   <ul className="text-gray-700 space-y-2">
                     <li className="flex items-start">
-                      <span className="text-green-600 mr-2">•</span>
+                      <span className="text-secondary-600 mr-2">•</span>
                       <span>Learn best Quran recitation techniques online</span>
                     </li>
                   </ul>
@@ -214,7 +214,7 @@ const Recitation = () => {
                 </div>
               </div>
                <a
-              href='https://wa.me/201146162847?text=Peace%20be%20upon%20you%20and%20God%27s%20mercy%20and%20blessings.%20We%20are%20the%20Nebras%20team%20for%20Quran%20education.%20How%20can%20we%20help%20you%3F'
+              href='https://wa.me/201146162847 '
                   target='_blank'
                   rel='noopener noreferrer'
               >

@@ -10,7 +10,7 @@ const SignUp = () => {
       src="/Logo.jpg" 
       alt="Nebras Academy Logo" 
     />
-    <h2 className="mt-6 text-center text-3xl font-extrabold text-green-700">
+    <h2 className="mt-6 text-center text-3xl font-extrabold text-secondary-700">
       Create Your Account
     </h2>
     <p className="mt-2 text-center text-sm text-gray-600">
@@ -33,7 +33,7 @@ const SignUp = () => {
               type="text"
               autoComplete="name"
               required
-              className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+              className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-secondary-500 focus:border-secondary-500 sm:text-sm"
               placeholder="Your full name"
             />
           </div>
@@ -51,7 +51,7 @@ const SignUp = () => {
               type="email"
               autoComplete="email"
               required
-              className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+              className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-secondary-500 focus:border-secondary-500 sm:text-sm"
               placeholder="your@email.com"
             />
           </div>
@@ -68,7 +68,7 @@ const SignUp = () => {
               name="phone"
               type="tel"
               autoComplete="tel"
-              className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+              className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-secondary-500 focus:border-secondary-500 sm:text-sm"
               placeholder="+1 (___) ___-____"
             />
           </div>
@@ -86,7 +86,7 @@ const SignUp = () => {
               type="password"
               autoComplete="new-password"
               required
-              className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+              className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-secondary-500 focus:border-secondary-500 sm:text-sm"
               placeholder="Create a password"
             />
             <div className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5">
@@ -107,7 +107,7 @@ const SignUp = () => {
               type="password"
               autoComplete="new-password"
               required
-              className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+              className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-secondary-500 focus:border-secondary-500 sm:text-sm"
               placeholder="Re-enter your password"
             />
           </div>
@@ -122,7 +122,7 @@ const SignUp = () => {
             <select
               id="account-type"
               name="account-type"
-              className="block w-full pl-3 pr-10 py-2 text-base border border-gray-300 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm rounded-md"
+              className="block w-full pl-3 pr-10 py-2 text-base border border-gray-300 focus:outline-none focus:ring-secondary-500 focus:border-secondary-500 sm:text-sm rounded-md"
             >
               <option>Student</option>
               <option>Parent</option>
@@ -137,11 +137,11 @@ const SignUp = () => {
             id="terms"
             name="terms"
             type="checkbox"
-            className="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded"
+            className="h-4 w-4 text-secondary-600 focus:ring-secondary-500 border-gray-300 rounded"
             required
           />
           <label htmlFor="terms" className="ml-2 block text-sm text-gray-700">
-            I agree to the <Link to="/policy" className="text-green-600 hover:text-green-500">Terms of Service</Link> and <Link to="/policy" className="text-green-600 hover:text-green-500">Privacy Policy</Link>
+            I agree to the <Link to="/policy" className="text-secondary-600 hover:text-secondary-500">Terms of Service</Link> and <Link to="/policy" className="text-secondary-600 hover:text-secondary-500">Privacy Policy</Link>
           </label>
         </div>
 
@@ -149,7 +149,7 @@ const SignUp = () => {
         <div>
           <button
             type="submit"
-            className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors duration-200"
+            className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-secondary-600 hover:bg-secondary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-500 transition-colors duration-200"
           >
             Create Account
           </button>
@@ -160,7 +160,7 @@ const SignUp = () => {
       <div className="mt-6 text-center">
         <p className="text-sm text-gray-600">
           Already have an account?{' '}
-          <Link to="/login" className="font-medium text-green-600 hover:text-green-500">
+          <Link to="/login" className="font-medium text-secondary-600 hover:text-secondary-500">
             Sign in
           </Link>
         </p>
