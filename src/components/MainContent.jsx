@@ -50,8 +50,7 @@ const MainContent = () => {
                   <img 
                     src="/images/muslim.jpg" 
                     alt="Quran and Arabic Learning"
-                    className="h-[210px] md:h-[400px] rounded-lg shadow-lg w-full object-cover object-center"
-                  />
+                    className="rounded-lg shadow-lg w-full h-[400px] object-cover object-bottom"/>
                 </div>
                 <div className="md:w-1/2 md:pl-8 order-1 md:order-2">
                   <div className='flex gap-5'> 
