@@ -46,11 +46,11 @@ const MainContent = () => {
             {/* Section 3: Learn Quran and Arabic (Image Left) */}
             <section className="py-16 px-4 bg-gray-50">
               <div className="container mx-auto flex flex-col md:flex-row items-start pl-3">
-                <div className="w-full h-1/2 md:w-1/2 mb-8 md:mb-0 order-2 md:order-1">
+                <div className="w-full h-1/2 md:w-1/2 mt-8 md:mb-0 order-2 md:order-1">
                   <img 
                     src="/images/muslim.jpg" 
                     alt="Quran and Arabic Learning"
-                    className="h-[210px] md:h-[400px] rounded-lg shadow-lg w-full object-cover object-bottom"/>
+                    className="h-[210px] md:h-[400px] rounded-lg shadow-lg w-full object-cover object-center"/>
                 </div>
                 <div className="md:w-1/2 md:pl-8 order-1 md:order-2">
                   <div className='flex gap-5'> 
