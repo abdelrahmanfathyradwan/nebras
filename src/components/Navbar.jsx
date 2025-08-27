@@ -101,7 +101,7 @@ const Navbar = () => {
           </div>
 
           {/* Lower Navbar */}
-          <div className='bg-white shadow-md py-1 px-4'>
+          <div className='bg-white shadow-md py-1 sm:py-4 px-4'>
             <div className='container mx-auto flex justify-center items-center'>
               {/* Mobile Menu Button */}
               <button
