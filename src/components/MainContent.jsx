@@ -46,11 +46,11 @@ const MainContent = () => {
             {/* Section 3: Learn Quran and Arabic (Image Left) */}
             <section className="py-16 px-4 bg-gray-50">
               <div className="container mx-auto flex flex-col md:flex-row items-start pl-3">
-                <div className="md:w-1/2 mb-8 md:mb-0 order-2 md:order-1">
+                <div className="w-full h-1/2 md:w-1/2 mb-8 md:mb-0 order-2 md:order-1">
                   <img 
-                    src="/images/muslim.png" 
+                    src="/images/muslim.jpg" 
                     alt="Quran and Arabic Learning"
-                    className="rounded-lg shadow-lg w-full h-auto"
+                    className="h-[210px] md:h-[400px] rounded-lg shadow-lg w-full object-cover object-center"
                   />
                 </div>
                 <div className="md:w-1/2 md:pl-8 order-1 md:order-2">
@@ -78,11 +78,11 @@ const MainContent = () => {
                   Join thousands of satisfied students who have transformed their Quranic recitation and understanding through our proven teaching methods. Take the first step in your spiritual journey <span className='text-primary-400 font-semibold'>with a free trial class</span> tailored to your level and goals.
                   </p>
                 </div>
-                <div className="md:w-1/2">
+                <div className="w-full md:w-1/2">
                   <img 
                     src="/images/Modesty.jpg" 
                     alt="Online Quran Learning"
-                    className="rounded-lg shadow-lg w-full h-auto"
+                    className="h-[210px] md:h-[400px] rounded-lg shadow-lg w-full object-cover object-center"
                   />
                 </div>
               </div>
