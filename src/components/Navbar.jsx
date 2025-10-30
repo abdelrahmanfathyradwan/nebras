@@ -72,6 +72,19 @@ const Navbar = () => {
                   +20 114 616 2847
                   </a>
                 </span>
+                <span className='flex items-center text-sm'>
+                  <img
+                    src='https://flagcdn.com/w20/eg.png' // علم مصر من flagcdn
+                    alt='Egypt Flag'
+                    className='w-5 h-5 mr-1 rounded-full'
+                  />
+                  <a
+                   dir='ltr'
+                   href="tel:+201114956994" 
+                  >
+                  +201114956994
+                  </a>
+                </span>
                  <a 
                     href="mailto:nebrasacademey2025@gmail.com" 
                     className="flex items-center transition-colors duration-200"
