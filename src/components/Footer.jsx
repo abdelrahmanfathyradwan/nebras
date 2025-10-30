@@ -17,7 +17,7 @@ const Footer = () => {
             </div>
             <div className="flex items-center mb-2">
               <FaPhone className="mr-2 text-primary-300" />
-              <span>+201114956994</span>
+              <span>+20 111 495 6994</span>
             </div>
             <div className="flex items-center">
               <FaEnvelope className="mr-2 text-primary-300" />
