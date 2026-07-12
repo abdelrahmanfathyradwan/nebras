@@ -1,0 +1,10 @@
+# Nebras Academy - robots.txt
+User-agent: *
+Allow: /
+
+# Disallow admin/internal paths
+Disallow: /login
+Disallow: /signUp
+
+# Sitemap
+Sitemap: https://nebrasacademy.com/sitemap.xml

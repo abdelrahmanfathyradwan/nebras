@@ -1,0 +1,336 @@
+import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
+import StructuredData from '../components/StructuredData';
+
+const Tajweed = () => {
+  return (
+    <div className="mx-auto">
+      <SEO 
+        title="Quran Tajweed & Recitation Course" 
+        description="Enroll in the Quran Tajweed & Recitation course at Nebras Academy. Learn online with certified Al-Azhar teachers." 
+        canonical="/courses/Tajweed"
+      />
+      <StructuredData data={{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "Quran Tajweed & Recitation",
+  "description": "Learn Quran Tajweed & Recitation online with certified teachers from Al-Azhar.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Nebras Academy",
+    "sameAs": "https://nebrasacademy.com"
+  }
+}} />
+      {/* Hero Section */}
+      <div className="relative w-full h-[300px] overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-secondary-900/80 to-secondary-800/60 flex items-center">
+          <div className="container mx-auto px-4">
+            <div className="max-w-2xl">
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 relative pl-6 border-l-4 border-amber-400">
+                Quran Tajweed & Recitation
+              </h1>
+              <blockquote className="text-lg text-secondary-100 mb-6 italic">
+                "And recite the Quran with measured recitation."
+                <footer className="mt-2 not-italic text-amber-200">Surah Al-Muzzammil</footer>
+              </blockquote>
+              <div className="flex flex-wrap gap-4">
+                <span className="bg-secondary-600/90 text-white px-4 py-2 rounded-full text-sm flex items-center">
+                  <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                  </svg>
+                  Male & Female Teachers
+                </span>
+                <span className="bg-amber-500/90 text-white px-4 py-2 rounded-full text-sm flex items-center">
+                  <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
+                  </svg>
+                  All Ages (Kids & Adults)
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Breadcrumb */}
+      <div className="container mx-auto px-4 py-4">
+        <nav className="flex" aria-label="Breadcrumb">
+          <ol className="inline-flex items-center space-x-1 md:space-x-3">
+            <li className="inline-flex items-center">
+              <Link to="/" className="inline-flex items-center text-sm font-medium text-secondary-600 hover:text-secondary-800">
+                Home
+              </Link>
+            </li>
+            <li className="inline-flex items-center">
+              <svg className="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+              </svg>
+              <Link to="/courses" className="ml-1 text-sm font-medium text-secondary-600 hover:text-secondary-800 md:ml-2">
+                Courses
+              </Link>
+            </li>
+            <li aria-current="page">
+              <div className="flex items-center">
+                <svg className="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                </svg>
+                <span className="ml-1 text-sm font-medium text-gray-500 md:ml-2">Quran Tajweed & Recitation</span>
+              </div>
+            </li>
+          </ol>
+        </nav>
+      </div>
+
+      {/* Course Content */}
+      <div className="container mx-auto px-4 py-8">
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="md:col-span-2">
+            {/* Introduction */}
+            <div className="bg-white rounded-xl shadow-md p-6 mb-8">
+              <h2 className="text-2xl font-bold text-secondary-800 mb-4">About This Course</h2>
+              <div className="prose max-w-none text-gray-700">
+                <p className="mb-4">
+                  Reciting Quran must be in the proper way. Many scholars have emphasized on the importance of learning the proper way of reciting the Quran and learning the Tajweed Rules in order to recite the Quran just like Prophet (SAW) used to recite.
+                </p>
+                <p className="mb-4">
+                  This course is designed to enable you to learn Quran recitation and apply the Tajweed Rules of the Quran from the best experienced Native Quran teachers from Egypt. Having a native Quran tutor is extremely important in learning Quran recitation and will give you the tools and experts who can recognize your recitation mistakes and correct them.
+                </p>
+                <p className="mb-4">
+                  Nebras Academy's Tajweed courses are specifically focused on helping people learn Quran with Tajweed. Designed to help people learn the clarity of expressions while reciting and reading the Holy Quran, our Tajweed Courses will help you build a connection with the Almighty Allah and help you understand His words better that He used to express through His Prophet Muhammad (SAW).
+                </p>
+              </div>
+            </div>
+
+            {/* Course Outline */}
+            <div className="bg-white rounded-xl shadow-md p-6 mb-8">
+              <h2 className="text-2xl font-bold text-secondary-800 mb-4">What You Will Learn</h2>
+              <div className="grid sm:grid-cols-2 gap-6">
+                <div className="bg-secondary-50 p-4 rounded-lg border-l-4 border-secondary-600">
+                  <h3 className="font-semibold text-secondary-800 mb-2">Proper Recitation</h3>
+                  <ul className="text-gray-700 space-y-2">
+                    <li className="flex items-start">
+                      <span className="text-secondary-600 mr-2">•</span>
+                      <span>How to recite Quran properly</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-secondary-600 mr-2">•</span>
+                      <span>Correct pronunciation of Arabic letters</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-secondary-600 mr-2">•</span>
+                      <span>Proper stops and pauses</span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="bg-amber-50 p-4 rounded-lg border-l-4 border-amber-500">
+                  <h3 className="font-semibold text-amber-800 mb-2">Articulation Points</h3>
+                  <ul className="text-gray-700 space-y-2">
+                    <li className="flex items-start">
+                      <span className="text-amber-600 mr-2">•</span>
+                      <span>Recognizing the points of articulations</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-amber-600 mr-2">•</span>
+                      <span>Makharij (articulation points) of letters</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-amber-600 mr-2">•</span>
+                      <span>Sifat (characteristics) of letters</span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                  <h3 className="font-semibold text-blue-800 mb-2">Tajweed Rules</h3>
+                  <ul className="text-gray-700 space-y-2">
+                    <li className="flex items-start">
+                      <span className="text-blue-600 mr-2">•</span>
+                      <span>Applying the correct Tajweed rules</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-blue-600 mr-2">•</span>
+                      <span>Rules of Noon Sakinah & Tanween</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-blue-600 mr-2">•</span>
+                      <span>Rules of Meem Sakinah</span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-500">
+                  <h3 className="font-semibold text-purple-800 mb-2">Advanced Concepts</h3>
+                  <ul className="text-gray-700 space-y-2">
+                    <li className="flex items-start">
+                      <span className="text-purple-600 mr-2">•</span>
+                      <span>Understanding the reasons behind rules</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-purple-600 mr-2">•</span>
+                      <span>Qalqalah (echoing sounds)</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-purple-600 mr-2">•</span>
+                      <span>Mudood (lengthening rules)</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* Learning Outcomes */}
+            <div className="bg-white rounded-xl shadow-md p-6">
+              <h2 className="text-2xl font-bold text-secondary-800 mb-4">Course Benefits</h2>
+              <div className="space-y-4">
+                <div className="flex items-start">
+                  <div className="flex-shrink-0 mt-1">
+                    <div className="bg-secondary-100 rounded-full p-1">
+                      <svg className="w-5 h-5 text-secondary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                  </div>
+                  <p className="ml-3 text-gray-700">
+                    Recite the Quran as it was revealed to Prophet Muhammad (SAW) with proper Tajweed
+                  </p>
+                </div>
+                <div className="flex items-start">
+                  <div className="flex-shrink-0 mt-1">
+                    <div className="bg-secondary-100 rounded-full p-1">
+                      <svg className="w-5 h-5 text-secondary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                  </div>
+                  <p className="ml-3 text-gray-700">
+                    Develop a beautiful and correct recitation style
+                  </p>
+                </div>
+                <div className="flex items-start">
+                  <div className="flex-shrink-0 mt-1">
+                    <div className="bg-secondary-100 rounded-full p-1">
+                      <svg className="w-5 h-5 text-secondary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                  </div>
+                  <p className="ml-3 text-gray-700">
+                    Gain confidence in your Quranic recitation
+                  </p>
+                </div>
+                <div className="flex items-start">
+                  <div className="flex-shrink-0 mt-1">
+                    <div className="bg-secondary-100 rounded-full p-1">
+                      <svg className="w-5 h-5 text-secondary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                  </div>
+                  <p className="ml-3 text-gray-700">
+                    Deepen your connection with the Quran through proper recitation
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Sidebar */}
+          <div className="space-y-6">
+            <div className="bg-white rounded-xl shadow-md p-6">
+              <h3 className="text-lg font-bold text-secondary-800 mb-4">Course Details</h3>
+              <div className="space-y-4">
+                <div>
+                  <h4 className="text-sm font-medium text-gray-500">For Ages</h4>
+                  <p className="mt-1 text-gray-700">Children (5+) and Adults</p>
+                </div>
+                <div>
+                  <h4 className="text-sm font-medium text-gray-500">Duration</h4>
+                  <p className="mt-1 text-gray-700">3-12 months (depending on level)</p>
+                </div>
+                <div>
+                  <h4 className="text-sm font-medium text-gray-500">Class Type</h4>
+                  <p className="mt-1 text-gray-700">One-on-One or Small Groups (2-4 students)</p>
+                </div>
+                <div>
+                  <h4 className="text-sm font-medium text-gray-500">Price</h4>
+                  <p className="mt-1 text-gray-700">$12/hour (individual)</p>
+                  <p className="text-sm text-gray-500">$8/hour per student (group)</p>
+                </div>
+              </div>
+                <a
+              href='https://wa.me/201146162847 '
+                  target='_blank'
+                  rel='noopener noreferrer'
+              >
+                <button 
+                className="w-full mt-6 bg-secondary-600 hover:bg-secondary-700 text-white font-bold py-3 px-4 rounded-lg shadow-md transition-colors">
+                  Enroll Now
+                </button>
+              </a>
+            </div>
+
+            <div className="bg-white rounded-xl shadow-md p-6">
+              <h3 className="text-lg font-bold text-secondary-800 mb-4">Teaching Methodology</h3>
+              <ul className="space-y-3 text-gray-700">
+                <li className="flex items-start">
+                  <span className="text-secondary-600 mr-2">•</span>
+                  <span>Personalized correction from native teachers</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-secondary-600 mr-2">•</span>
+                  <span>Step-by-step Tajweed rule application</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-secondary-600 mr-2">•</span>
+                  <span>Audio-visual learning aids</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-secondary-600 mr-2">•</span>
+                  <span>Regular practice and repetition</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="bg-white rounded-xl shadow-md p-6">
+              <h3 className="text-lg font-bold text-secondary-800 mb-4">Curriculum Used</h3>
+              <ul className="space-y-3 text-gray-700">
+                <li className="flex items-start">
+                  <span className="text-secondary-600 mr-2">•</span>
+                  <span>Al-Qaida Al-Nooraniyah</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-secondary-600 mr-2">•</span>
+                  <span>Tuhfat Al-Atfal (beginner Tajweed)</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-secondary-600 mr-2">•</span>
+                  <span>Al-Jazariyah (advanced Tajweed)</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-secondary-600 mr-2">•</span>
+                  <span>Practical application on Quranic verses</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="bg-white rounded-xl shadow-md p-6">
+              <h3 className="text-lg font-bold text-secondary-800 mb-4">Related Courses</h3>
+              <ul className="space-y-3">
+                <li>
+                  <Link to="/courses/memorization" className="text-secondary-600 hover:text-secondary-800 hover:underline">
+                    Quran Memorization (Hifz)
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/courses/arabic" className="text-secondary-600 hover:text-secondary-800 hover:underline">
+                    Arabic Language Course
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Tajweed;
