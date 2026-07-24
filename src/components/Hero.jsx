@@ -1,35 +1,10 @@
-import { useState, useRef, useEffect } from 'react';
-import { FaWhatsapp, FaChevronDown } from 'react-icons/fa';
+import { useState } from 'react';
+import { FaWhatsapp } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import BookingModal from './BookingModal';
 
 const Hero = () => {
-  const [isWhatsAppOpen, setIsWhatsAppOpen] = useState(false);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
-  const dropdownRef = useRef(null);
-
-  const whatsappNumbers = [
-    { number: '+20 114 616 2847', label: "First Number" },
-    { number: '01003342452', label: 'Second Number' }
-  ];
-
-  // إغلاق الدروب داون عند النقر خارجها
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsWhatsAppOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
-
-  const handleWhatsAppClick = (phoneNumber) => {
-    const cleanNumber = phoneNumber.replace(/\s/g, '');
-    window.open(`https://wa.me/${cleanNumber}`, '_blank');
-    setIsWhatsAppOpen(false);
-  };
 
   return (
     <div className='relative'>
@@ -38,7 +13,7 @@ const Hero = () => {
         {/* Background Image */}
         <div className='absolute inset-0 z-0'>
           <img
-            src='/images/hero.jpg' // Replace with your Quran image path
+            src='/images/hero.jpg'
             alt='Quran Background'
             className='w-full h-full object-cover'
           />
@@ -70,39 +45,20 @@ const Hero = () => {
         {/* Booking Modal */}
         <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
 
-        {/* Fixed WhatsApp Button with Dropdown */}
-        <div className='fixed bottom-8 right-8 z-50' ref={dropdownRef}>
-          {/* Main WhatsApp Button */}
-          <button
-            onClick={() => setIsWhatsAppOpen(!isWhatsAppOpen)}
-            className='bg-secondary-400 hover:bg-secondary-600 text-white p-4 rounded-full shadow-xl transition-all animate-bounce flex items-center gap-2'
-          >
-            <FaWhatsapp className='text-3xl' />
-            <FaChevronDown className={`text-sm transition-transform ${isWhatsAppOpen ? 'rotate-180' : ''}`} />
-          </button>
-
-          {/* Dropdown Menu */}
-          {isWhatsAppOpen && (
-            <div className='absolute bottom-16 right-0 bg-white rounded-lg shadow-xl p-3 min-w-[180px] border border-gray-200'>
-              <h4 className='text-sm font-bold text-gray-700 mb-2 text-center border-b pb-2'>Choose WhatsApp Number</h4>
-              <div className='space-y-2'>
-                {whatsappNumbers.map((item, index) => (
-                  <button
-                    key={index}
-                    onClick={() => handleWhatsAppClick(item.number)}
-                    className='w-full bg-green-500 hover:bg-green-600 text-white py-2 px-3 rounded text-sm transition-all flex items-center justify-center gap-2'
-                  >
-                    <FaWhatsapp className='text-xs' />
-                    {item.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
+        {/* Fixed WhatsApp Button - Direct link */}
+        <a
+          href='https://wa.me/201146162847'
+          target='_blank'
+          rel='noopener noreferrer'
+          className='fixed bottom-8 right-8 z-50 bg-secondary-400 hover:bg-secondary-600 text-white p-4 rounded-full shadow-xl transition-all animate-bounce flex items-center'
+          aria-label='Contact us on WhatsApp'
+        >
+          <FaWhatsapp className='text-3xl' />
+        </a>
       </section>
     </div>
   )
 };
 
 export default Hero;
+

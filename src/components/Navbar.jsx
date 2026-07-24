@@ -1,11 +1,13 @@
 import { useState, useRef, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { FaEnvelope, FaChevronDown, FaChevronUp, FaBars, FaCheck } from "react-icons/fa"
+import BookingModal from "./BookingModal"
 
 const Navbar = () => {
   const [isCoursesOpen, setIsCoursesOpen] = useState(false)
   const [isMoreOpen, setIsMoreOpen] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isBookingOpen, setIsBookingOpen] = useState(false)
   const coursesRef = useRef(null)
   const moreRef = useRef(null)
   const [copied, setCopied] = useState(false);
@@ -101,15 +103,13 @@ const Navbar = () => {
                   ):""}
               </div>
 
-              {/* Login Button */}
-                <a
-                  href='https://wa.me/201146162847 '
-                  target='_blank'
-                  rel='noopener noreferrer'
+              {/* Book Your Free Trial CTA */}
+                <button
+                  onClick={() => setIsBookingOpen(true)}
                   className='bg-primary-500 hover:bg-primary-600 text-white px-4 py-1 rounded text-sm transition-colors'
                 >
-                    Login Student
-                </a>
+                    Book Your Free Trial
+                </button>
             </div>
           </div>
 
@@ -238,13 +238,6 @@ const Navbar = () => {
                       >
                         FAQs
                       </Link>
-                      {/* <Link
-                        to='/applyForJop'
-                        className='block px-4 py-2 text-sm text-secondary-400 hover:bg-secondary-50 hover:text-secondary'
-                        onClick={() => setIsMoreOpen(false)}
-                      >
-                        Apply for a job
-                      </Link> */}
                       <Link
                         to='/contact'
                         className='block px-4 py-2 text-sm text-secondary-400 hover:bg-secondary-50 hover:text-secondary'
@@ -310,16 +303,33 @@ const Navbar = () => {
                   <Link
                     to='/contact'
                     className='block py-1 text-secondary-400 hover:text-secondary'
-                    onClick={() => setIsMoreOpen(false)}
+                    onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Contact
                   </Link>
             </div>
+
+            {/* Book Your Free Trial CTA in Mobile Menu */}
+            <div className='pt-2 pb-2'>
+              <button
+                onClick={() => {
+                  setIsMobileMenuOpen(false)
+                  setIsBookingOpen(true)
+                }}
+                className='w-full bg-primary-500 hover:bg-primary-600 text-white px-4 py-2 rounded text-sm font-semibold transition-colors'
+              >
+                Book Your Free Trial
+              </button>
+            </div>
           </div>
         </div>
       )}
+
+      {/* Booking Modal */}
+      <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
     </div>
   )
 }
 
 export default Navbar
+

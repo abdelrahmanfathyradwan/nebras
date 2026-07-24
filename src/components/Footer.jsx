@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="bg-secondary-400 text-white pt-12 pb-6 px-4">
       <div className="container mx-auto flex flex-col justify-center">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8"> {/* تغيير إلى 5 أعمدة */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
 
           {/* About Section */}
           <div>
@@ -53,10 +53,6 @@ const Footer = () => {
                 <FaQuestionCircle className="mr-2 text-primary-300" />
                 <Link to="/faqs" className="hover:text-primary-300 transition">FAQs</Link>
               </li>
-              {/* <li className="flex items-center">
-                <FaBriefcase className="mr-2 text-primary-300" />
-                <Link to="/applyForJop" className="hover:text-primary-300 transition">Apply for a job</Link>
-              </li> */}
               <li className="flex items-center">
                 <FaBlog className="mr-2 text-primary-300" />
                 <Link to="/blog" className="hover:text-primary-300 transition">Blog</Link>
@@ -75,6 +71,38 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* QR Code Section */}
+        <div className="flex justify-center mb-8">
+          <div
+            className="group relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center gap-5 sm:gap-8 max-w-md sm:max-w-lg w-full transition-all duration-300 hover:bg-white/15 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/20"
+          >
+            {/* Accent bar */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-1 rounded-b-full bg-primary-500" />
+
+            {/* QR Image */}
+            <div className="flex-shrink-0 bg-white rounded-xl p-2.5 shadow-lg transition-transform duration-300 group-hover:scale-105">
+              <img
+                src="/QR.jpg"
+                alt="Scan to Contact Nebras Academy"
+                className="w-28 h-28 sm:w-32 sm:h-32 object-contain rounded-lg"
+                loading="lazy"
+                width="128"
+                height="128"
+              />
+            </div>
+
+            {/* Text Content */}
+            <div className="text-center sm:text-left">
+              <h4 className="text-lg font-bold text-primary-300 mb-1.5">
+                Scan to Contact Us
+              </h4>
+              <p className="text-sm text-white/80 leading-relaxed">
+                Scan the QR code to contact Nebras Academy instantly.
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* Copyright Section */}
         <div className="border-t border-secondary-700 pt-6 text-center">
           <p>© Copyright 2025 Nebras Academy. All Rights Reserved.</p>
@@ -85,3 +113,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

@@ -165,7 +165,7 @@ const About = () => {
         onClick={() => setIsBookingOpen(true)}
         className="bg-secondary-600 hover:bg-secondary-700 text-white font-bold py-3 px-8 rounded-lg shadow-md transition-colors"
       >
-        Sign Up Here
+        Book Your Free Trial
       </button>
 
       <blockquote className="mt-10 text-gray-600 italic border-l-4 border-amber-500 pl-4 py-2">

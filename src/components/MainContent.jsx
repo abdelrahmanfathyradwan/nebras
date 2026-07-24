@@ -99,7 +99,7 @@ const MainContent = () => {
               </div>
             </section>
           </div>
-          <a href="https://wa.me/201146162847" target="_blank" rel="noopener noreferrer" className='flex text-center bg-secondary-400 transition duration-300 shadow-lg text-white font-bold hover:bg-primary-500 p-5 justify-center items-center w-1/3 rounded-full'>Sign Up</a>
+          <a href="https://wa.me/201146162847" target="_blank" rel="noopener noreferrer" className='flex text-center bg-secondary-400 transition duration-300 shadow-lg text-white font-bold hover:bg-primary-500 p-5 justify-center items-center w-1/3 rounded-full'>Book Your Free Trial</a>
         </div>
   );
 };

@@ -3,8 +3,6 @@ import Layout from './pages/Layout';
 import Home from './pages/Home';
 import Contact from './pages/Contact';
 import FAQPage from './pages/FAQPage';
-import SignUp from './pages/SignUp';
-import Login from './pages/Login';
 import Courses from './pages/Courses';
 import Tajweed from './courses/Tajweed';
 import Recitation from './courses/Recitation';
@@ -32,8 +30,6 @@ function App() {
         <Routes>
           {/* الصفحة الرئيسية */}
           <Route path="/" element={<Home />} />
-          <Route path="/signUp" element={<SignUp />} />
-          <Route path="/login" element={<Login />} />
           <Route path="/blog/:id" element={<BlogDetails />} />
           {/* مسارات الكورسات */}
           <Route path="/courses" element={<Courses />} />
@@ -61,4 +57,4 @@ function App() {
   );
 }
 
-export default App;
+export default App;
