@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 
 const SITE_NAME = 'Nebras Academy';
-const SITE_URL = 'https://nebrasacademy.com';
+const SITE_URL = 'https://nebrasacadmy.com';
 const DEFAULT_IMAGE = '/images/hero.jpg';
 
 const SEO = ({

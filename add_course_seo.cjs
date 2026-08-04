@@ -22,7 +22,7 @@ files.forEach(file => {
     "provider": {
       "@type": "Organization",
       "name": "Nebras Academy",
-      "sameAs": "https://nebrasacademy.com"
+      "sameAs": "https://nebrasacadmy.com"
     }
   };
 

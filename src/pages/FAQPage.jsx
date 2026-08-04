@@ -62,7 +62,7 @@ const FAQPage = () => {
     {/* سؤال 1 */}
     <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
       <div className="p-6">
-        <h3 className="text-xl font-bold text-secondary-800 mb-2">What is NebrasAcademy.com?</h3>
+        <h3 className="text-xl font-bold text-secondary-800 mb-2">What is NebrasAcadmy.com?</h3>
         <p className="text-gray-700">
           Nebras Academy is an online Quran and secondary studies platform that connects students with qualified teachers worldwide. We offer personalized one-on-one and small group classes for children, adults, and families.
         </p>

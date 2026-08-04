@@ -7,4 +7,4 @@ Disallow: /login
 Disallow: /signUp
 
 # Sitemap
-Sitemap: https://nebrasacademy.com/sitemap.xml
+Sitemap: https://nebrasacadmy.com/sitemap.xml

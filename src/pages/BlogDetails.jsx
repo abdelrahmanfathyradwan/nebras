@@ -14,7 +14,7 @@ const BlogDetails = () => {
     "@type": "Article",
     "headline": post.title,
     "description": post.excerpt || post.title,
-    "image": `https://nebrasacademy.com${post.image}`,
+    "image": `https://nebrasacadmy.com${post.image}`,
     "author": {
       "@type": "Organization",
       "name": "Nebras Academy"
@@ -24,7 +24,7 @@ const BlogDetails = () => {
       "name": "Nebras Academy",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://nebrasacademy.com/images/quran2.jpg"
+        "url": "https://nebrasacadmy.com/images/quran2.jpg"
       }
     }
   };

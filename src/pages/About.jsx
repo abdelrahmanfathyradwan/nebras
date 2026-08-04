@@ -12,7 +12,7 @@ const About = () => {
     "@type": "AboutPage",
     "name": "About Nebras Academy",
     "description": "Nebras Academy is your premier source of Quranic education with over a decade of excellence in online Quran education.",
-    "url": "https://nebrasacademy.com/about"
+    "url": "https://nebrasacadmy.com/about"
   };
 
   return (

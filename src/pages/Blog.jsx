@@ -16,7 +16,7 @@ const Blog = () => {
     "@type": "CollectionPage",
     "name": "Nebras Academy Blog",
     "description": "Read the latest articles on Quran, Islamic studies, and Arabic language.",
-    "url": "https://nebrasacademy.com/blog"
+    "url": "https://nebrasacadmy.com/blog"
   };
 
   return (

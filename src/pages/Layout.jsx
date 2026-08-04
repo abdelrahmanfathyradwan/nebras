@@ -7,8 +7,8 @@ function Layout({ children }) {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
     "name": "Nebras Academy",
-    "url": "https://nebrasacademy.com",
-    "logo": "https://nebrasacademy.com/images/quran2.jpg",
+    "url": "https://nebrasacadmy.com",
+    "logo": "https://nebrasacadmy.com/images/quran2.jpg",
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+20-100-334-2452",

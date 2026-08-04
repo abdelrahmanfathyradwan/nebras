@@ -9,10 +9,10 @@ function Home() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "Nebras Academy",
-    "url": "https://nebrasacademy.com",
+    "url": "https://nebrasacadmy.com",
     "potentialAction": {
       "@type": "SearchAction",
-      "target": "https://nebrasacademy.com/courses?search={search_term_string}",
+      "target": "https://nebrasacadmy.com/courses?search={search_term_string}",
       "query-input": "required name=search_term_string"
     }
   };

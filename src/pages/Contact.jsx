@@ -12,7 +12,7 @@ const Contact = () => {
     "@type": "ContactPage",
     "name": "Contact Nebras Academy",
     "description": "Contact us to start your online Quran learning journey.",
-    "url": "https://nebrasacademy.com/contact",
+    "url": "https://nebrasacadmy.com/contact",
     "mainEntity": {
       "@type": "EducationalOrganization",
       "name": "Nebras Academy",
