@@ -47,7 +47,7 @@ const Hero = () => {
 
         {/* Fixed WhatsApp Button - Direct link */}
         <a
-          href='https://wa.me/201146162847'
+          href='https://wa.me/01508586055'
           target='_blank'
           rel='noopener noreferrer'
           className='fixed bottom-8 right-8 z-50 bg-secondary-400 hover:bg-secondary-600 text-white p-4 rounded-full shadow-xl transition-all animate-bounce flex items-center'
