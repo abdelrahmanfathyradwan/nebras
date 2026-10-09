@@ -13,12 +13,9 @@ const Footer = () => {
             <p className="mb-4"><strong className='text-primary-300 font-bold'>Nebras Academy</strong> is a trusted provider of online Quran classes worldwide.</p>
             <div className="flex items-center mb-2">
               <FaPhone className="mr-2 text-primary-300" />
-              <span>+20 114 616 2847</span>
+              <span>+20 150 858 6055</span>
             </div>
-            <div className="flex items-center mb-2">
-              <FaPhone className="mr-2 text-primary-300" />
-              <span>+20 100 334 2452</span>
-            </div>
+           
             <div className="flex items-center">
               <FaEnvelope className="mr-2 text-primary-300" />
               <span>nebrasacademey2025<br></br>@gmail.com</span>
