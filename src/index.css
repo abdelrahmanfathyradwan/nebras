@@ -10,15 +10,16 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  /* Base body font */
+  body {
+    @apply bg-gray-50 text-gray-800;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
   /* Selection color to match brand */
   ::selection {
     background-color: rgba(255, 125, 41, 0.2);
-    color: #023535;
-  }
-
-  /* Base body styles */
-  body {
-    @apply bg-gray-50 text-gray-800;
+    color: #12372A;
   }
 
   /* Consistent focus-visible ring across the project */
@@ -107,7 +108,46 @@
   }
 }
 
-/* Keyframe Animations */
+/* ═══════════════════════════════════════════════════════════
+   Hero Section — feathered image & brand badge
+   ═══════════════════════════════════════════════════════════ */
+
+/* Feathered / faded edges on the hero portrait via CSS mask */
+.hero-image-feathered {
+  -webkit-mask-image: radial-gradient(ellipse 90% 85% at center, black 50%, transparent 100%);
+  mask-image: radial-gradient(ellipse 90% 85% at center, black 50%, transparent 100%);
+}
+
+/* Brand badge — deep green pill with double orange border + ornaments */
+.brand-badge {
+  background-color: #0B5A3A;
+  font-family: 'Playfair Display', Georgia, serif;
+  border: 3px solid #F29A1F;
+  box-shadow:
+    0 0 0 1px #0B5A3A,
+    0 0 0 3px #F29A1F;
+  letter-spacing: 0.04em;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Respect prefers-reduced-motion
+   ═══════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  .page-enter,
+  .animate-pulse-gentle,
+  .animate-fade-in-up,
+  .animate-fade-in,
+  .animate-scale-in,
+  .animate-slide-down {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Keyframe Animations
+   ═══════════════════════════════════════════════════════════ */
+
 @keyframes fadeInUp {
   from {
     opacity: 0;

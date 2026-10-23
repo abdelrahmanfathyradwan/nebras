@@ -25,7 +25,7 @@ const BookingModal = ({ isOpen, onClose }) => {
         
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 bg-gradient-to-r from-secondary-600 to-secondary-500 text-white">
-          <h2 className="text-xl font-bold font-rb">Book Your Free Trial Session</h2>
+          <h2 className="text-xl font-bold font-display">Book Your Free Trial Session</h2>
           <button
             onClick={onClose}
             className="text-white/80 hover:text-white hover:bg-white/10 p-2 rounded-full transition-all duration-200"

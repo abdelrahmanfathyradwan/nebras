@@ -87,7 +87,7 @@ const Navbar = () => {
                     alt='Egypt Flag'
                     className='w-5 h-4 mr-2 rounded-sm object-cover'
                   />
-                  +20 100 334 2452
+                  +20 150 858 6055
                 </a>
                 <a 
                   href="mailto:nebrasacademey2025@gmail.com" 

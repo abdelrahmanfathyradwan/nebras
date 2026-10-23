@@ -127,7 +127,7 @@ async function prerender() {
       // Don't inject <link rel="preload"> tags that duplicate ones already in the template
       const filteredHeadTags = additionalHeadTags.filter(tag => {
         // Skip preload links for resources already preloaded in the template
-        if (/rel="preload"/.test(tag) && /href="\/images\/hero\.jpg"/.test(tag)) {
+        if (/rel="preload"/.test(tag) && /href="\/images\/hero\/quran-holder\.webp"/.test(tag)) {
           return false;
         }
         return true;

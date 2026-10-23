@@ -1,6 +1,7 @@
-import CoursesDirectory from '../components/CoursesDirectory';
-import Hero from '../components/Hero';
+import HeroSection from '../components/HeroSection';
+import IntroSection from '../components/IntroSection';
 import MainContent from '../components/MainContent';
+import CoursesDirectory from '../components/CoursesDirectory';
 import SEO from '../components/SEO';
 import StructuredData from '../components/StructuredData';
 
@@ -19,15 +20,16 @@ function Home() {
 
   return (
     <>
-      <SEO 
-        title="Online Quran Classes for Kids & Adults | Live 1-on-1 Tutors – Nebras Academy" 
-        description="Learn Quran online with certified Al-Azhar tutors. Live 1-on-1 Tajweed, Hifz & Arabic classes for kids and adults worldwide. Book your free trial today!" 
-        canonical="/" 
+      <SEO
+        title="Online Quran Classes for Kids & Adults – Nebras Academy"
+        description="Learn Quran online with live 1-on-1 Tajweed, memorization and Arabic lessons for kids and adults. Flexible schedules. Book your free trial today."
+        canonical="/"
       />
       <StructuredData data={websiteSchema} />
-      <Hero/>
-      <MainContent/>
-      <CoursesDirectory/>
+      <HeroSection />
+      <IntroSection />
+      <MainContent />
+      <CoursesDirectory />
     </>
   )
 }
