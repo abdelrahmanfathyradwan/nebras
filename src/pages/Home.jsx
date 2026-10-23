@@ -9,10 +9,10 @@ function Home() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "Nebras Academy",
-    "url": "https://nebrasacadmy.com",
+    "url": "https://www.nebrasacadmy.com",
     "potentialAction": {
       "@type": "SearchAction",
-      "target": "https://nebrasacadmy.com/courses?search={search_term_string}",
+      "target": "https://www.nebrasacadmy.com/courses?search={search_term_string}",
       "query-input": "required name=search_term_string"
     }
   };
@@ -20,8 +20,8 @@ function Home() {
   return (
     <>
       <SEO 
-        title="Home" 
-        description="Top-Rated Online Quran Classes for Kids & Adults Worldwide. Learn Quran, Tajweed, and Arabic with expert teachers at Nebras Academy." 
+        title="Online Quran Classes for Kids & Adults | Live 1-on-1 Tutors – Nebras Academy" 
+        description="Learn Quran online with certified Al-Azhar tutors. Live 1-on-1 Tajweed, Hifz & Arabic classes for kids and adults worldwide. Book your free trial today!" 
         canonical="/" 
       />
       <StructuredData data={websiteSchema} />

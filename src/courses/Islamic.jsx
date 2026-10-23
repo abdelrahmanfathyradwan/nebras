@@ -18,7 +18,7 @@ const secondary = () => {
   "provider": {
     "@type": "Organization",
     "name": "Nebras Academy",
-    "sameAs": "https://nebrasacadmy.com"
+    "sameAs": "https://www.nebrasacadmy.com"
   }
 }} />
       {/* Hero Section */}

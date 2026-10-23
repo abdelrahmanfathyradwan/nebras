@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 
 const SITE_NAME = 'Nebras Academy';
-const SITE_URL = 'https://nebrasacadmy.com';
+const SITE_URL = 'https://www.nebrasacadmy.com';
 const DEFAULT_IMAGE = '/images/hero.jpg';
 
 const SEO = ({
@@ -13,7 +13,8 @@ const SEO = ({
   noindex = false,
   children,
 }) => {
-  const fullTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME} — Online Quran Classes for Kids & Adults`;
+  // For the homepage, use the full SEO title without appending site name
+  const fullTitle = title;
   const fullCanonical = canonical ? `${SITE_URL}${canonical}` : undefined;
   const fullOgImage = ogImage.startsWith('http') ? ogImage : `${SITE_URL}${ogImage}`;
 

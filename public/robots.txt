@@ -2,9 +2,8 @@
 User-agent: *
 Allow: /
 
-# Disallow admin/internal paths
-Disallow: /login
-Disallow: /signUp
+# Disallow internal pages
+Disallow: /applyForJop
 
 # Sitemap
-Sitemap: https://nebrasacadmy.com/sitemap.xml
+Sitemap: https://www.nebrasacadmy.com/sitemap.xml

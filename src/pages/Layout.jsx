@@ -7,8 +7,8 @@ function Layout({ children }) {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
     "name": "Nebras Academy",
-    "url": "https://nebrasacadmy.com",
-    "logo": "https://nebrasacadmy.com/images/quran2.jpg",
+    "url": "https://www.nebrasacadmy.com",
+    "logo": "https://www.nebrasacadmy.com/images/quran2.jpg",
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+20-100-334-2452",
@@ -18,18 +18,18 @@ function Layout({ children }) {
   };
 
   return (
-    <>
+    <div className="min-h-screen flex flex-col">
       <StructuredData data={organizationSchema} />
       <header>
         <Navbar />
       </header>
-      <main>
+      <main className="flex-1">
         {children}
       </main>
       <footer>
         <Footer />
       </footer>
-    </>
+    </div>
   );
 }
 

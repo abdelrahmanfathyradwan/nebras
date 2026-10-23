@@ -7,14 +7,14 @@ const BlogDetails = () => {
   const { id } = useParams();
   const post = allBlogPosts.find(post => post.id === parseInt(id));
 
-  if (!post) return <div className="text-center py-20">Article not found</div>;
+  if (!post) return <div className="text-center py-20 text-xl font-bold">Article not found</div>;
 
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": post.title,
     "description": post.excerpt || post.title,
-    "image": `https://nebrasacadmy.com${post.image}`,
+    "image": `https://www.nebrasacadmy.com${post.image}`,
     "author": {
       "@type": "Organization",
       "name": "Nebras Academy"
@@ -24,13 +24,13 @@ const BlogDetails = () => {
       "name": "Nebras Academy",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://nebrasacadmy.com/images/quran2.jpg"
+        "url": "https://www.nebrasacadmy.com/images/quran2.jpg"
       }
     }
   };
 
   return (
-    <div className="container">
+    <div className="container mx-auto max-w-4xl px-6 py-12 page-enter">
       <SEO 
         title={post.title} 
         description={post.excerpt || `Read about ${post.title} at Nebras Academy.`}
@@ -39,48 +39,54 @@ const BlogDetails = () => {
         ogImage={post.image}
       />
       <StructuredData data={articleSchema} />
-      {/* قسم الخلفية العلوية */}
-      <div className="bg-black/90 h-[150px] flex items-center justify-center mb-12">
-        <div className="pl-5 w-full">
-          <div className="text-4xl font-bold text-primary-600 text-start relative pl-6 before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:h-12 before:w-1 before:bg-secondary-600">
-            Blog {post.id}
-          </div>
-        </div>
+
+      {/* Breadcrumb / Top bar */}
+      <div className="flex items-center space-x-2 text-sm text-gray-500 mb-8">
+        <span>Blog</span>
+        <span>/</span>
+        <span className="text-primary-500 font-semibold">Article #{post.id}</span>
       </div>
 
-      {/* محتوى المقال الرئيسي */}
-      <div className="px-4 pb-12">
-        {/* صورة المقال */}
-        <img 
-          src={post.image} 
-          alt={post.title} 
-          className="w-full h-64 rounded-lg mb-8 shadow-md"
-        />
+      {/* Main Content Area */}
+      <article className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden p-6 sm:p-10">
+        {/* Cover Image */}
+        <div className="rounded-xl overflow-hidden h-[300px] sm:h-[400px] mb-8">
+          <img 
+            src={post.image} 
+            alt={post.title} 
+            className="w-full h-full object-cover"
+          />
+        </div>
 
-        {/* عنوان المقال */}
-        <h1 className="text-3xl font-bold text-secondary-800 mb-3 text-center">{post.title}</h1>
+        {/* Title */}
+        <h1 className="text-3xl sm:text-4xl font-extrabold text-secondary-800 mb-6 leading-snug">
+          {post.title}
+        </h1>
         
-        {/* وصف المقال */}
+        {/* Excerpt */}
         {post.excerpt && (
-          <p className="text-gray-600 text-3xl mb-8 text-start max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg text-gray-600 mb-10 leading-relaxed border-l-4 border-primary-400 pl-4 py-1">
             {post.excerpt}
           </p>
         )}
 
-        {/* الأسئلة والأجوبة */}
+        <hr className="border-gray-100 mb-10" />
+
+        {/* Content Questions & Answers */}
         <div className="space-y-8">
           {post.content?.map((item, index) => (
-            <div key={index} className="mb-8 bg-gray-50 p-6 rounded-lg">
-              <h2 className="text-xl font-bold text-primary-600 mb-3">
-                {item.question}
+            <div key={index} className="bg-gray-50/50 p-6 sm:p-8 rounded-xl border border-gray-100/80 hover:shadow-md transition-shadow duration-300">
+              <h2 className="text-xl font-bold text-secondary-700 mb-4 flex items-start">
+                <span className="text-primary-500 mr-2.5">Q.</span>
+                <span>{item.question}</span>
               </h2>
-              <p className="text-gray-700 pl-4 border-l-4 border-secondary-200 pr-4">
+              <div className="text-gray-700 pl-6 border-l-2 border-primary-300 leading-relaxed whitespace-pre-line">
                 {item.answer}
-              </p>
+              </div>
             </div>
           ))}
         </div>
-      </div>
+      </article>
     </div>
   );
 };
