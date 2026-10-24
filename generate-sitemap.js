@@ -12,45 +12,43 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const SITE_URL = 'https://www.nebrasacadmy.com';
 const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
 
-// All canonical, indexable routes with their priorities and change frequencies
+// All canonical, indexable routes
 const routes = [
-  { path: '/', priority: '1.0', changefreq: 'weekly' },
-  { path: '/courses', priority: '0.9', changefreq: 'weekly' },
-  { path: '/courses/tajweed', priority: '0.8', changefreq: 'monthly' },
-  { path: '/courses/reading', priority: '0.8', changefreq: 'monthly' },
-  { path: '/courses/recitation', priority: '0.8', changefreq: 'monthly' },
-  { path: '/courses/memorization', priority: '0.8', changefreq: 'monthly' },
-  { path: '/courses/arabic', priority: '0.8', changefreq: 'monthly' },
-  { path: '/courses/ArabicKids', priority: '0.8', changefreq: 'monthly' },
-  { path: '/courses/Islamic', priority: '0.8', changefreq: 'monthly' },
-  { path: '/courses/MemorizingJuzAmma', priority: '0.8', changefreq: 'monthly' },
-  { path: '/pricing', priority: '0.8', changefreq: 'monthly' },
-  { path: '/about', priority: '0.7', changefreq: 'monthly' },
-  { path: '/blog', priority: '0.7', changefreq: 'weekly' },
-  { path: '/contact', priority: '0.7', changefreq: 'monthly' },
-  { path: '/faqs', priority: '0.6', changefreq: 'monthly' },
-  { path: '/policy', priority: '0.4', changefreq: 'yearly' },
+  '/',
+  '/courses',
+  '/courses/tajweed',
+  '/courses/reading',
+  '/courses/recitation',
+  '/courses/memorization',
+  '/courses/arabic',
+  '/courses/ArabicKids',
+  '/courses/Islamic',
+  '/courses/MemorizingJuzAmma',
+  '/pricing',
+  '/about',
+  '/blog',
+  '/contact',
+  '/faqs',
+  '/policy',
   // Blog posts
-  { path: '/blog/1', priority: '0.6', changefreq: 'yearly' },
-  { path: '/blog/2', priority: '0.6', changefreq: 'yearly' },
-  { path: '/blog/3', priority: '0.6', changefreq: 'yearly' },
-  { path: '/blog/4', priority: '0.6', changefreq: 'yearly' },
-  { path: '/blog/5', priority: '0.6', changefreq: 'yearly' },
-  { path: '/blog/6', priority: '0.6', changefreq: 'yearly' },
-  { path: '/blog/7', priority: '0.6', changefreq: 'yearly' },
-  { path: '/blog/8', priority: '0.6', changefreq: 'yearly' },
-  { path: '/blog/9', priority: '0.6', changefreq: 'yearly' },
-  { path: '/blog/10', priority: '0.6', changefreq: 'yearly' },
-  { path: '/blog/11', priority: '0.6', changefreq: 'yearly' },
-  { path: '/blog/12', priority: '0.6', changefreq: 'yearly' },
+  '/blog/1',
+  '/blog/2',
+  '/blog/3',
+  '/blog/4',
+  '/blog/5',
+  '/blog/6',
+  '/blog/7',
+  '/blog/8',
+  '/blog/9',
+  '/blog/10',
+  '/blog/11',
+  '/blog/12',
 ];
 
 function generateSitemap() {
   const urls = routes.map(route => `  <url>
-    <loc>${SITE_URL}${route.path}</loc>
+    <loc>${SITE_URL}${route}</loc>
     <lastmod>${today}</lastmod>
-    <changefreq>${route.changefreq}</changefreq>
-    <priority>${route.priority}</priority>
   </url>`).join('\n');
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
@@ -69,3 +67,4 @@ ${urls}
 }
 
 generateSitemap();
+

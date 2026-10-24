@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/courses/secondary",
+      "destination": "/courses/Islamic",
+      "permanent": true
+    }
+  ]
+}

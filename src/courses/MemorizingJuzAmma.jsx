@@ -5,6 +5,22 @@ import StructuredData from '../components/StructuredData';
 const MemorizingJuzAmma = () => {
   return (
     <div className="max-w-full mx-auto">
+      <SEO 
+        title="Memorizing Juz' Amma | Online Classes – Nebras Academy" 
+        description="Help your child memorize Juz' Amma (Part 30) online with Nebras Academy. Short surahs for daily prayers, taught by certified Al-Azhar teachers." 
+        canonical="/courses/MemorizingJuzAmma"
+      />
+      <StructuredData data={{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "Memorizing Juz' Amma (Part 30)",
+  "description": "Master the short surahs commonly recited in daily prayers with a specialized memorization program. Certified Al-Azhar teachers for kids and adults.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Nebras Academy",
+    "sameAs": "https://www.nebrasacadmy.com"
+  }
+}} />
       {/* Hero Section */}
       <div className="relative w-full h-[300px] overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-secondary-900/80 to-secondary-800/60 flex items-center w-full">

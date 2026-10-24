@@ -6,15 +6,15 @@ const ArabicKids = () => {
   return (
     <div className="mx-auto">
       <SEO 
-        title="Arabic Language Kids Course Course" 
-        description="Enroll in the Arabic Language Kids Course course at Nebras Academy. Learn online with certified Al-Azhar teachers." 
+        title="Arabic for Kids | Online Classes – Nebras Academy" 
+        description="Teach your child Arabic online with Nebras Academy. Native Arabic-speaking teachers use fun, child-friendly methods to build reading, writing, and speaking skills." 
         canonical="/courses/ArabicKids"
       />
       <StructuredData data={{
   "@context": "https://schema.org",
   "@type": "Course",
-  "name": "Arabic Language Kids Course",
-  "description": "Learn Arabic Language Kids Course online with certified teachers from Al-Azhar.",
+  "name": "Arabic Language for Kids",
+  "description": "Learn Arabic online for kids aged 5-12 with native-speaking certified teachers. Reading, writing, speaking, and Quranic Arabic.",
   "provider": {
     "@type": "Organization",
     "name": "Nebras Academy",
@@ -169,7 +169,7 @@ const ArabicKids = () => {
                     </li>
                     <li className="flex items-start">
                       <span className="text-purple-600 mr-2">•</span>
-                      <span>secondary expressions</span>
+                      <span>Everyday expressions</span>
                     </li>
                   </ul>
                 </div>
@@ -303,8 +303,8 @@ const ArabicKids = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/courses/secondary" className="text-secondary-600 hover:text-secondary-800 hover:underline">
-                    secondary Studies for Kids
+                  <Link to="/courses/Islamic" className="text-secondary-600 hover:text-secondary-800 hover:underline">
+                    Islamic Studies for Kids
                   </Link>
                 </li>
               </ul>

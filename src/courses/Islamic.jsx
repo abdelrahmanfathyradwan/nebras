@@ -2,19 +2,19 @@ import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import StructuredData from '../components/StructuredData';
 
-const secondary = () => {
+const Islamic = () => {
   return (
     <div className="mx-auto">
       <SEO 
-        title="secondary Studies Kids Course Course" 
-        description="Enroll in the secondary Studies Kids Course course at Nebras Academy. Learn online with certified Al-Azhar teachers." 
+        title="Islamic Studies for Kids | Online Classes – Nebras Academy" 
+        description="Enroll your child in Islamic Studies online at Nebras Academy. Learn Quran, Islamic history, daily duas, and Islamic manners with certified Al-Azhar teachers." 
         canonical="/courses/Islamic"
       />
       <StructuredData data={{
   "@context": "https://schema.org",
   "@type": "Course",
-  "name": "secondary Studies Kids Course",
-  "description": "Learn secondary Studies Kids Course online with certified teachers from Al-Azhar.",
+  "name": "Islamic Studies for Kids",
+  "description": "Learn Islamic Studies online with certified teachers from Al-Azhar. Covering Islamic manners, daily duas, Prophet's teachings, and Islamic history.",
   "provider": {
     "@type": "Organization",
     "name": "Nebras Academy",
@@ -27,7 +27,7 @@ const secondary = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-2xl">
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 relative pl-6 border-l-4 border-amber-400">
-                secondary Studies Kids Course
+                Islamic Studies for Kids
               </h1>
               <blockquote className="text-lg text-secondary-100 mb-6 italic">
                 "And remind, for indeed, the reminder benefits the believers."
@@ -74,7 +74,7 @@ const secondary = () => {
                 <svg className="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
                 </svg>
-                <span className="ml-1 text-sm font-medium text-gray-500 md:ml-2">secondary Studies for Kids</span>
+                <span className="ml-1 text-sm font-medium text-gray-500 md:ml-2">Islamic Studies for Kids</span>
               </div>
             </li>
           </ol>
@@ -90,10 +90,10 @@ const secondary = () => {
               <h2 className="text-2xl font-bold text-secondary-800 mb-4">About This Course</h2>
               <div className="prose max-w-none text-gray-700">
                 <p className="mb-4">
-                  Nebras Academy's secondary Studies course focuses on increasing your child's knowledge of the Deen and History of Islam. We've made it easy and convenient for parents to set a solid foundation of secondary knowledge for their children.
+                  Nebras Academy's Islamic Studies course focuses on increasing your child's knowledge of the Deen and History of Islam. We've made it easy and convenient for parents to set a solid foundation of Islamic knowledge for their children.
                 </p>
                 <p className="mb-4">
-                  Starting from the basics and continuing through all aspects of secondary Studies, your child will establish a foundation of Islam and build upon it, increasing their love for Islam and desire to learn more about the secondary Religion.
+                  Starting from the basics and continuing through all aspects of Islamic Studies, your child will establish a foundation of Islam and build upon it, increasing their love for Islam and desire to learn more about the Islamic Religion.
                 </p>
                 <p className="mb-4">
                   Our child-friendly approach makes learning about Islam engaging and meaningful, with experienced teachers who know how to connect with young minds.
@@ -106,7 +106,7 @@ const secondary = () => {
               <h2 className="text-2xl font-bold text-secondary-800 mb-4">What Your Child Will Learn</h2>
               <div className="grid sm:grid-cols-2 gap-6">
                 <div className="bg-secondary-50 p-4 rounded-lg border-l-4 border-secondary-600">
-                  <h3 className="font-semibold text-secondary-800 mb-2">secondary Manners</h3>
+                  <h3 className="font-semibold text-secondary-800 mb-2">Islamic Manners</h3>
                   <ul className="text-gray-700 space-y-2">
                     <li className="flex items-start">
                       <span className="text-secondary-600 mr-2">•</span>
@@ -157,7 +157,7 @@ const secondary = () => {
                   </ul>
                 </div>
                 <div className="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-500">
-                  <h3 className="font-semibold text-purple-800 mb-2">secondary History</h3>
+                  <h3 className="font-semibold text-purple-800 mb-2">Islamic History</h3>
                   <ul className="text-gray-700 space-y-2">
                     <li className="flex items-start">
                       <span className="text-purple-600 mr-2">•</span>
@@ -189,7 +189,7 @@ const secondary = () => {
                     </div>
                   </div>
                   <p className="ml-3 text-gray-700">
-                    Builds a strong secondary identity and love for the religion from an early age
+                    Builds a strong Islamic identity and love for the religion from an early age
                   </p>
                 </div>
                 <div className="flex items-start">
@@ -201,7 +201,7 @@ const secondary = () => {
                     </div>
                   </div>
                   <p className="ml-3 text-gray-700">
-                    Teaches practical secondary knowledge for daily life
+                    Teaches practical Islamic knowledge for daily life
                   </p>
                 </div>
                 <div className="flex items-start">
@@ -213,7 +213,7 @@ const secondary = () => {
                     </div>
                   </div>
                   <p className="ml-3 text-gray-700">
-                    Develops moral character based on secondary values
+                    Develops moral character based on Islamic values
                   </p>
                 </div>
                 <div className="flex items-start">
@@ -225,7 +225,7 @@ const secondary = () => {
                     </div>
                   </div>
                   <p className="ml-3 text-gray-700">
-                    Provides age-appropriate understanding of secondary beliefs and practices
+                    Provides age-appropriate understanding of Islamic beliefs and practices
                   </p>
                 </div>
               </div>
@@ -276,11 +276,11 @@ const secondary = () => {
                 </li>
                 <li className="flex items-start">
                   <span className="text-secondary-600 mr-2">•</span>
-                  <span>Visual learning aids and secondary art</span>
+                  <span>Visual learning aids and Islamic art</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-secondary-600 mr-2">•</span>
-                  <span>Role-playing secondary scenarios</span>
+                  <span>Role-playing Islamic scenarios</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-secondary-600 mr-2">•</span>
@@ -303,8 +303,8 @@ const secondary = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/courses/secondary" className="text-secondary-600 hover:text-secondary-800 hover:underline">
-                    secondary Studies for Adults
+                  <Link to="/courses/tajweed" className="text-secondary-600 hover:text-secondary-800 hover:underline">
+                    Quran Tajweed Course
                   </Link>
                 </li>
               </ul>
@@ -316,4 +316,4 @@ const secondary = () => {
   );
 };
 
-export default secondary;
+export default Islamic;

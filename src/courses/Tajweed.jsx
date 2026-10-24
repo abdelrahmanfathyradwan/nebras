@@ -6,15 +6,15 @@ const Tajweed = () => {
   return (
     <div className="mx-auto">
       <SEO 
-        title="Quran Tajweed & Recitation Course" 
-        description="Enroll in the Quran Tajweed & Recitation course at Nebras Academy. Learn online with certified Al-Azhar teachers." 
-        canonical="/courses/Tajweed"
+        title="Quran Tajweed & Recitation | Online Classes – Nebras Academy" 
+        description="Master Tajweed rules and perfect your Quran recitation online with Nebras Academy. Certified Al-Azhar teachers for kids and adults." 
+        canonical="/courses/tajweed"
       />
       <StructuredData data={{
   "@context": "https://schema.org",
   "@type": "Course",
   "name": "Quran Tajweed & Recitation",
-  "description": "Learn Quran Tajweed & Recitation online with certified teachers from Al-Azhar.",
+  "description": "Master Tajweed rules and perfect your Quran recitation with certified Al-Azhar teachers. One-on-one online classes for kids and adults.",
   "provider": {
     "@type": "Organization",
     "name": "Nebras Academy",

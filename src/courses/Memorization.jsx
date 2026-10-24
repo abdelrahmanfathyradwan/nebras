@@ -6,15 +6,15 @@ const Memorization = () => {
   return (
     <div className="mx-auto">
       <SEO 
-        title="Quran Memorization Course Course" 
-        description="Enroll in the Quran Memorization Course course at Nebras Academy. Learn online with certified Al-Azhar teachers." 
-        canonical="/courses/Memorization"
+        title="Quran Memorization (Hifz) | Online Classes – Nebras Academy" 
+        description="Memorize the Holy Quran online with Nebras Academy. Personalized hifz plans, daily revision, and Al-Azhar certified teachers for kids and adults." 
+        canonical="/courses/memorization"
       />
       <StructuredData data={{
   "@context": "https://schema.org",
   "@type": "Course",
-  "name": "Quran Memorization Course",
-  "description": "Learn Quran Memorization Course online with certified teachers from Al-Azhar.",
+  "name": "Quran Memorization (Hifz)",
+  "description": "Memorize the Holy Quran with proper Tajweed. Personalized memorization plans with Al-Azhar certified teachers for kids and adults.",
   "provider": {
     "@type": "Organization",
     "name": "Nebras Academy",

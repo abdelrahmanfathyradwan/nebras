@@ -38,6 +38,9 @@ const Footer = () => {
               <li><Link to="/courses/recitation" className={footerLinkClasses}>Quran Recitation</Link></li>
               <li><Link to="/courses/memorization" className={footerLinkClasses}>Quran Memorization</Link></li>
               <li><Link to="/courses/arabic" className={footerLinkClasses}>Arabic Language Course</Link></li>
+              <li><Link to="/courses/ArabicKids" className={footerLinkClasses}>Arabic for Kids</Link></li>
+              <li><Link to="/courses/Islamic" className={footerLinkClasses}>Islamic Studies for Kids</Link></li>
+              <li><Link to="/courses/MemorizingJuzAmma" className={footerLinkClasses}>Memorizing Juz' Amma</Link></li>
             </ul>
           </div>
 
@@ -109,7 +112,7 @@ const Footer = () => {
 
         {/* Copyright Section */}
         <div className="border-t border-white/10 pt-6 text-center">
-          <p className="text-white/60 text-sm">© Copyright 2025 Nebras Academy. All Rights Reserved.</p>
+          <p className="text-white/60 text-sm">&copy; Copyright {new Date().getFullYear()} Nebras Academy. All Rights Reserved.</p>
         </div>
       </div>
     </footer>
