@@ -1,9 +1,22 @@
 {
   "redirects": [
-    {
-      "source": "/courses/secondary",
-      "destination": "/courses/Islamic",
-      "permanent": true
-    }
+    { "source": "/courses/secondary",         "destination": "/courses/islamic-studies",     "permanent": true },
+    { "source": "/courses/Islamic",           "destination": "/courses/islamic-studies",     "permanent": true },
+    { "source": "/courses/islamic",           "destination": "/courses/islamic-studies",     "permanent": true },
+    { "source": "/courses/ArabicKids",        "destination": "/courses/arabic-kids",         "permanent": true },
+    { "source": "/courses/MemorizingJuzAmma", "destination": "/courses/memorizing-juz-amma", "permanent": true },
+
+    { "source": "/blog/1",  "destination": "/blog/anas-ibn-malik-companion-of-the-prophet",       "permanent": true },
+    { "source": "/blog/2",  "destination": "/blog/things-that-break-wudu",                        "permanent": true },
+    { "source": "/blog/3",  "destination": "/blog/how-muslims-celebrate-eid-al-fitr",             "permanent": true },
+    { "source": "/blog/4",  "destination": "/blog/benefits-of-fasting-in-ramadan",                "permanent": true },
+    { "source": "/blog/5",  "destination": "/blog/what-is-fiqh-in-islam",                         "permanent": true },
+    { "source": "/blog/6",  "destination": "/blog/what-is-fajr-prayer",                           "permanent": true },
+    { "source": "/blog/7",  "destination": "/blog/islamophobia-meaning",                          "permanent": true },
+    { "source": "/blog/8",  "destination": "/blog/modesty-in-islam-meaning",                      "permanent": true },
+    { "source": "/blog/9",  "destination": "/blog/rights-of-parents-in-islam",                    "permanent": true },
+    { "source": "/blog/10", "destination": "/blog/is-it-compulsory-to-finish-quran-in-ramadan",   "permanent": true },
+    { "source": "/blog/11", "destination": "/blog/islamic-sacred-months",                         "permanent": true },
+    { "source": "/blog/12", "destination": "/blog/tafsir-surah-al-kawthar",                       "permanent": true }
   ]
 }

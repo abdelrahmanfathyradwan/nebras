@@ -149,7 +149,7 @@ const Navbar = () => {
                   {isCoursesOpen && (
                     <div className='absolute left-0 mt-3 w-56 bg-white rounded-xl shadow-lg py-1 z-50 border border-gray-100 animate-slide-down'>
                       <Link
-                        to='/courses/MemorizingJuzAmma'
+                        to='/courses/memorizing-juz-amma'
                         className={dropdownLinkClasses}
                         onClick={() => setIsCoursesOpen(false)}
                       >
@@ -184,7 +184,7 @@ const Navbar = () => {
                         Quran Memorization
                       </Link>
                       <Link
-                        to='/courses/ArabicKids'
+                        to='/courses/arabic-kids'
                         className={dropdownLinkClasses}
                         onClick={() => setIsCoursesOpen(false)}
                       >
@@ -198,7 +198,7 @@ const Navbar = () => {
                         Arabic Language Course
                       </Link>
                       <Link
-                        to='/courses/Islamic'
+                        to='/courses/islamic-studies'
                         className={dropdownLinkClasses}
                         onClick={() => setIsCoursesOpen(false)}
                       >

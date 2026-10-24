@@ -8,7 +8,7 @@ const Islamic = () => {
       <SEO 
         title="Islamic Studies for Kids | Online Classes – Nebras Academy" 
         description="Enroll your child in Islamic Studies online at Nebras Academy. Learn Quran, Islamic history, daily duas, and Islamic manners with certified Al-Azhar teachers." 
-        canonical="/courses/Islamic"
+        canonical="/courses/islamic-studies"
       />
       <StructuredData data={{
   "@context": "https://schema.org",
@@ -293,7 +293,7 @@ const Islamic = () => {
               <h3 className="text-lg font-bold text-secondary-800 mb-4">Related Courses</h3>
               <ul className="space-y-3">
                 <li>
-                  <Link to="/courses/ArabicKids" className="text-secondary-600 hover:text-secondary-800 hover:underline">
+                  <Link to="/courses/arabic-kids" className="text-secondary-600 hover:text-secondary-800 hover:underline">
                     Arabic Language for Kids
                   </Link>
                 </li>

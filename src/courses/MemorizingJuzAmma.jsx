@@ -8,7 +8,7 @@ const MemorizingJuzAmma = () => {
       <SEO 
         title="Memorizing Juz' Amma | Online Classes – Nebras Academy" 
         description="Help your child memorize Juz' Amma (Part 30) online with Nebras Academy. Short surahs for daily prayers, taught by certified Al-Azhar teachers." 
-        canonical="/courses/MemorizingJuzAmma"
+        canonical="/courses/memorizing-juz-amma"
       />
       <StructuredData data={{
   "@context": "https://schema.org",
@@ -192,7 +192,7 @@ const MemorizingJuzAmma = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/courses/ArabicKids" className="text-secondary-600 hover:text-secondary-800 hover:underline">
+                  <Link to="/courses/arabic-kids" className="text-secondary-600 hover:text-secondary-800 hover:underline">
                     Arabic Language Kids Course
                   </Link>
                 </li>
