@@ -1,35 +1,42 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import {allBlogPosts} from "../data/data";
+import { allBlogPosts } from "../data/data";
 import SEO from '../components/SEO';
 import StructuredData from '../components/StructuredData';
 
-const Blog = () => {
-  const [visiblePosts, setVisiblePosts] = useState(6);
+const SITE_URL = 'https://www.nebrasacadmy.com';
 
-  const loadMore = () => {
-    setVisiblePosts(prev => prev + 6);
-  };
+const Blog = () => {
+  // ملاحظة: عُرضت كل المقالات مباشرة (بدون زر Load More) حتى تكون كل الروابط
+  // موجودة في HTML ويراها محرك البحث. عند زيادة المقالات كثيرًا يمكن استخدام ترقيم صفحات حقيقي (روابط).
 
   const blogSchema = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "name": "Nebras Academy Blog",
     "description": "Read the latest articles on Quran, Islamic studies, and Arabic language.",
-    "url": "https://www.nebrasacadmy.com/blog"
+    "url": `${SITE_URL}/blog`,
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": allBlogPosts.map((post, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "url": `${SITE_URL}/blog/${post.slug}`,
+        "name": post.title
+      }))
+    }
   };
 
   return (
     <div className="font-sans page-enter">
-      <SEO 
-        title="Blog & Articles" 
-        description="Read the latest articles on Quran, Islamic studies, and Arabic language learning from Nebras Academy's expert teachers." 
+      <SEO
+        title="Blog & Articles"
+        description="Read the latest articles on Quran, Islamic studies, and Arabic language learning from Nebras Academy's expert teachers."
         canonical="/blog"
       />
       <StructuredData data={blogSchema} />
       {/* Hero Section */}
       <div className="relative h-[240px] overflow-hidden">
-        <img 
+        <img
           src="/images/celebrateEid.jpg"
           alt="Blog Banner"
           className="w-full h-full object-cover"
@@ -49,7 +56,7 @@ const Blog = () => {
       {/* Breadcrumb */}
       <div className="bg-gray-100/80 border-b border-gray-200/50 py-4 px-6 md:px-16">
         <div className="max-w-7xl mx-auto w-full">
-          <nav className="text-sm font-medium">
+          <nav className="text-sm font-medium" aria-label="Breadcrumb">
             <ol className="flex items-center space-x-2">
               <li>
                 <Link to="/" className="text-secondary-600 hover:text-primary-500 transition-colors">Home</Link>
@@ -66,25 +73,26 @@ const Blog = () => {
       {/* Blog Posts Grid */}
       <div className="max-w-7xl mx-auto py-16 px-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {allBlogPosts.slice(0, visiblePosts).map(post => (
+          {allBlogPosts.map(post => (
             <div key={post.id} className="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 flex flex-col hover:-translate-y-1">
-              <div className="overflow-hidden h-52 relative">
-                <img 
-                  src={post.image} 
+              <Link to={`/blog/${post.slug}`} className="block overflow-hidden h-52 relative" aria-label={post.title}>
+                <img
+                  src={post.image}
                   alt={post.title}
+                  loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-              </div>
+              </Link>
               <div className="p-6 flex flex-col flex-grow">
-                <Link 
-                  to={`/blog/${post.id}`} 
+                <Link
+                  to={`/blog/${post.slug}`}
                   className="text-xl font-bold text-secondary-800 hover:text-primary-500 transition-colors duration-300 mb-3 line-clamp-2"
                 >
                   {post.title}
                 </Link>
                 <p className="text-gray-600 mb-6 line-clamp-3 leading-relaxed flex-grow">{post.excerpt}</p>
-                <Link 
-                  to={`/blog/${post.id}`} 
+                <Link
+                  to={`/blog/${post.slug}`}
                   className="text-primary-500 hover:text-primary-600 font-semibold transition-colors duration-300 inline-flex items-center group/btn text-sm"
                 >
                   Read Full Article
@@ -96,17 +104,6 @@ const Blog = () => {
             </div>
           ))}
         </div>
-
-        {visiblePosts < allBlogPosts.length && (
-          <div className="text-center mt-16">
-            <button 
-              onClick={loadMore}
-              className="btn-primary btn-pill px-8 py-3.5 text-base font-bold"
-            >
-              Load More Articles
-            </button>
-          </div>
-        )}
       </div>
     </div>
   );

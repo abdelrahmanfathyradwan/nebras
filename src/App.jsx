@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './pages/Layout';
 import Home from './pages/Home';
 import Contact from './pages/Contact';
@@ -30,25 +30,38 @@ function App() {
         <Routes>
           {/* الصفحة الرئيسية */}
           <Route path="/" element={<Home />} />
-          <Route path="/blog/:id" element={<BlogDetails />} />
-          {/* مسارات الكورسات */}
+
+          {/* المقالات: الرابط الآن يعتمد على slug وصفي بدل الرقم */}
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogDetails />} />
+
+          {/* مسارات الكورسات (كلها بحروف صغيرة) */}
           <Route path="/courses" element={<Courses />} />
           <Route path="/courses/tajweed" element={<Tajweed />} />
           <Route path="/courses/reading" element={<Reading />} />
           <Route path="/courses/recitation" element={<Recitation />} />
           <Route path="/courses/memorization" element={<Memorization />} />
           <Route path="/courses/arabic" element={<Arabic />} />
-          <Route path="/courses/MemorizingJuzAmma" element={<MemorizingJuzAmma />} />
-          <Route path="/courses/ArabicKids" element={<ArabicKids />} />
-          <Route path="/courses/Islamic" element={<Islamic />} />
-          
+          <Route path="/courses/memorizing-juz-amma" element={<MemorizingJuzAmma />} />
+          <Route path="/courses/arabic-kids" element={<ArabicKids />} />
+          <Route path="/courses/islamic-studies" element={<Islamic />} />
+
+          {/*
+            احتياط داخل المتصفح فقط: التحويل الحقيقي 301 يتم في vercel.json.
+            هذه المسارات تغطي حالة الفتح المحلي (localhost) أو أي فشل في التحويل.
+          */}
+          <Route path="/courses/memorizing-juz-amma" element={<Navigate to="/courses/memorizing-juz-amma" replace />} />
+          <Route path="/courses/arabic-kids" element={<Navigate to="/courses/arabic-kids" replace />} />
+          <Route path="/courses/islamic-studies" element={<Navigate to="/courses/islamic-studies" replace />} />
+          <Route path="/courses/islamic-studies" element={<Navigate to="/courses/islamic-studies" replace />} />
+          <Route path="/courses/secondary" element={<Navigate to="/courses/islamic-studies" replace />} />
+
           {/* مسارات الدعم */}
           <Route path="/contact" element={<Contact />} />
           <Route path="/faqs" element={<FAQPage />} />
           <Route path="/policy" element={<Policy />} />
           <Route path="/applyForJop" element={<ApplyForJop />} />
           <Route path="/pricing" element={<Pricing />} />
-          <Route path="/blog" element={<Blog />} />
           <Route path="/about" element={<About />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
@@ -57,4 +70,4 @@ function App() {
   );
 }
 
-export default App;
+export default App;
