@@ -84,7 +84,7 @@ const MainContent = () => {
               <div className='flex gap-4 mb-4'>
                 <span className='border-l-4 border-primary-500 rounded-full'></span>
                 <h2 className="text-2xl sm:text-3xl font-bold text-secondary-600">Ready to Learn Quran the Right Way?<br/>
-                Start Today with IQRA Online</h2>
+                Start Today with Nebras Academy</h2>
               </div>
               <p className="text-gray-700 text-base sm:text-lg leading-8">
                 Join thousands of satisfied students who have transformed their Quranic recitation and understanding through our proven teaching methods. Take the first step in your spiritual journey <span className='text-primary-500 font-semibold'>with a free trial class</span> tailored to your level and goals.
