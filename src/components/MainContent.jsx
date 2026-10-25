@@ -522,7 +522,7 @@ const MainContent = () => {
             <div className="w-full md:w-1/2">
               <div className="overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
                 <img 
-                  src="public\images\mainContint.jpg" 
+                  src="/images/mainContint.jpg" 
                   alt="Online Quran Learning"
                   loading="lazy"
                   decoding="async"
