@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react"
 import { Link, useLocation } from "react-router-dom"
-import { FaEnvelope, FaChevronDown, FaBars, FaCheck, FaTimes, FaPhoneAlt } from "react-icons/fa"
+import { FaEnvelope, FaChevronDown, FaBars, FaCheck, FaTimes, FaPhoneAlt, FaWhatsapp, FaTelegram } from "react-icons/fa"
 import BookingModal from "./BookingModal"
 
 const EMAIL = "nebrasacademey2025@gmail.com"
@@ -227,9 +227,30 @@ const Navbar = () => {
               </span>
             </div>
 
-            <p className="hidden lg:block text-[13px] text-white/75">
-              Certified Quran teachers. Flexible schedules.
-            </p>
+            <div className="hidden lg:flex items-center gap-3.5 text-[13px]">
+              <span className="text-white/65">Follow us:</span>
+              <a
+                href="https://whatsapp.com/channel/0029Vb8mO30BadmjZ9lXxG2d"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-white/90 hover:text-[#25D366] transition-colors"
+                title="WhatsApp Channel"
+              >
+                <FaWhatsapp className="text-[#25D366] text-sm" />
+                <span>WhatsApp Channel</span>
+              </a>
+              <span className="h-3 w-px bg-white/20" aria-hidden="true" />
+              <a
+                href="https://t.me/nebrasacademi"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-white/90 hover:text-[#229ED9] transition-colors"
+                title="Telegram Channel"
+              >
+                <FaTelegram className="text-[#229ED9] text-sm" />
+                <span>Telegram Channel</span>
+              </a>
+            </div>
           </div>
 
           {/* Mobile: booking CTA */}
@@ -438,6 +459,29 @@ const Navbar = () => {
             >
               Book Your Free Trial
             </button>
+          </div>
+
+          {/* Official Channels in Mobile Menu */}
+          <div className="pt-3 pb-1 border-t border-gray-100 flex items-center justify-around text-xs text-secondary-700">
+            <a
+              href="https://whatsapp.com/channel/0029Vb8mO30BadmjZ9lXxG2d"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 py-1.5 px-2 rounded-md hover:bg-green-50 text-gray-700 hover:text-[#25D366] font-medium transition-colors"
+            >
+              <FaWhatsapp className="text-sm text-[#25D366]" />
+              <span>WhatsApp Channel</span>
+            </a>
+            <span className="h-3.5 w-px bg-gray-200" aria-hidden="true" />
+            <a
+              href="https://t.me/nebrasacademi"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 py-1.5 px-2 rounded-md hover:bg-sky-50 text-gray-700 hover:text-[#229ED9] font-medium transition-colors"
+            >
+              <FaTelegram className="text-sm text-[#229ED9]" />
+              <span>Telegram Channel</span>
+            </a>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from 'react-router-dom';
 import { FaWhatsapp } from "react-icons/fa";
 import {
@@ -79,6 +79,415 @@ const FREE_EVENTS = [
 ];
 
 /* ------------------------------------------------------------------ */
+/* Motion layer                                                        */
+/* Everything below is purely visual. All keyframes/classes are        */
+/* prefixed "mc-" so nothing else on the site is affected.             */
+/* All motion is disabled for users with prefers-reduced-motion.       */
+/* ------------------------------------------------------------------ */
+const MOTION_CSS = `
+  /* ---------- scroll reveal ---------- */
+  .mc-reveal {
+    opacity: 0;
+    transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1);
+    will-change: opacity, transform;
+  }
+  .mc-reveal.mc-up    { transform: translateY(38px); }
+  .mc-reveal.mc-left  { transform: translateX(-52px); }
+  .mc-reveal.mc-right { transform: translateX(52px); }
+  .mc-reveal.mc-zoom  { transform: scale(.92); }
+  .mc-reveal.mc-in    { opacity: 1; transform: none; }
+
+  /* ---------- keyframes ---------- */
+  @keyframes mc-blob-a {
+    0%, 100% { transform: translate(0,0) scale(1); }
+    33%      { transform: translate(34px,-24px) scale(1.12); }
+    66%      { transform: translate(-20px,22px) scale(.94); }
+  }
+  @keyframes mc-blob-b {
+    0%, 100% { transform: translate(0,0) scale(1); }
+    50%      { transform: translate(-36px,-28px) scale(1.14); }
+  }
+  @keyframes mc-rise {
+    0%   { transform: translateY(0) rotate(0deg) scale(.6); opacity: 0; }
+    10%  { opacity: .5; }
+    85%  { opacity: .3; }
+    100% { transform: translateY(-520px) rotate(360deg) scale(1.1); opacity: 0; }
+  }
+  @keyframes mc-bubble {
+    0%   { transform: translateY(0) scale(.6); opacity: 0; }
+    15%  { opacity: 1; }
+    100% { transform: translateY(-210px) scale(1.15); opacity: 0; }
+  }
+  @keyframes mc-float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-10px); }
+  }
+  @keyframes mc-float-s {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-5px); }
+  }
+  @keyframes mc-spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+  @keyframes mc-ring-spin {
+    from { transform: translate(-50%,-50%) rotate(0deg); }
+    to   { transform: translate(-50%,-50%) rotate(360deg); }
+  }
+  @keyframes mc-sweep {
+    0%        { transform: translateX(-160%) skewX(-18deg); }
+    55%, 100% { transform: translateX(420%) skewX(-18deg); }
+  }
+  @keyframes mc-shimmer {
+    0%, 20%   { background-position: 100% 0; }
+    70%, 100% { background-position: 0% 0; }
+  }
+  @keyframes mc-bar {
+    0%, 100% { transform: scaleY(.55); opacity: .65; }
+    50%      { transform: scaleY(1);   opacity: 1; }
+  }
+  @keyframes mc-ring-pulse {
+    0%   { transform: scale(1);   opacity: .55; }
+    100% { transform: scale(1.9); opacity: 0; }
+  }
+  @keyframes mc-glow-cta {
+    0%, 100% { box-shadow: 0 6px 16px rgba(0,0,0,.12), 0 0 0 0 rgba(242,154,31,.55); }
+    50%      { box-shadow: 0 10px 24px rgba(0,0,0,.18), 0 0 0 14px rgba(242,154,31,0); }
+  }
+  @keyframes mc-pop {
+    0%   { transform: scale(.8); }
+    60%  { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+  @keyframes mc-bump {
+    0%   { transform: translateY(10px) scale(.9); opacity: .35; }
+    100% { transform: none; opacity: 1; }
+  }
+  @keyframes mc-plan-idle {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(242,154,31,.4); }
+    50%      { box-shadow: 0 0 0 10px rgba(242,154,31,0); }
+  }
+  @keyframes mc-plan-active {
+    0%, 100% { box-shadow: 0 10px 26px rgba(242,154,31,.18), 0 0 0 0 rgba(242,154,31,.28); }
+    50%      { box-shadow: 0 14px 34px rgba(242,154,31,.38), 0 0 0 6px rgba(242,154,31,0); }
+  }
+  @keyframes mc-twinkle {
+    0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    50%      { transform: scale(1.28) rotate(22deg); opacity: .7; }
+  }
+  @keyframes mc-heart {
+    0%, 60%, 100% { transform: scale(1); }
+    15%           { transform: scale(1.28); }
+    30%           { transform: scale(1); }
+    45%           { transform: scale(1.18); }
+  }
+  @keyframes mc-fly {
+    0%, 100% { transform: translate(0,0) rotate(0deg); }
+    50%      { transform: translate(4px,-5px) rotate(-8deg); }
+  }
+  @keyframes mc-wiggle {
+    0%, 86%, 100% { transform: rotate(0deg); }
+    89% { transform: rotate(-14deg); }
+    92% { transform: rotate(12deg); }
+    95% { transform: rotate(-8deg); }
+  }
+  @keyframes mc-pan-a {
+    0%, 100% { object-position: 50% 30%; }
+    50%      { object-position: 50% 75%; }
+  }
+  @keyframes mc-pan-b {
+    0%, 100% { object-position: 50% 100%; }
+    50%      { object-position: 50% 55%; }
+  }
+  @keyframes mc-slide-in {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: none; }
+  }
+  @keyframes mc-line {
+    0%, 100% { transform: scaleX(.3); opacity: .55; }
+    50%      { transform: scaleX(1);  opacity: 1; }
+  }
+  @keyframes mc-flow {
+    0%   { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+  }
+  @keyframes mc-bounce-up {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-5px); }
+  }
+
+  /* ---------- classes ---------- */
+  .mc-blob-a    { animation: mc-blob-a 22s ease-in-out infinite; will-change: transform; }
+  .mc-blob-b    { animation: mc-blob-b 26s ease-in-out infinite; will-change: transform; }
+  .mc-particle  { animation: mc-rise linear infinite; will-change: transform, opacity; }
+  .mc-bubble    { animation: mc-bubble ease-in infinite; }
+  .mc-float     { animation: mc-float 6.5s ease-in-out infinite; will-change: transform; }
+  .mc-float-s   { animation: mc-float-s 4.5s ease-in-out infinite; }
+  .mc-spin-slow { animation: mc-spin 70s linear infinite; }
+  .mc-spin-rev  { animation: mc-spin 48s linear infinite reverse; }
+  .mc-diamond-spin { display: inline-block; animation: mc-spin 6s linear infinite; }
+  .mc-ring      { animation: mc-ring-spin 12s linear infinite; will-change: transform; }
+  .mc-sweep     { animation: mc-sweep 6s ease-in-out infinite; }
+  .mc-sweep-slow{ animation: mc-sweep 9s ease-in-out infinite; }
+  .mc-shimmer {
+    background-image: linear-gradient(110deg, currentColor 36%, #FFC15A 50%, currentColor 64%);
+    background-size: 250% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: mc-shimmer 5s ease-in-out infinite;
+  }
+  .mc-bar       { transform-origin: center; animation: mc-bar 3s ease-in-out infinite; }
+  .mc-ring-pulse{ animation: mc-ring-pulse 2.6s ease-out infinite; }
+  .mc-glow-cta  { animation: mc-glow-cta 2.8s ease-in-out infinite; }
+  .mc-pop       { animation: mc-pop .45s cubic-bezier(.2,.8,.3,1.3) both; }
+  .mc-bump      { animation: mc-bump .5s cubic-bezier(.2,.8,.3,1) both; }
+  .mc-plan-idle { animation: mc-plan-idle 2.4s ease-in-out infinite; }
+  .mc-plan-active { animation: mc-plan-active 3s ease-in-out infinite; }
+  .mc-twinkle   { animation: mc-twinkle 3.2s ease-in-out infinite; }
+  .mc-heart     { animation: mc-heart 2.4s ease-in-out infinite; transform-origin: center; }
+  .mc-fly       { animation: mc-fly 3s ease-in-out infinite; }
+  .mc-wiggle    { animation: mc-wiggle 6s ease-in-out infinite; transform-origin: center; }
+  .mc-pan-a     { animation: mc-pan-a 16s ease-in-out infinite; }
+  .mc-pan-b     { animation: mc-pan-b 18s ease-in-out infinite; }
+  .mc-slide-in  { animation: mc-slide-in .45s ease-out both; }
+  .mc-line      { animation: mc-line 3.6s ease-in-out infinite; }
+  .mc-flow-bar {
+    background-image: linear-gradient(90deg, #F29A1F, #FFC15A, #0B5A3A, #FFC15A, #F29A1F);
+    background-size: 200% 100%;
+    animation: mc-flow 6s linear infinite;
+  }
+  .mc-bounce-up { display: inline-block; animation: mc-bounce-up 1.4s ease-in-out infinite; }
+
+  /* Pause every ambient animation while it is off-screen (saves battery) */
+  .mc-paused, .mc-paused * { animation-play-state: paused !important; }
+
+  /* ---------- accessibility ---------- */
+  @media (prefers-reduced-motion: reduce) {
+    .mc-root *, .mc-root *::before, .mc-root *::after { animation: none !important; }
+    .mc-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .mc-decor  { display: none !important; }
+  }
+`;
+
+const prefersReducedMotion = () =>
+  typeof window !== 'undefined' &&
+  typeof window.matchMedia === 'function' &&
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* Reports whether an element is on screen */
+const useInView = ({ threshold = 0.15, once = true, rootMargin = '0px 0px -8% 0px' } = {}) => {
+  const ref = useRef(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return undefined;
+    if (typeof IntersectionObserver === 'undefined') {
+      setInView(true);
+      return undefined;
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          if (once) observer.disconnect();
+        } else if (!once) {
+          setInView(false);
+        }
+      },
+      { threshold, rootMargin }
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [threshold, once, rootMargin]);
+
+  return [ref, inView];
+};
+
+/* Smoothly counts a number up/down whenever its target changes */
+const useCountUp = (target, duration = 700) => {
+  const [value, setValue] = useState(target);
+  const currentRef = useRef(target);
+
+  useEffect(() => {
+    if (prefersReducedMotion() || currentRef.current === target) {
+      currentRef.current = target;
+      setValue(target);
+      return undefined;
+    }
+    const from = currentRef.current;
+    const start = performance.now();
+    let raf;
+    const tick = (now) => {
+      const t = Math.min(1, (now - start) / duration);
+      const eased = 1 - Math.pow(1 - t, 3);
+      const next = t === 1 ? target : from + (target - from) * eased;
+      currentRef.current = next;
+      setValue(next);
+      if (t < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [target, duration]);
+
+  return value;
+};
+
+/* Fades/slides its content in when it scrolls into view */
+const Reveal = ({ as: Tag = 'div', variant = 'up', delay = 0, className = '', children, ...rest }) => {
+  const [ref, inView] = useInView();
+  return (
+    <Tag
+      ref={ref}
+      className={`mc-reveal mc-${variant} ${inView ? 'mc-in' : ''} ${className}`}
+      style={{ transitionDelay: inView ? `${delay}ms` : '0ms' }}
+      {...rest}
+    >
+      {children}
+    </Tag>
+  );
+};
+
+/* Slowly rotating eight-pointed star (Islamic geometric motif) */
+const IslamicStar = ({ className = '' }) => (
+  <div className={className}>
+    <svg viewBox="0 0 200 200" className="mc-spin-slow w-full h-full" fill="none" stroke="#F29A1F" strokeWidth="1.2">
+      <rect x="45" y="45" width="110" height="110" />
+      <rect x="45" y="45" width="110" height="110" transform="rotate(45 100 100)" />
+      <circle cx="100" cy="100" r="78" />
+      <circle cx="100" cy="100" r="52" strokeDasharray="3 5" />
+    </svg>
+    <svg viewBox="0 0 200 200" className="mc-spin-rev absolute inset-0 w-full h-full" fill="none" stroke="#0B5A3A" strokeWidth="1">
+      <rect x="62" y="62" width="76" height="76" transform="rotate(22.5 100 100)" />
+      <rect x="62" y="62" width="76" height="76" transform="rotate(67.5 100 100)" />
+      <circle cx="100" cy="100" r="30" />
+    </svg>
+  </div>
+);
+
+const PARTICLES = [
+  { left: '6%',  size: 10, dur: 16, delay: 0,   color: '#F29A1F' },
+  { left: '19%', size: 7,  dur: 20, delay: 4,   color: '#0B5A3A' },
+  { left: '33%', size: 12, dur: 18, delay: 8,   color: '#F29A1F' },
+  { left: '48%', size: 8,  dur: 22, delay: 2,   color: '#0B5A3A' },
+  { left: '63%', size: 11, dur: 17, delay: 6,   color: '#F29A1F' },
+  { left: '78%', size: 7,  dur: 21, delay: 10,  color: '#0B5A3A' },
+  { left: '92%', size: 10, dur: 19, delay: 3,   color: '#F29A1F' },
+];
+
+/* Ambient background for a section: drifting glows, rotating stars, rising diamonds */
+const Ambient = ({ side = 'right', offset = 0 }) => {
+  const [ref, inView] = useInView({ threshold: 0, once: false, rootMargin: '120px' });
+  const starBig = side === 'right'
+    ? '-top-36 -right-36'
+    : '-bottom-36 -left-36';
+  const starSmall = side === 'right'
+    ? 'bottom-6 left-[4%]'
+    : 'top-6 right-[4%]';
+
+  return (
+    <div
+      ref={ref}
+      className={`mc-decor absolute inset-0 overflow-hidden pointer-events-none z-0 ${inView ? '' : 'mc-paused'}`}
+      aria-hidden="true"
+    >
+      <div
+        className="mc-blob-a absolute top-[10%] -left-24 w-72 h-72 rounded-full"
+        style={{ background: 'radial-gradient(circle, rgba(242,154,31,0.16) 0%, transparent 70%)' }}
+      />
+      <div
+        className="mc-blob-b absolute bottom-[6%] -right-20 w-80 h-80 rounded-full"
+        style={{ background: 'radial-gradient(circle, rgba(11,90,58,0.12) 0%, transparent 70%)' }}
+      />
+      <IslamicStar className={`absolute ${starBig} w-[460px] h-[460px] opacity-[0.2]`} />
+      <IslamicStar className={`absolute ${starSmall} w-[150px] h-[150px] opacity-[0.16]`} />
+      {PARTICLES.map((p, i) => {
+        const q = PARTICLES[(i + offset) % PARTICLES.length];
+        return (
+          <span
+            key={i}
+            className="mc-particle absolute bottom-[-20px] leading-none"
+            style={{
+              left: p.left,
+              fontSize: `${q.size}px`,
+              color: q.color,
+              animationDuration: `${q.dur}s`,
+              animationDelay: `${q.delay}s`,
+            }}
+          >
+            ◆
+          </span>
+        );
+      })}
+    </div>
+  );
+};
+
+/* The little vertical accent next to section titles — now breathing */
+const AccentBar = () => (
+  <span className="mc-bar border-l-4 border-primary-500 rounded-full" aria-hidden="true"></span>
+);
+
+/* Decorative divider: line – spinning diamond – line */
+const Ornament = () => (
+  <div className="mc-decor flex items-center justify-center gap-3 mb-8" aria-hidden="true">
+    <span
+      className="mc-line origin-right h-[2px] w-16 rounded-full"
+      style={{ background: 'linear-gradient(90deg, transparent, #F29A1F)' }}
+    />
+    <span className="mc-diamond-spin text-sm" style={{ color: '#F29A1F' }}>◆</span>
+    <span
+      className="mc-line origin-left h-[2px] w-16 rounded-full"
+      style={{ background: 'linear-gradient(90deg, #F29A1F, transparent)' }}
+    />
+  </div>
+);
+
+/* Photo frame: floating, with a rotating glow border and a light sweep */
+const FramedImage = ({ children, delay = 0 }) => (
+  <div className="relative mc-float" style={{ animationDelay: `${delay}s` }}>
+    <div
+      className="mc-decor absolute -inset-1.5 rounded-[1.1rem] overflow-hidden opacity-70 pointer-events-none"
+      aria-hidden="true"
+    >
+      <div
+        className="mc-ring absolute top-1/2 left-1/2 w-[250%] h-[250%]"
+        style={{
+          background:
+            'conic-gradient(from 0deg, #F29A1F, transparent 22%, #0B5A3A 48%, transparent 72%, #F29A1F)',
+        }}
+      />
+    </div>
+    <div className="relative overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+      {children}
+      <span
+        className="mc-sweep mc-decor pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+        aria-hidden="true"
+      />
+    </div>
+  </div>
+);
+
+/* Shine that passes across a button */
+const Shine = ({ tone = 'rgba(255,255,255,0.28)' }) => (
+  <span
+    className="mc-sweep mc-decor pointer-events-none absolute inset-y-0 left-0 w-1/4"
+    style={{ background: `linear-gradient(90deg, transparent, ${tone}, transparent)` }}
+    aria-hidden="true"
+  />
+);
+
+const BUBBLES = [
+  { left: '8%',  size: 10, dur: 7,  delay: 0 },
+  { left: '24%', size: 6,  dur: 9,  delay: 2 },
+  { left: '47%', size: 12, dur: 8,  delay: 4 },
+  { left: '66%', size: 7,  dur: 10, delay: 1 },
+  { left: '82%', size: 9,  dur: 7.5, delay: 3 },
+  { left: '94%', size: 5,  dur: 9,  delay: 5 },
+];
+
+/* ------------------------------------------------------------------ */
 /* Price calculator                                                    */
 /* ------------------------------------------------------------------ */
 const PriceCalculator = () => {
@@ -103,6 +512,10 @@ const PriceCalculator = () => {
   const weeklyTotal = isGroup ? pricePerStudentWeekly * students : pricePerStudentWeekly;
   const monthlyTotal = weeklyTotal * WEEKS_PER_MONTH;
 
+  // Animated (counting) versions of the totals — display only
+  const animatedWeekly = useCountUp(weeklyTotal);
+  const animatedMonthly = useCountUp(monthlyTotal);
+
   const hoursToDiscount = Math.max(0, PRICING.individual.discountThreshold - hours);
 
   const selectHours = (value) => {
@@ -118,35 +531,48 @@ const PriceCalculator = () => {
   };
 
   const chipClass = (active) =>
-    `px-4 py-2 rounded-full border text-sm sm:text-base font-semibold transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 ${
+    `px-4 py-2 rounded-full border text-sm sm:text-base font-semibold transition-all duration-200 hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 ${
       active
-        ? 'bg-secondary-500 border-secondary-500 text-white'
+        ? 'mc-pop bg-secondary-500 border-secondary-500 text-white shadow-md'
         : 'bg-white border-gray-300 text-gray-700 hover:border-primary-500'
     }`;
 
-  const planCardClass = (active) =>
-    `text-start w-full rounded-xl border-2 p-5 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 ${
+  const planCardClass = (active, idle) =>
+    `relative text-start w-full rounded-xl border-2 p-5 transition-all duration-300 hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 ${
       active
-        ? 'border-primary-500 bg-white shadow-lg'
-        : 'border-gray-200 bg-white hover:border-primary-500 hover:shadow-md'
+        ? 'mc-plan-active border-primary-500 bg-white shadow-lg'
+        : `border-gray-200 bg-white hover:border-primary-500 hover:shadow-md ${idle ? 'mc-plan-idle' : ''}`
     }`;
 
+  const checkBadge = (
+    <span
+      className="mc-pop absolute top-3 right-3 flex h-6 w-6 items-center justify-center rounded-full bg-primary-500 text-white text-sm font-bold"
+      aria-hidden="true"
+    >
+      ✓
+    </span>
+  );
+
   return (
-    <section className="section-padding bg-gray-50" aria-labelledby="price-calculator-title">
-      <div className="container mx-auto">
-        <div className='flex gap-4 mb-4'>
-          <span className='border-l-4 border-primary-500 rounded-full'></span>
+    <section className="section-padding bg-gray-50 relative overflow-hidden" aria-labelledby="price-calculator-title">
+      <Ambient side="right" offset={2} />
+      <div className="container mx-auto relative z-10">
+        <Reveal variant="left" className="flex gap-4 mb-4">
+          <AccentBar />
           <h2 id="price-calculator-title" className="text-2xl sm:text-3xl font-bold text-secondary-600">
             Course Details &amp; Price Calculator
           </h2>
-        </div>
-        <p className="text-gray-700 text-base sm:text-lg leading-8 max-w-4xl mb-8">
-          Choose your package, set the weekly hours, and see your price instantly.
-        </p>
+        </Reveal>
+        <Reveal delay={100}>
+          <p className="text-gray-700 text-base sm:text-lg leading-8 max-w-4xl mb-8">
+            Choose your package, set the weekly hours, and see your price instantly.
+          </p>
+        </Reveal>
 
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-stretch">
           {/* Course details */}
-          <div className="lg:w-5/12 bg-white rounded-xl shadow-md p-6 sm:p-8">
+          <Reveal variant="left" className="lg:w-5/12 relative overflow-hidden bg-white rounded-xl shadow-md p-6 sm:p-8">
+            <div className="mc-flow-bar mc-decor absolute top-0 inset-x-0 h-1" aria-hidden="true" />
             <h3 className="text-xl font-bold text-secondary-600 mb-2">Course Details</h3>
             <dl className="divide-y divide-gray-200">
               {[
@@ -154,17 +580,22 @@ const PriceCalculator = () => {
                 ['Class Type', 'One-on-One or Small Groups'],
                 ['Age Group', '5+ years (Kids & Adults)'],
                 ['Price', '$8/hour (individual)\n$6/hour from 10 hours per week\n$6/hour per student (group)'],
-              ].map(([term, value]) => (
-                <div key={term} className="py-4 flex flex-col sm:flex-row sm:gap-6">
+              ].map(([term, value], i) => (
+                <Reveal
+                  key={term}
+                  delay={150 + i * 130}
+                  className="py-4 flex flex-col sm:flex-row sm:gap-6 transition-colors duration-300 hover:bg-gray-50"
+                >
                   <dt className="sm:w-28 shrink-0 font-semibold text-gray-500 text-sm sm:text-base">{term}</dt>
                   <dd className="text-gray-800 text-base sm:text-lg leading-relaxed whitespace-pre-line">{value}</dd>
-                </div>
+                </Reveal>
               ))}
             </dl>
-          </div>
+          </Reveal>
 
           {/* Calculator */}
-          <div className="lg:w-7/12 bg-white rounded-xl shadow-md p-6 sm:p-8">
+          <Reveal variant="right" delay={120} className="lg:w-7/12 relative overflow-hidden bg-white rounded-xl shadow-md p-6 sm:p-8">
+            <div className="mc-flow-bar mc-decor absolute top-0 inset-x-0 h-1" aria-hidden="true" />
             {/* Step 1: package (required first) */}
             <fieldset className="mb-6">
               <legend className="font-semibold text-gray-700 mb-3">1. Choose your package</legend>
@@ -174,8 +605,9 @@ const PriceCalculator = () => {
                   role="radio"
                   aria-checked={isIndividual}
                   onClick={() => setPlan('individual')}
-                  className={planCardClass(isIndividual)}
+                  className={planCardClass(isIndividual, !plan)}
                 >
+                  {isIndividual && checkBadge}
                   <span className="block text-lg font-bold text-secondary-600">One-on-One</span>
                   <span className="block text-sm sm:text-base text-gray-600 mt-1">
                     {money(PRICING.individual.standardRate)}/hour, or {money(PRICING.individual.discountedRate)}/hour
@@ -187,8 +619,10 @@ const PriceCalculator = () => {
                   role="radio"
                   aria-checked={isGroup}
                   onClick={() => setPlan('group')}
-                  className={planCardClass(isGroup)}
+                  className={planCardClass(isGroup, !plan)}
+                  style={!plan ? { animationDelay: '0.7s' } : undefined}
                 >
+                  {isGroup && checkBadge}
                   <span className="block text-lg font-bold text-secondary-600">More than one student</span>
                   <span className="block text-sm sm:text-base text-gray-600 mt-1">
                     {money(PRICING.group.rate)}/hour per student
@@ -221,18 +655,18 @@ const PriceCalculator = () => {
                     onChange={handleHoursInput}
                     onBlur={() => setHoursInput(String(hours))}
                     aria-label={`Custom hours per week, ${MIN_HOURS} to ${MAX_HOURS}`}
-                    className="w-20 px-3 py-2 rounded-lg border border-gray-300 text-center font-semibold focus:outline-none focus:ring-2 focus:ring-primary-500"
+                    className="w-20 px-3 py-2 rounded-lg border border-gray-300 text-center font-semibold transition-shadow duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500"
                   />
                 </label>
               </div>
               {isIndividual && hoursToDiscount > 0 && (
-                <p className="mt-3 text-sm sm:text-base text-gray-600">
+                <p key={hoursToDiscount} className="mc-slide-in mt-3 text-sm sm:text-base text-gray-600">
                   Add <span className="font-semibold text-primary-600">{hoursToDiscount} more {hoursToDiscount === 1 ? 'hour' : 'hours'}</span> per
                   week to get {money(PRICING.individual.discountedRate)}/hour.
                 </p>
               )}
               {isIndividual && hoursToDiscount === 0 && (
-                <p className="mt-3 text-sm sm:text-base text-primary-600 font-semibold">
+                <p className="mc-slide-in mt-3 text-sm sm:text-base text-primary-600 font-semibold">
                   You get the {money(PRICING.individual.discountedRate)}/hour rate.
                 </p>
               )}
@@ -240,7 +674,7 @@ const PriceCalculator = () => {
 
             {/* Students (group only) */}
             {isGroup && (
-              <div className="mb-6">
+              <div className="mc-slide-in mb-6">
                 <p className="font-semibold text-gray-700 mb-3">3. Number of students</p>
                 <div className="inline-flex items-center rounded-full border border-gray-300 overflow-hidden">
                   <button
@@ -248,17 +682,17 @@ const PriceCalculator = () => {
                     onClick={() => setStudents((s) => Math.max(PRICING.group.minStudents, s - 1))}
                     disabled={students <= PRICING.group.minStudents}
                     aria-label="Decrease number of students"
-                    className="w-11 h-11 text-xl font-bold text-secondary-600 hover:bg-gray-100 disabled:opacity-40 disabled:hover:bg-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
+                    className="w-11 h-11 text-xl font-bold text-secondary-600 transition-all duration-150 active:scale-90 hover:bg-gray-100 disabled:opacity-40 disabled:hover:bg-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
                   >
                     −
                   </button>
-                  <span className="w-12 text-center font-bold text-lg" aria-live="polite">{students}</span>
+                  <span key={students} className="mc-pop w-12 text-center font-bold text-lg" aria-live="polite">{students}</span>
                   <button
                     type="button"
                     onClick={() => setStudents((s) => Math.min(PRICING.group.maxStudents, s + 1))}
                     disabled={students >= PRICING.group.maxStudents}
                     aria-label="Increase number of students"
-                    className="w-11 h-11 text-xl font-bold text-secondary-600 hover:bg-gray-100 disabled:opacity-40 disabled:hover:bg-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
+                    className="w-11 h-11 text-xl font-bold text-secondary-600 transition-all duration-150 active:scale-90 hover:bg-gray-100 disabled:opacity-40 disabled:hover:bg-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
                   >
                     +
                   </button>
@@ -267,39 +701,75 @@ const PriceCalculator = () => {
             )}
 
             {/* Result */}
-            <div className="rounded-xl bg-secondary-600 text-white p-5 sm:p-6" aria-live="polite">
-              {!plan ? (
-                <p className="text-base sm:text-lg">Choose a package above to see your price.</p>
-              ) : (
-                <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
-                  <div>
-                    <p className="text-white/80 text-sm sm:text-base">
-                      {hours} {hours === 1 ? 'hour' : 'hours'} per week × {money(rate)}
-                      {isGroup ? ` × ${students} students` : ''}
-                    </p>
-                    {isGroup && (
+            <div className="relative overflow-hidden rounded-xl bg-secondary-600 text-white p-5 sm:p-6" aria-live="polite">
+              {/* Decorative: passing sheen + rising bubbles */}
+              <div className="mc-decor absolute inset-0 pointer-events-none" aria-hidden="true">
+                <span className="mc-sweep-slow absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                {BUBBLES.map((b, i) => (
+                  <span
+                    key={i}
+                    className="mc-bubble absolute bottom-0 rounded-full bg-white/15"
+                    style={{
+                      left: b.left,
+                      width: `${b.size}px`,
+                      height: `${b.size}px`,
+                      animationDuration: `${b.dur}s`,
+                      animationDelay: `${b.delay}s`,
+                    }}
+                  />
+                ))}
+              </div>
+
+              <div className="relative z-10">
+                {!plan ? (
+                  <p className="text-base sm:text-lg">
+                    <span className="mc-bounce-up mr-2" aria-hidden="true">↑</span>
+                    Choose a package above to see your price.
+                  </p>
+                ) : (
+                  <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+                    <div>
                       <p className="text-white/80 text-sm sm:text-base">
-                        Each student pays {money(pricePerStudentWeekly)} per week
+                        {hours} {hours === 1 ? 'hour' : 'hours'} per week × {money(rate)}
+                        {isGroup ? ` × ${students} students` : ''}
                       </p>
-                    )}
-                    <p className="mt-3 text-sm text-white/80">Weekly price</p>
-                    <p className="text-4xl sm:text-5xl font-bold leading-none">{money(weeklyTotal)}</p>
-                    <p className="mt-3 text-sm sm:text-base text-white/80">
-                      About <span className="font-bold text-white">{money(monthlyTotal)}</span> per month ({WEEKS_PER_MONTH} weeks)
-                    </p>
+                      {isGroup && (
+                        <p className="text-white/80 text-sm sm:text-base">
+                          Each student pays {money(pricePerStudentWeekly)} per week
+                        </p>
+                      )}
+                      <p className="mt-3 text-sm text-white/80">Weekly price</p>
+                      <p className="text-4xl sm:text-5xl font-bold leading-none">
+                        <span className="sr-only">{money(weeklyTotal)}</span>
+                        <span key={weeklyTotal} className="mc-bump inline-block" aria-hidden="true">
+                          {money(Math.round(animatedWeekly))}
+                        </span>
+                      </p>
+                      <p className="mt-3 text-sm sm:text-base text-white/80">
+                        About{' '}
+                        <span className="font-bold text-white">
+                          <span className="sr-only">{money(monthlyTotal)}</span>
+                          <span key={monthlyTotal} className="mc-bump inline-block" aria-hidden="true">
+                            {money(Math.round(animatedMonthly))}
+                          </span>
+                        </span>{' '}
+                        per month ({WEEKS_PER_MONTH} weeks)
+                      </p>
+                    </div>
+                    <a
+                      href="https://wa.me/201146162847"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mc-glow-cta relative overflow-hidden inline-flex justify-center items-center px-6 py-3 rounded-full bg-white text-secondary-600 font-bold hover:bg-primary-500 hover:text-white hover:-translate-y-0.5 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-secondary-600"
+                    >
+                      <span className="relative z-10">Book Your Free Trial</span>
+                      <Shine tone="rgba(242,154,31,0.35)" />
+                    </a>
                   </div>
-                  <a
-                    href="https://wa.me/201146162847"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex justify-center items-center px-6 py-3 rounded-full bg-white text-secondary-600 font-bold hover:bg-primary-500 hover:text-white transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-secondary-600"
-                  >
-                    Book Your Free Trial
-                  </a>
-                </div>
-              )}
+                )}
+              </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>
@@ -331,51 +801,67 @@ const FreeCommunity = () => {
     );
   };
 
+  // Icon bubble with an expanding pulse ring behind it
+  const iconBubble = (delay) => (
+    <span
+      className="mc-ring-pulse mc-decor absolute inset-0 rounded-full"
+      style={{ background: 'rgba(242,154,31,0.4)', animationDelay: `${delay}s` }}
+      aria-hidden="true"
+    />
+  );
+
   return (
-    <section className="section-padding" aria-labelledby="free-community-title">
-      <div className="container mx-auto">
-        <div className="bg-primary-50 rounded-2xl shadow-md p-6 sm:p-10">
-          <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+    <section className="section-padding relative overflow-hidden" aria-labelledby="free-community-title">
+      <div className="container mx-auto relative z-10">
+        <Reveal variant="zoom" className="relative overflow-hidden bg-primary-50 rounded-2xl shadow-md p-6 sm:p-10">
+          <Ambient side="left" offset={4} />
+
+          <div className="relative z-10 flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
           {/* Message */}
           <div className="lg:w-3/5">
-            <div className='flex gap-4 mb-5'>
-              <span className='border-l-4 border-primary-500 rounded-full'></span>
+            <Reveal variant="left" className="flex gap-4 mb-5">
+              <AccentBar />
               <h2 id="free-community-title" className="text-2xl sm:text-3xl font-bold text-secondary-600">
                 Spread the Goodness!
               </h2>
-            </div>
+            </Reveal>
             <ul className="space-y-5">
-              <li className="flex items-start gap-4">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-primary-600 shadow-sm">
-                  <LuSparkles className="h-5 w-5" aria-hidden="true" />
+              <Reveal as="li" delay={150} className="flex items-start gap-4">
+                <span className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-primary-600 shadow-sm">
+                  {iconBubble(0)}
+                  <LuSparkles className="mc-twinkle relative h-5 w-5" aria-hidden="true" />
                 </span>
                 <p className="pt-1.5 text-secondary-600 text-lg sm:text-xl font-bold leading-snug">
-                  Every gathering is <span className="text-primary-600">FREE</span> and open to everyone!
+                  Every gathering is <span className="mc-shimmer text-primary-600">FREE</span> and open to everyone!
                 </p>
-              </li>
-              <li className="flex items-start gap-4">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-primary-600 shadow-sm">
-                  <LuUsers className="h-5 w-5" aria-hidden="true" />
+              </Reveal>
+              <Reveal as="li" delay={300} className="flex items-start gap-4">
+                <span className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-primary-600 shadow-sm">
+                  {iconBubble(0.8)}
+                  <LuUsers className="mc-float-s relative h-5 w-5" aria-hidden="true" />
                 </span>
                 <p className="pt-1.5 text-gray-700 text-base sm:text-lg leading-relaxed">
                   Bring your family, your friends, and the people you love, and grow together in faith and knowledge.
                 </p>
-              </li>
-              <li className="flex items-start gap-4">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-primary-600 shadow-sm">
-                  <LuHeart className="h-5 w-5" aria-hidden="true" />
+              </Reveal>
+              <Reveal as="li" delay={450} className="flex items-start gap-4">
+                <span className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-primary-600 shadow-sm">
+                  {iconBubble(1.6)}
+                  <LuHeart className="mc-heart relative h-5 w-5" aria-hidden="true" />
                 </span>
                 <p className="pt-1.5 text-gray-700 text-base sm:text-lg leading-relaxed">
                   Be the reason someone discovers something beautiful. Pass the goodness on.
                 </p>
-              </li>
+              </Reveal>
             </ul>
           </div>
 
           {/* Actions */}
-          <div className="w-full lg:w-2/5 bg-white rounded-xl shadow-sm p-6 sm:p-8 text-center">
-            <span className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary-50 text-primary-600">
-              <LuSend className="h-6 w-6" aria-hidden="true" />
+          <Reveal variant="right" delay={200} className="w-full lg:w-2/5 relative overflow-hidden bg-white rounded-xl shadow-sm p-6 sm:p-8 text-center">
+            <div className="mc-flow-bar mc-decor absolute top-0 inset-x-0 h-1" aria-hidden="true" />
+            <span className="relative mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary-50 text-primary-600">
+              {iconBubble(0.4)}
+              <LuSend className="mc-fly relative h-6 w-6" aria-hidden="true" />
             </span>
             <p className="text-gray-700 text-base sm:text-lg leading-relaxed mb-6">
               Know someone who would love this? Send them an invitation. Everyone is welcome!
@@ -385,43 +871,60 @@ const FreeCommunity = () => {
                 href={WHATSAPP_GROUP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex justify-center items-center gap-2 bg-secondary-500 text-white font-bold px-6 py-3.5 rounded-full text-base sm:text-lg shadow-md transition-all duration-300 hover:bg-primary-500 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2"
+                className="mc-glow-cta relative overflow-hidden inline-flex justify-center items-center gap-2 bg-secondary-500 text-white font-bold px-6 py-3.5 rounded-full text-base sm:text-lg shadow-md transition-all duration-300 hover:bg-primary-500 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2"
               >
-                <FaWhatsapp className="text-xl" aria-hidden="true" />
-                Join Our WhatsApp Group
+                <span className="relative z-10 inline-flex items-center gap-2">
+                  <FaWhatsapp className="mc-wiggle text-xl" aria-hidden="true" />
+                  Join Our WhatsApp Group
+                </span>
+                <Shine />
               </a>
               <button
                 type="button"
                 onClick={shareInvitation}
-                className="inline-flex justify-center items-center gap-2 border-2 border-secondary-500 text-secondary-600 font-bold px-6 py-3 rounded-full text-base sm:text-lg transition-colors duration-300 hover:bg-secondary-500 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2"
+                className="relative overflow-hidden inline-flex justify-center items-center gap-2 border-2 border-secondary-500 text-secondary-600 font-bold px-6 py-3 rounded-full text-base sm:text-lg transition-all duration-300 hover:bg-secondary-500 hover:text-white hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2"
               >
-                <LuShare2 className="h-5 w-5" aria-hidden="true" />
+                <LuShare2 className="mc-float-s h-5 w-5" aria-hidden="true" />
                 Invite a Friend
               </button>
             </div>
-          </div>
+          </Reveal>
           </div>
 
           {/* Free events */}
-          <div className="mt-8 pt-8 border-t border-primary-300">
-            <h3 className="text-xl sm:text-2xl font-bold text-secondary-600 mb-5">
-              Free events, open to everyone
-            </h3>
+          <div className="relative z-10 mt-8 pt-8 border-t border-primary-300">
+            <Reveal>
+              <h3 className="text-xl sm:text-2xl font-bold text-secondary-600 mb-5">
+                Free events, open to everyone
+              </h3>
+            </Reveal>
             <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
-              {FREE_EVENTS.map(({ title, tagline, Icon }) => (
-                <li key={title} className="flex items-center gap-4 bg-white rounded-xl shadow-sm px-4 py-3.5">
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-primary-50 text-primary-600">
-                    <Icon className="h-6 w-6" aria-hidden="true" />
-                  </span>
-                  <span className="min-w-0">
-                    <span className="block font-semibold text-secondary-600 text-base sm:text-lg leading-snug">{title}</span>
-                    <span className="block mt-0.5 text-sm text-gray-600 leading-snug">{tagline}</span>
-                  </span>
-                </li>
+              {FREE_EVENTS.map(({ title, tagline, Icon }, i) => (
+                <Reveal key={title} as="li" delay={(i % 3) * 130 + Math.floor(i / 3) * 120}>
+                  <div className="group relative overflow-hidden h-full flex items-center gap-4 bg-white rounded-xl shadow-sm px-4 py-3.5 transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                    <span className="mc-float-s shrink-0" style={{ animationDelay: `${i * 0.45}s` }}>
+                      <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-primary-50 text-primary-600 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6">
+                        <Icon className="h-6 w-6" aria-hidden="true" />
+                      </span>
+                    </span>
+                    <span className="min-w-0">
+                      <span className="block font-semibold text-secondary-600 text-base sm:text-lg leading-snug">{title}</span>
+                      <span className="block mt-0.5 text-sm text-gray-600 leading-snug">{tagline}</span>
+                    </span>
+                    <span
+                      className="mc-sweep-slow mc-decor pointer-events-none absolute inset-y-0 left-0 w-1/4"
+                      style={{
+                        background: 'linear-gradient(90deg, transparent, rgba(242,154,31,0.14), transparent)',
+                        animationDelay: `${i * 1.3}s`,
+                      }}
+                      aria-hidden="true"
+                    />
+                  </div>
+                </Reveal>
               ))}
             </ul>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );
@@ -432,40 +935,50 @@ const FreeCommunity = () => {
 /* ------------------------------------------------------------------ */
 const MainContent = () => {
   return (
-    <div className='flex flex-col items-center'>
+    <div className='mc-root flex flex-col items-center'>
+      <style>{MOTION_CSS}</style>
       <div className="bg-white w-full">
         {/* Section 1: Certified Teachers */}
-        <section className="section-padding bg-gray-50">
-          <div className="container mx-auto text-center">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-secondary-600 mb-8 leading-tight">
-              Certified Quran teachers. Flexible schedules.<br/><strong className='text-secondary-300'>One-on-one classes</strong> available from anywhere.
-            </h2>
-            <p className="text-gray-700 max-w-4xl mx-auto text-base sm:text-lg leading-relaxed text-start mb-4">
-              <strong className="text-primary-500 font-bold">Nebras Academy</strong> offers exceptional <strong className="text-primary-500 font-semibold">online Quran education </strong>
-              with certified teachers from Al-Azhar and other prestigious institutions. Our flexible scheduling allows students worldwide to learn at their convenience. We provide personalized one-on-one sessions tailored to each student's level and pace. With interactive learning tools and a structured curriculum.
-            </p>
-            <p className="text-gray-700 max-w-4xl mx-auto text-base sm:text-lg leading-relaxed text-start">
-              <span className='font-bold'>We</span> make <strong className="text-primary-500 font-semibold">Quran learning accessible, effective, and enjoyable</strong> for all ages. Our mission is to nurture a deep connection with the Quran while ensuring proper <strong className="text-primary-800 font-semibold">Tajweed</strong> and understanding.
-            </p>
+        <section className="section-padding bg-gray-50 relative overflow-hidden">
+          <Ambient side="right" offset={0} />
+          <div className="container mx-auto text-center relative z-10">
+            <Reveal>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-secondary-600 mb-5 leading-tight">
+                Certified Quran teachers. Flexible schedules.<br/><strong className='mc-shimmer text-secondary-300'>One-on-one classes</strong> available from anywhere.
+              </h2>
+            </Reveal>
+            <Ornament />
+            <Reveal delay={120}>
+              <p className="text-gray-700 max-w-4xl mx-auto text-base sm:text-lg leading-relaxed text-start mb-4">
+                <strong className="mc-shimmer text-primary-500 font-bold">Nebras Academy</strong> offers exceptional <strong className="text-primary-500 font-semibold">online Quran education </strong>
+                with certified teachers from Al-Azhar and other prestigious institutions. Our flexible scheduling allows students worldwide to learn at their convenience. We provide personalized one-on-one sessions tailored to each student's level and pace. With interactive learning tools and a structured curriculum.
+              </p>
+            </Reveal>
+            <Reveal delay={260}>
+              <p className="text-gray-700 max-w-4xl mx-auto text-base sm:text-lg leading-relaxed text-start">
+                <span className='font-bold'>We</span> make <strong className="mc-shimmer text-primary-500 font-semibold">Quran learning accessible, effective, and enjoyable</strong> for all ages. Our mission is to nurture a deep connection with the Quran while ensuring proper <strong className="text-primary-800 font-semibold">Tajweed</strong> and understanding.
+              </p>
+            </Reveal>
           </div>
         </section>
 
         {/* Section 2: Why Learn with Us (Image Right) */}
-        <section className="section-padding">
-          <div className="container mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-12">
-            <div className="md:w-1/2">
+        <section className="section-padding relative overflow-hidden">
+          <Ambient side="left" offset={1} />
+          <div className="container mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-12 relative z-10">
+            <Reveal variant="left" className="md:w-1/2">
               <div className='flex gap-4 mb-4'>
-                <span className='border-l-4 border-primary-500 rounded-full'></span>
+                <AccentBar />
                 <h2 className="text-2xl sm:text-3xl font-bold text-secondary-600">Why Learn Quran with Nebras Academy Online?</h2>
               </div>
               <p className="text-gray-700 text-base sm:text-lg leading-8">
-                At Nebras Academy, we combine traditional Quran teaching methods with modern technology for an optimal learning experience. Our qualified teachers provide individual attention, ensuring <span className='text-primary-600 font-semibold'>correct pronunciation and understanding</span>. The online platform allows learning from home while maintaining high educational standards. We offer progress tracking, regular assessments, and a supportive learning environment. Whether you're a beginner or advanced student, our customized approach helps you achieve your Quranic goals effectively and with confidence.
+                At Nebras Academy, we combine traditional Quran teaching methods with modern technology for an optimal learning experience. Our qualified teachers provide individual attention, ensuring <span className='mc-shimmer text-primary-600 font-semibold'>correct pronunciation and understanding</span>. The online platform allows learning from home while maintaining high educational standards. We offer progress tracking, regular assessments, and a supportive learning environment. Whether you're a beginner or advanced student, our customized approach helps you achieve your Quranic goals effectively and with confidence.
               </p>
-            </div>
-            <div className="md:w-1/2">
-              <div className="overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
-                <img 
-                  src="/images/doaa.jpg" 
+            </Reveal>
+            <Reveal variant="right" delay={150} className="md:w-1/2">
+              <FramedImage>
+                <img
+                  src="/images/doaa.jpg"
                   alt="Online Quran Learning"
                   loading="lazy"
                   decoding="async"
@@ -473,65 +986,67 @@ const MainContent = () => {
                   height="600"
                   className="w-full h-auto object-cover transition-transform duration-500 hover:scale-105"
                 />
-              </div>
-            </div>
+              </FramedImage>
+            </Reveal>
           </div>
         </section>
 
         {/* Section 3: Learn Quran and Arabic (Image Left) */}
-        <section className="section-padding bg-gray-50">
-          <div className="container mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-12">
-            <div className="w-full md:w-1/2 order-2 md:order-1">
-              <div className="overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
-                <img 
-                  src="/images/muslim.jpg" 
+        <section className="section-padding bg-gray-50 relative overflow-hidden">
+          <Ambient side="right" offset={3} />
+          <div className="container mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-12 relative z-10">
+            <Reveal variant="left" className="w-full md:w-1/2 order-2 md:order-1">
+              <FramedImage delay={1.2}>
+                <img
+                  src="/images/muslim.jpg"
                   alt="Quran and Arabic Learning"
                   loading="lazy"
                   decoding="async"
                   width="800"
                   height="600"
-                  className="h-[240px] md:h-[380px] w-full object-cover object-center transition-transform duration-500 hover:scale-105"
+                  className="mc-pan-a h-[240px] md:h-[380px] w-full object-cover object-center transition-transform duration-500 hover:scale-105"
                 />
-              </div>
-            </div>
-            <div className="md:w-1/2 order-1 md:order-2">
+              </FramedImage>
+            </Reveal>
+            <Reveal variant="right" delay={150} className="md:w-1/2 order-1 md:order-2">
               <div className='flex gap-4 mb-4'>
-                <span className='border-l-4 border-primary-500 rounded-full'></span>
+                <AccentBar />
                 <h2 className="text-2xl sm:text-3xl font-bold text-secondary-600">Learn Quran and Arabic Online with Experts</h2>
               </div>
               <p className="text-gray-700 text-base sm:text-lg leading-8 text-start">
                 Our comprehensive Arabic language program complements Quran studies, helping students understand the divine text in its original language. Expert instructors teach both classical and modern Arabic, focusing on reading, writing, and conversation skills. The integrated approach connects Arabic learning directly to Quranic verses, enhancing comprehension and memorization. Flexible course levels accommodate all proficiency levels, from absolute beginners to advanced learners. Interactive lessons and cultural insights make the learning process engaging and meaningful.
               </p>
-            </div>
+            </Reveal>
           </div>
         </section>
 
         {/* Section 4: Learn Quran and Arabic (Image Right) */}
-        <section className="section-padding">
-          <div className="container mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-12">
-            <div className="md:w-1/2">
+        <section className="section-padding relative overflow-hidden">
+          <Ambient side="left" offset={5} />
+          <div className="container mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-12 relative z-10">
+            <Reveal variant="left" className="md:w-1/2">
               <div className='flex gap-4 mb-4'>
-                <span className='border-l-4 border-primary-500 rounded-full'></span>
+                <AccentBar />
                 <h2 className="text-2xl sm:text-3xl font-bold text-secondary-600">Ready to Learn Quran the Right Way?<br/>
                 Start Today with Nebras Academy</h2>
               </div>
               <p className="text-gray-700 text-base sm:text-lg leading-8">
-                Join thousands of satisfied students who have transformed their Quranic recitation and understanding through our proven teaching methods. Take the first step in your spiritual journey <span className='text-primary-500 font-semibold'>with a free trial class</span> tailored to your level and goals.
+                Join thousands of satisfied students who have transformed their Quranic recitation and understanding through our proven teaching methods. Take the first step in your spiritual journey <span className='mc-shimmer text-primary-500 font-semibold'>with a free trial class</span> tailored to your level and goals.
               </p>
-            </div>
-            <div className="w-full md:w-1/2">
-              <div className="overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
-                <img 
-                  src="/images/mainContint.jpg" 
+            </Reveal>
+            <Reveal variant="right" delay={150} className="w-full md:w-1/2">
+              <FramedImage delay={2.4}>
+                <img
+                  src="/images/mainContint.jpg"
                   alt="Online Quran Learning"
                   loading="lazy"
                   decoding="async"
                   width="800"
                   height="600"
-                  className="h-[240px] md:h-[380px] w-full object-cover object-bottom transition-transform duration-500 hover:scale-105"
+                  className="mc-pan-b h-[240px] md:h-[380px] w-full object-cover object-bottom transition-transform duration-500 hover:scale-105"
                 />
-              </div>
-            </div>
+              </FramedImage>
+            </Reveal>
           </div>
         </section>
 
@@ -543,16 +1058,29 @@ const MainContent = () => {
       </div>
 
       {/* Bottom CTA */}
-      <div className="w-full flex justify-center py-12 bg-white">
-        <a
-          href="https://wa.me/201146162847"
-          target="_blank"
-          rel="noopener noreferrer"
-          className='inline-flex text-center bg-secondary-500 transition-all duration-300 shadow-lg text-white font-bold hover:bg-primary-500 hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 px-8 py-4 justify-center items-center rounded-full text-base sm:text-lg'
-        >
-          Book Your Free Trial
-        </a>
-      </div>
+      <Reveal variant="zoom" className="w-full flex justify-center py-12 bg-white">
+        <div className="relative inline-flex">
+          <span
+            className="mc-ring-pulse mc-decor pointer-events-none absolute inset-0 rounded-full"
+            style={{ background: 'rgba(242,154,31,0.35)' }}
+            aria-hidden="true"
+          />
+          <span
+            className="mc-ring-pulse mc-decor pointer-events-none absolute inset-0 rounded-full"
+            style={{ background: 'rgba(242,154,31,0.35)', animationDelay: '1.3s' }}
+            aria-hidden="true"
+          />
+          <a
+            href="https://wa.me/201146162847"
+            target="_blank"
+            rel="noopener noreferrer"
+            className='mc-glow-cta relative overflow-hidden inline-flex text-center bg-secondary-500 transition-all duration-300 shadow-lg text-white font-bold hover:bg-primary-500 hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 px-8 py-4 justify-center items-center rounded-full text-base sm:text-lg'
+          >
+            <span className="relative z-10">Book Your Free Trial</span>
+            <Shine />
+          </a>
+        </div>
+      </Reveal>
     </div>
   );
 };

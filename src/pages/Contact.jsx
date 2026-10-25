@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { FaWhatsapp, FaTelegram } from 'react-icons/fa'
 import BookingModal from '../components/BookingModal'
 import SEO from '../components/SEO'
 import StructuredData from '../components/StructuredData'
@@ -85,6 +86,42 @@ const Contact = () => {
            <div>
              <h3 className="text-lg font-bold text-secondary-800 mb-1">Address</h3>
              <p className="text-gray-600 font-medium">Office Branches: USA and Cairo, Egypt</p>
+           </div>
+         </div>
+
+         {/* بطاقات قنوات المجتمع */}
+         <div className="pt-2">
+           <h3 className="text-lg font-bold text-secondary-800 mb-3">Join Our Official Channels</h3>
+           <div className="grid sm:grid-cols-2 gap-4">
+             <a 
+               href="https://whatsapp.com/channel/0029Vb8mO30BadmjZ9lXxG2d"
+               target="_blank"
+               rel="noopener noreferrer"
+               className="card p-4 border-l-4 border-[#25D366] flex items-center gap-3.5 hover:shadow-md hover:-translate-y-0.5 transition-all group"
+             >
+               <div className="bg-[#25D366]/10 p-3 rounded-xl text-[#25D366] group-hover:bg-[#25D366] group-hover:text-white transition-colors flex-shrink-0">
+                 <FaWhatsapp className="w-6 h-6" />
+               </div>
+               <div>
+                 <h4 className="font-bold text-secondary-800 text-sm group-hover:text-primary-600 transition-colors">WhatsApp Channel</h4>
+                 <p className="text-xs text-gray-500">Daily reminders & updates</p>
+               </div>
+             </a>
+
+             <a 
+               href="https://t.me/nebrasacademi"
+               target="_blank"
+               rel="noopener noreferrer"
+               className="card p-4 border-l-4 border-[#229ED9] flex items-center gap-3.5 hover:shadow-md hover:-translate-y-0.5 transition-all group"
+             >
+               <div className="bg-[#229ED9]/10 p-3 rounded-xl text-[#229ED9] group-hover:bg-[#229ED9] group-hover:text-white transition-colors flex-shrink-0">
+                 <FaTelegram className="w-6 h-6" />
+               </div>
+               <div>
+                 <h4 className="font-bold text-secondary-800 text-sm group-hover:text-primary-600 transition-colors">Telegram Channel</h4>
+                 <p className="text-xs text-gray-500">Free events & resources</p>
+               </div>
+             </a>
            </div>
          </div>
        </div>
