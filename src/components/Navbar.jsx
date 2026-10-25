@@ -147,69 +147,93 @@ const Navbar = () => {
     "items-center justify-center rounded-full bg-primary-500 hover:bg-primary-400 text-white font-semibold shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2"
 
   return (
-    <div className='font-sans sticky top-0 z-20'>
+    <div className="font-sans sticky top-0 z-20">
       {/* Upper bar: contact info (collapses smoothly once the page is scrolled) */}
       <div
         className={`bg-secondary-600 text-white overflow-hidden transition-all duration-300 motion-reduce:transition-none ${
-          isScrolled ? 'max-h-0 opacity-0 invisible' : 'max-h-24 opacity-100 visible'
+          isScrolled
+            ? "max-h-0 opacity-0 invisible"
+            : "max-h-24 opacity-100 visible"
         }`}
       >
-        <div className='px-4'>
+        <div className="px-4">
           {/* Desktop: contacts on the left, tagline on the right */}
-          <div className='container mx-auto hidden md:flex items-center justify-between gap-6 py-2'>
-            <div className='flex flex-wrap items-center gap-x-5 lg:gap-x-6 gap-y-1'>
-              <a dir='ltr' href="tel:+201146162847" className={contactLinkClasses}>
+          <div className="container mx-auto hidden md:flex items-center justify-between gap-6 py-2">
+            <div className="flex flex-wrap items-center gap-x-5 lg:gap-x-6 gap-y-1">
+              <a
+                dir="ltr"
+                href="tel:+201146162847"
+                className={contactLinkClasses}
+              >
                 <img
-                  src='https://flagcdn.com/w20/eg.png'
-                  alt='Egypt Flag'
-                  className='w-5 h-[14px] mr-2 rounded-sm object-cover'
+                  src="https://flagcdn.com/w20/eg.png"
+                  alt="Egypt Flag"
+                  className="w-5 h-[14px] mr-2 rounded-sm object-cover"
                 />
                 +20 114 616 2847
               </a>
 
-              <span className='hidden lg:block h-3.5 w-px bg-white/25' aria-hidden="true" />
+              <span
+                className="hidden lg:block h-3.5 w-px bg-white/25"
+                aria-hidden="true"
+              />
 
               {/* NOTE: the number shown below differs from the number in href. Please verify which one is correct. */}
-              <a dir='ltr' href="tel:+201003342452" className={contactLinkClasses}>
+              <a
+                dir="ltr"
+                href="tel:+201003342452"
+                className={contactLinkClasses}
+              >
                 <img
-                  src='https://flagcdn.com/w20/eg.png'
-                  alt='Egypt Flag'
-                  className='w-5 h-[14px] mr-2 rounded-sm object-cover'
+                  src="https://flagcdn.com/w20/eg.png"
+                  alt="Egypt Flag"
+                  className="w-5 h-[14px] mr-2 rounded-sm object-cover"
                 />
                 +20 150 858 6055
               </a>
 
-              <span className='hidden lg:block h-3.5 w-px bg-white/25' aria-hidden="true" />
+              <span
+                className="hidden lg:block h-3.5 w-px bg-white/25"
+                aria-hidden="true"
+              />
 
-              <a href={`mailto:${EMAIL}`} className={contactLinkClasses} onClick={copyEmailToClipboard}>
+              <a
+                href={`mailto:${EMAIL}`}
+                className={contactLinkClasses}
+                onClick={copyEmailToClipboard}
+              >
                 {copied ? (
                   <FaCheck className="mr-2 text-xs text-primary-300" />
                 ) : (
                   <FaEnvelope className="mr-2 text-xs" />
                 )}
                 {/* Both texts share one grid cell, so the width never changes */}
-                <span className='grid'>
-                  <span className={`col-start-1 row-start-1 transition-opacity duration-200 ${copied ? 'opacity-0' : 'opacity-100'}`}>
+                <span className="grid">
+                  <span
+                    className={`col-start-1 row-start-1 transition-opacity duration-200 ${copied ? "opacity-0" : "opacity-100"}`}
+                  >
                     {EMAIL}
                   </span>
                   <span
                     aria-hidden="true"
-                    className={`col-start-1 row-start-1 text-primary-300 transition-opacity duration-200 ${copied ? 'opacity-100' : 'opacity-0'}`}
+                    className={`col-start-1 row-start-1 text-primary-300 transition-opacity duration-200 ${copied ? "opacity-100" : "opacity-0"}`}
                   >
                     Email copied!
                   </span>
                 </span>
               </a>
-              <span role="status" className='sr-only'>{copied ? "Email address copied" : ""}</span>
+              <span role="status" className="sr-only">
+                {copied ? "Email address copied" : ""}
+              </span>
             </div>
 
-            <p className='hidden lg:block text-[13px] text-white/75'>
+            <p className="hidden lg:block text-[13px] text-white/75">
               Certified Quran teachers. Flexible schedules.
             </p>
           </div>
 
           {/* Mobile: booking CTA */}
-          <div className='md:hidden flex justify-center py-2'>
+          <div className="md:hidden flex justify-center py-2">
             <button
               onClick={() => setIsBookingOpen(true)}
               className={`inline-flex px-5 py-1.5 text-sm ${ctaClasses}`}
@@ -223,42 +247,49 @@ const Navbar = () => {
       {/* Lower bar: logo, navigation and CTA */}
       <div
         className={`bg-white border-b border-gray-100 px-4 transition-all duration-300 motion-reduce:transition-none ${
-          isScrolled ? 'py-2 shadow-md' : 'py-3 shadow-sm'
+          isScrolled ? "py-2 shadow-md" : "py-3 shadow-sm"
         }`}
       >
-        <div className='container mx-auto flex items-center justify-between'>
+        <div className="container mx-auto flex items-center justify-between">
           {/* Mobile Menu Button */}
           <button
-            className='md:hidden flex items-center justify-center h-11 w-11 shrink-0 text-secondary-600 hover:text-primary-500 transition-colors duration-200 rounded-lg hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500'
+            className="md:hidden flex items-center justify-center h-11 w-11 shrink-0 text-secondary-600 hover:text-primary-500 transition-colors duration-200 rounded-lg hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-menu"
           >
-            {isMobileMenuOpen ? <FaTimes className='h-5 w-5' /> : <FaBars className='h-5 w-5' />}
+            {isMobileMenuOpen ? (
+              <FaTimes className="h-5 w-5" />
+            ) : (
+              <FaBars className="h-5 w-5" />
+            )}
           </button>
 
           {/* Academy Logo (single instance for desktop and mobile) */}
           <Link
-  to="/"
-  aria-label="Nebras Academy - Home"
-  className='flex items-center -my-2 md:-my-4 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2'
->
-  <img
-    src='/Logo.png'
-    alt='Nebras Academy logo'
-    draggable={false}
-    className={`w-auto scale-[1.4] mix-blend-multiply origin-left max-w-[220px] md:max-w-[320px] object-contain transition-all duration-300 motion-reduce:transition-none ${
-      isScrolled ? 'h-14 md:h-20' : 'h-16 md:h-28'
-    }`}
-  />
-</Link>
+            to="/"
+            aria-label="Nebras Academy - Home"
+            className="flex items-center -my-2 md:-my-4 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2"
+          >
+            <img
+              src="/Logo.png"
+              alt="Nebras Academy logo"
+              draggable={false}
+              className={`w-auto scale-[1.4] mix-blend-multiply max-w-[220px] md:max-w-[320px] object-contain transition-all duration-300 motion-reduce:transition-none ${
+                isScrolled ? "h-14 md:h-20" : "h-16 md:h-28"
+              }`}
+            />
+          </Link>
 
           {/* Desktop navigation + CTA */}
-          <div className='hidden md:flex items-center gap-5 lg:gap-8'>
-            <nav className='flex items-center gap-5 lg:gap-8' aria-label="Main navigation">
+          <div className="hidden md:flex items-center gap-5 lg:gap-8">
+            <nav
+              className="flex items-center gap-5 lg:gap-8"
+              aria-label="Main navigation"
+            >
               {/* Courses Dropdown */}
-              <div ref={coursesRef} className='relative'>
+              <div ref={coursesRef} className="relative">
                 <button
                   className={dropdownTriggerClasses(isCoursesActive)}
                   onClick={toggleCourses}
@@ -267,11 +298,13 @@ const Navbar = () => {
                   aria-label="Toggle courses menu"
                 >
                   Courses
-                  <FaChevronDown className={`text-[10px] transition-transform duration-300 ${isCoursesOpen ? 'rotate-180' : ''}`} />
+                  <FaChevronDown
+                    className={`text-[10px] transition-transform duration-300 ${isCoursesOpen ? "rotate-180" : ""}`}
+                  />
                 </button>
 
                 {isCoursesOpen && (
-                  <div className='absolute left-0 mt-4 w-72 bg-white rounded-xl shadow-lg py-1 z-50 border border-gray-100 animate-slide-down'>
+                  <div className="absolute left-0 mt-4 w-72 bg-white rounded-xl shadow-lg py-1 z-50 border border-gray-100 animate-slide-down">
                     {COURSES.map(({ to, label }) => (
                       <Link
                         key={to}
@@ -293,7 +326,7 @@ const Navbar = () => {
               ))}
 
               {/* More Dropdown */}
-              <div ref={moreRef} className='relative'>
+              <div ref={moreRef} className="relative">
                 <button
                   className={dropdownTriggerClasses(isMoreActive)}
                   onClick={toggleMore}
@@ -301,11 +334,13 @@ const Navbar = () => {
                   aria-haspopup="true"
                 >
                   More
-                  <FaChevronDown className={`text-[10px] transition-transform duration-300 ${isMoreOpen ? 'rotate-180' : ''}`} />
+                  <FaChevronDown
+                    className={`text-[10px] transition-transform duration-300 ${isMoreOpen ? "rotate-180" : ""}`}
+                  />
                 </button>
 
                 {isMoreOpen && (
-                  <div className='absolute right-0 mt-4 w-48 bg-white rounded-xl shadow-lg py-1 z-50 border border-gray-100 animate-slide-down'>
+                  <div className="absolute right-0 mt-4 w-48 bg-white rounded-xl shadow-lg py-1 z-50 border border-gray-100 animate-slide-down">
                     {MORE_LINKS.map(({ to, label }) => (
                       <Link
                         key={to}
@@ -333,9 +368,9 @@ const Navbar = () => {
           <a
             href="tel:+201146162847"
             aria-label="Call Nebras Academy"
-            className='md:hidden flex items-center justify-center h-11 w-11 shrink-0 text-secondary-600 hover:text-primary-500 transition-colors duration-200 rounded-lg hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500'
+            className="md:hidden flex items-center justify-center h-11 w-11 shrink-0 text-secondary-600 hover:text-primary-500 transition-colors duration-200 rounded-lg hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
           >
-            <FaPhoneAlt className='h-4 w-4' />
+            <FaPhoneAlt className="h-4 w-4" />
           </a>
         </div>
       </div>
@@ -344,10 +379,12 @@ const Navbar = () => {
       <div
         id="mobile-menu"
         className={`md:hidden bg-white shadow-lg absolute top-full left-0 w-full z-50 border-t border-gray-100 transition-all duration-300 ease-in-out overflow-y-auto ${
-          isMobileMenuOpen ? 'max-h-[80vh] opacity-100 visible' : 'max-h-0 opacity-0 invisible'
+          isMobileMenuOpen
+            ? "max-h-[80vh] opacity-100 visible"
+            : "max-h-0 opacity-0 invisible"
         }`}
       >
-        <div className='px-5 py-3 space-y-1'>
+        <div className="px-5 py-3 space-y-1">
           {/* Courses accordion */}
           <button
             type="button"
@@ -356,16 +393,20 @@ const Navbar = () => {
             className={`flex w-full items-center justify-between ${mobileLinkClasses(isCoursesActive)}`}
           >
             Courses
-            <FaChevronDown className={`text-xs transition-transform duration-300 ${isMobileCoursesOpen ? 'rotate-180' : ''}`} />
+            <FaChevronDown
+              className={`text-xs transition-transform duration-300 ${isMobileCoursesOpen ? "rotate-180" : ""}`}
+            />
           </button>
           {isMobileCoursesOpen && (
-            <div className='ml-3 pl-3 border-l-2 border-primary-300 space-y-0.5'>
+            <div className="ml-3 pl-3 border-l-2 border-primary-300 space-y-0.5">
               {COURSES.map(({ to, label }) => (
                 <Link
                   key={to}
                   to={to}
                   className={`block py-2.5 px-3 text-sm rounded-lg transition-colors duration-200 hover:text-primary-600 hover:bg-primary-50 ${
-                    isActive(to) ? 'text-primary-600 bg-primary-50 font-semibold' : 'text-gray-700'
+                    isActive(to)
+                      ? "text-primary-600 bg-primary-50 font-semibold"
+                      : "text-gray-700"
                   }`}
                   onClick={closeMobileMenu}
                 >
@@ -376,19 +417,24 @@ const Navbar = () => {
           )}
 
           {[...NAV_LINKS, ...MORE_LINKS].map(({ to, label }) => (
-            <Link key={to} to={to} className={mobileLinkClasses(isActive(to))} onClick={closeMobileMenu}>
+            <Link
+              key={to}
+              to={to}
+              className={mobileLinkClasses(isActive(to))}
+              onClick={closeMobileMenu}
+            >
               {label}
             </Link>
           ))}
 
           {/* Book Your Free Trial CTA in Mobile Menu */}
-          <div className='pt-2 pb-1'>
+          <div className="pt-2 pb-1">
             <button
               onClick={() => {
-                closeMobileMenu()
-                setIsBookingOpen(true)
+                closeMobileMenu();
+                setIsBookingOpen(true);
               }}
-              className='w-full btn-primary btn-pill text-sm'
+              className="w-full btn-primary btn-pill text-sm"
             >
               Book Your Free Trial
             </button>
@@ -397,9 +443,12 @@ const Navbar = () => {
       </div>
 
       {/* Booking Modal */}
-      <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
+      <BookingModal
+        isOpen={isBookingOpen}
+        onClose={() => setIsBookingOpen(false)}
+      />
     </div>
-  )
+  );
 }
 
 export default Navbar
