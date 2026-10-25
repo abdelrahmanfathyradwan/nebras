@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { FaWhatsapp, FaTelegram } from 'react-icons/fa'
+import { FaWhatsapp, FaTelegram, FaYoutube } from 'react-icons/fa'
 import BookingModal from '../components/BookingModal'
 import SEO from '../components/SEO'
 import StructuredData from '../components/StructuredData'

@@ -9,6 +9,7 @@ import {
   FaEnvelope,
   FaWhatsapp,
   FaTelegram,
+  FaYoutube,
   FaChevronRight,
   FaArrowUp,
 } from 'react-icons/fa';
@@ -133,6 +134,12 @@ const channels = [
     label: 'Telegram Channel',
     icon: FaTelegram,
     color: '#229ED9',
+  },
+  {
+    href: 'https://www.youtube.com/@Nebraskacadmey',
+    label: 'YouTube Channel',
+    icon: FaYoutube,
+    color: '#FF0000',
   },
 ];
 

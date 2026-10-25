@@ -19,22 +19,23 @@ import {
 /* Pricing rules (edit here only)                                      */
 /* ------------------------------------------------------------------ */
 const PRICING = {
-  individual: {
-    standardRate: 8,        // $/hour when weekly hours are below the threshold
-    discountedRate: 6,       // $/hour when weekly hours reach the threshold
-    discountThreshold: 10,   // weekly hours (10 or more gets the discounted rate)
-  },
-  group: {
-    rate: 6,                 // $/hour per student
-    minStudents: 2,
-    maxStudents: 5,
-  },
+  baseRate: 8,                        // $/hour for everyone by default
+  discountedRate: 6,                  // $/hour when a discount applies
+  individualDiscountMonthlyHours: 10, // single student: 10+ hours per month
+  maxStudents: 5,
+  minStudents: 1,
 };
 
 const WEEKS_PER_MONTH = 4;
-const PRESET_HOURS = [3, 5, 10, 15];
+const PRESET_HOURS = [1, 2, 3, 5, 10, 15]; // hours per week
 const MIN_HOURS = 1;
 const MAX_HOURS = 40;
+const MONTH_OPTIONS = [3, 4, 5, 6];
+
+// Smallest weekly hours that reach the monthly threshold (10 / 4 -> 3)
+const MIN_WEEKLY_FOR_DISCOUNT = Math.ceil(
+  PRICING.individualDiscountMonthlyHours / WEEKS_PER_MONTH
+);
 
 const money = (value) => `$${Number.isInteger(value) ? value : value.toFixed(2)}`;
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
@@ -42,7 +43,7 @@ const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 /* ------------------------------------------------------------------ */
 /* Free community (WhatsApp)                                           */
 /* ------------------------------------------------------------------ */
-const WHATSAPP_GROUP_URL = "https://chat.whatsapp.com/GIh6qMmcnIGGttiPmo4W1b?s=cl&p=a&mlu=4&ilr=4";
+const WHATSAPP_GROUP_URL = "https://whatsapp.com/channel/0029Vb8mO30BadmjZ9lXxG2d";
 const SHARE_TEXT = "Join us for free gatherings on the Quran, prayer, and Arabic. Everyone is welcome, so come and bring someone you love!";
 
 const FREE_EVENTS = [
@@ -491,44 +492,60 @@ const BUBBLES = [
 /* Price calculator                                                    */
 /* ------------------------------------------------------------------ */
 const PriceCalculator = () => {
-  // null = the user has not chosen a package yet (they must choose first)
+  // null = the user has not chosen a package yet
   const [plan, setPlan] = useState(null);
-  const [hours, setHours] = useState(5);
+  const [hours, setHours] = useState(5);              // hours per week (per student)
   const [hoursInput, setHoursInput] = useState('5');
-  const [students, setStudents] = useState(PRICING.group.minStudents);
+  const [students, setStudents] = useState(2);        // used only in group plan
+  const [months, setMonths] = useState(3);
 
   const isIndividual = plan === 'individual';
   const isGroup = plan === 'group';
 
-  const rate = isIndividual
-    ? hours >= PRICING.individual.discountThreshold
-      ? PRICING.individual.discountedRate
-      : PRICING.individual.standardRate
-    : isGroup
-      ? PRICING.group.rate
-      : 0;
+  // One-on-One is always 1 student
+  const studentCount = isGroup ? students : 1;
+
+  const monthlyHours = hours * WEEKS_PER_MONTH;
+
+  // Discount rules:
+  //  - more than one student: always discounted, from the first hour
+  //  - single student: discounted from 10 hours per month
+  let discountReason = null;
+  if (plan) {
+    if (studentCount > 1) discountReason = 'group';
+    else if (monthlyHours >= PRICING.individualDiscountMonthlyHours) discountReason = 'hours';
+  }
+  const hasDiscount = Boolean(discountReason);
+
+  const rate = !plan ? 0 : hasDiscount ? PRICING.discountedRate : PRICING.baseRate;
+  const saving = PRICING.baseRate - PRICING.discountedRate;
 
   const pricePerStudentWeekly = hours * rate;
-  const weeklyTotal = isGroup ? pricePerStudentWeekly * students : pricePerStudentWeekly;
+  const weeklyTotal = hours * rate * studentCount;
   const monthlyTotal = weeklyTotal * WEEKS_PER_MONTH;
+  const periodTotal = monthlyTotal * months;
 
-  // Animated (counting) versions of the totals — display only
+  // Animated (counting) versions of the totals: display only
   const animatedWeekly = useCountUp(weeklyTotal);
   const animatedMonthly = useCountUp(monthlyTotal);
-
-  const hoursToDiscount = Math.max(0, PRICING.individual.discountThreshold - hours);
+  const animatedPeriod = useCountUp(periodTotal);
 
   const selectHours = (value) => {
     setHours(value);
     setHoursInput(String(value));
   };
 
+  // Digits only, 1 to 40. Empty / 0 / negative / text are rejected or reset on blur.
   const handleHoursInput = (e) => {
     const raw = e.target.value;
-    if (raw !== '' && !/^\d+$/.test(raw)) return;
+    if (raw !== '' && !/^\d{1,2}$/.test(raw)) return;
     setHoursInput(raw);
-    if (raw !== '') setHours(clamp(parseInt(raw, 10), MIN_HOURS, MAX_HOURS));
+    if (raw === '') return;
+    const parsed = parseInt(raw, 10);
+    if (parsed >= MIN_HOURS) setHours(clamp(parsed, MIN_HOURS, MAX_HOURS));
   };
+
+  const handleHoursBlur = () => setHoursInput(String(hours));
 
   const chipClass = (active) =>
     `px-4 py-2 rounded-full border text-sm sm:text-base font-semibold transition-all duration-200 hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 ${
@@ -552,6 +569,16 @@ const PriceCalculator = () => {
       ✓
     </span>
   );
+
+  const stepperBtn =
+    'w-11 h-11 text-xl font-bold text-secondary-600 transition-all duration-150 active:scale-90 hover:bg-gray-100 disabled:opacity-40 disabled:hover:bg-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500';
+
+  const monthsStep = isGroup ? 4 : 3;
+
+  const reasonText =
+    discountReason === 'group'
+      ? 'more than one student'
+      : `${monthlyHours} hours per month`;
 
   return (
     <section className="section-padding bg-gray-50 relative overflow-hidden" aria-labelledby="price-calculator-title">
@@ -579,7 +606,10 @@ const PriceCalculator = () => {
                 ['Duration', '3-6 months (flexible)'],
                 ['Class Type', 'One-on-One or Small Groups'],
                 ['Age Group', '5+ years (Kids & Adults)'],
-                ['Price', '$8/hour (individual)\n$6/hour from 10 hours per week\n$6/hour per student (group)'],
+                [
+                  'Price',
+                  `${money(PRICING.baseRate)}/hour\nDiscount: ${money(PRICING.discountedRate)}/hour from ${PRICING.individualDiscountMonthlyHours} hours per month (individual)\nDiscount: ${money(PRICING.discountedRate)}/hour per student (group)`,
+                ],
               ].map(([term, value], i) => (
                 <Reveal
                   key={term}
@@ -596,7 +626,8 @@ const PriceCalculator = () => {
           {/* Calculator */}
           <Reveal variant="right" delay={120} className="lg:w-7/12 relative overflow-hidden bg-white rounded-xl shadow-md p-6 sm:p-8">
             <div className="mc-flow-bar mc-decor absolute top-0 inset-x-0 h-1" aria-hidden="true" />
-            {/* Step 1: package (required first) */}
+
+            {/* Step 1: package */}
             <fieldset className="mb-6">
               <legend className="font-semibold text-gray-700 mb-3">1. Choose your package</legend>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4" role="radiogroup" aria-label="Package">
@@ -610,8 +641,8 @@ const PriceCalculator = () => {
                   {isIndividual && checkBadge}
                   <span className="block text-lg font-bold text-secondary-600">One-on-One</span>
                   <span className="block text-sm sm:text-base text-gray-600 mt-1">
-                    {money(PRICING.individual.standardRate)}/hour, or {money(PRICING.individual.discountedRate)}/hour
-                    from {PRICING.individual.discountThreshold} hours per week
+                    {money(PRICING.baseRate)}/hour, or {money(PRICING.discountedRate)}/hour
+                    from {PRICING.individualDiscountMonthlyHours} hours per month
                   </span>
                 </button>
                 <button
@@ -625,13 +656,13 @@ const PriceCalculator = () => {
                   {isGroup && checkBadge}
                   <span className="block text-lg font-bold text-secondary-600">More than one student</span>
                   <span className="block text-sm sm:text-base text-gray-600 mt-1">
-                    {money(PRICING.group.rate)}/hour per student
+                    {money(PRICING.baseRate)}/hour, or {money(PRICING.discountedRate)}/hour per student
                   </span>
                 </button>
               </div>
             </fieldset>
 
-            {/* Step 2: hours (after a package is chosen) */}
+            {/* Step 2: hours per week */}
             <fieldset className={`mb-6 transition-opacity duration-300 ${plan ? '' : 'opacity-40'}`} disabled={!plan}>
               <legend className="font-semibold text-gray-700 mb-3">2. Hours per week</legend>
               <div className="flex flex-wrap items-center gap-3">
@@ -643,7 +674,7 @@ const PriceCalculator = () => {
                     onClick={() => selectHours(h)}
                     className={chipClass(hours === h)}
                   >
-                    {h} hours
+                    {h} {h === 1 ? 'hour' : 'hours'}
                   </button>
                 ))}
                 <label className="flex items-center gap-2 text-gray-700">
@@ -653,52 +684,79 @@ const PriceCalculator = () => {
                     inputMode="numeric"
                     value={hoursInput}
                     onChange={handleHoursInput}
-                    onBlur={() => setHoursInput(String(hours))}
+                    onBlur={handleHoursBlur}
                     aria-label={`Custom hours per week, ${MIN_HOURS} to ${MAX_HOURS}`}
                     className="w-20 px-3 py-2 rounded-lg border border-gray-300 text-center font-semibold transition-shadow duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500"
                   />
                 </label>
               </div>
-              {isIndividual && hoursToDiscount > 0 && (
-                <p key={hoursToDiscount} className="mc-slide-in mt-3 text-sm sm:text-base text-gray-600">
-                  Add <span className="font-semibold text-primary-600">{hoursToDiscount} more {hoursToDiscount === 1 ? 'hour' : 'hours'}</span> per
-                  week to get {money(PRICING.individual.discountedRate)}/hour.
+              <p className="mt-2 text-xs sm:text-sm text-gray-500">
+                {hours} {hours === 1 ? 'hour' : 'hours'} per week = {monthlyHours} hours per month
+              </p>
+
+              {plan && studentCount === 1 && !hasDiscount && (
+                <p key={hours} className="mc-slide-in mt-3 text-sm sm:text-base text-gray-600">
+                  Reach <span className="font-semibold text-primary-600">{PRICING.individualDiscountMonthlyHours} hours per month</span>{' '}
+                  (at least {MIN_WEEKLY_FOR_DISCOUNT} hours per week) to get {money(PRICING.discountedRate)}/hour.
                 </p>
               )}
-              {isIndividual && hoursToDiscount === 0 && (
+              {plan && studentCount === 1 && hasDiscount && (
                 <p className="mc-slide-in mt-3 text-sm sm:text-base text-primary-600 font-semibold">
-                  You get the {money(PRICING.individual.discountedRate)}/hour rate.
+                  You get the {money(PRICING.discountedRate)}/hour rate.
                 </p>
               )}
             </fieldset>
 
-            {/* Students (group only) */}
+            {/* Step 3: students (group only) */}
             {isGroup && (
               <div className="mc-slide-in mb-6">
                 <p className="font-semibold text-gray-700 mb-3">3. Number of students</p>
                 <div className="inline-flex items-center rounded-full border border-gray-300 overflow-hidden">
                   <button
                     type="button"
-                    onClick={() => setStudents((s) => Math.max(PRICING.group.minStudents, s - 1))}
-                    disabled={students <= PRICING.group.minStudents}
+                    onClick={() => setStudents((s) => Math.max(PRICING.minStudents, s - 1))}
+                    disabled={students <= PRICING.minStudents}
                     aria-label="Decrease number of students"
-                    className="w-11 h-11 text-xl font-bold text-secondary-600 transition-all duration-150 active:scale-90 hover:bg-gray-100 disabled:opacity-40 disabled:hover:bg-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
+                    className={stepperBtn}
                   >
                     −
                   </button>
                   <span key={students} className="mc-pop w-12 text-center font-bold text-lg" aria-live="polite">{students}</span>
                   <button
                     type="button"
-                    onClick={() => setStudents((s) => Math.min(PRICING.group.maxStudents, s + 1))}
-                    disabled={students >= PRICING.group.maxStudents}
+                    onClick={() => setStudents((s) => Math.min(PRICING.maxStudents, s + 1))}
+                    disabled={students >= PRICING.maxStudents}
                     aria-label="Increase number of students"
-                    className="w-11 h-11 text-xl font-bold text-secondary-600 transition-all duration-150 active:scale-90 hover:bg-gray-100 disabled:opacity-40 disabled:hover:bg-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
+                    className={stepperBtn}
                   >
                     +
                   </button>
                 </div>
+                {students === 1 && (
+                  <p className="mt-2 text-sm text-gray-600">
+                    With one student the group discount does not apply. Add another student to get {money(PRICING.discountedRate)}/hour each.
+                  </p>
+                )}
               </div>
             )}
+
+            {/* Step: months */}
+            <fieldset className={`mb-6 transition-opacity duration-300 ${plan ? '' : 'opacity-40'}`} disabled={!plan}>
+              <legend className="font-semibold text-gray-700 mb-3">{monthsStep}. Number of months</legend>
+              <div className="flex flex-wrap items-center gap-3">
+                {MONTH_OPTIONS.map((m) => (
+                  <button
+                    key={m}
+                    type="button"
+                    aria-pressed={months === m}
+                    onClick={() => setMonths(m)}
+                    className={chipClass(months === m)}
+                  >
+                    {m} months
+                  </button>
+                ))}
+              </div>
+            </fieldset>
 
             {/* Result */}
             <div className="relative overflow-hidden rounded-xl bg-secondary-600 text-white p-5 sm:p-6" aria-live="polite">
@@ -729,15 +787,37 @@ const PriceCalculator = () => {
                 ) : (
                   <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
                     <div>
-                      <p className="text-white/80 text-sm sm:text-base">
+                      {/* Hourly rate: always starts from $8 */}
+                      <p className="text-lg sm:text-xl font-bold">
+                        {hasDiscount ? (
+                          <>
+                            <span className="line-through text-white/60 mr-2">{money(PRICING.baseRate)}</span>
+                            <span key={rate} className="mc-pop inline-block text-primary-300">{money(rate)}</span>
+                            <span className="text-white/80 font-semibold"> /hour</span>
+                          </>
+                        ) : (
+                          <>
+                            {money(PRICING.baseRate)}
+                            <span className="text-white/80 font-semibold"> /hour</span>
+                          </>
+                        )}
+                      </p>
+                      {hasDiscount && (
+                        <p className="mc-slide-in text-sm sm:text-base text-white/90">
+                          {money(saving)} off every hour ({reasonText})
+                        </p>
+                      )}
+
+                      <p className="mt-3 text-white/80 text-sm sm:text-base">
                         {hours} {hours === 1 ? 'hour' : 'hours'} per week × {money(rate)}
-                        {isGroup ? ` × ${students} students` : ''}
+                        {isGroup ? ` × ${students} ${students === 1 ? 'student' : 'students'}` : ''}
                       </p>
                       {isGroup && (
                         <p className="text-white/80 text-sm sm:text-base">
                           Each student pays {money(pricePerStudentWeekly)} per week
                         </p>
                       )}
+
                       <p className="mt-3 text-sm text-white/80">Weekly price</p>
                       <p className="text-4xl sm:text-5xl font-bold leading-none">
                         <span className="sr-only">{money(weeklyTotal)}</span>
@@ -745,15 +825,26 @@ const PriceCalculator = () => {
                           {money(Math.round(animatedWeekly))}
                         </span>
                       </p>
+
                       <p className="mt-3 text-sm sm:text-base text-white/80">
-                        About{' '}
+                        Monthly:{' '}
                         <span className="font-bold text-white">
                           <span className="sr-only">{money(monthlyTotal)}</span>
                           <span key={monthlyTotal} className="mc-bump inline-block" aria-hidden="true">
                             {money(Math.round(animatedMonthly))}
                           </span>
                         </span>{' '}
-                        per month ({WEEKS_PER_MONTH} weeks)
+                        ({WEEKS_PER_MONTH} weeks)
+                      </p>
+
+                      <p className="mt-1 text-sm sm:text-base text-white/80">
+                        Total for {months} months:{' '}
+                        <span className="font-bold text-white text-lg sm:text-xl">
+                          <span className="sr-only">{money(periodTotal)}</span>
+                          <span key={periodTotal} className="mc-bump inline-block" aria-hidden="true">
+                            {money(Math.round(animatedPeriod))}
+                          </span>
+                        </span>
                       </p>
                     </div>
                     <a
