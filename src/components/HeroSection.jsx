@@ -67,9 +67,9 @@ const HeroSection = () => {
                        File needed: /public/images/hero/quran-holder.webp (≈900×1000, portrait, light bg)
                        Also provide /public/images/hero/quran-holder.avif for modern browsers. */}
                   <img
-                    src="/images/quran1.jpg"
+                    src="public\images\mainContint.jpg"
                     alt="A teacher gently holding an ornate Quran, ready for an online lesson at Nebras Academy"
-                    width="900"
+                    width="1100"
                     height="1000"
                     fetchpriority="high"
                     decoding="async"
