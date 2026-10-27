@@ -102,7 +102,7 @@ const HeroSection = () => {
         }
         @keyframes hx-ripple {
           0%   { transform: scale(1); opacity: 0.55; }
-          100% { transform: scale(2.1); opacity: 0; }
+          100% { transform: scale(1.3); opacity: 0; }
         }
         @keyframes hx-wiggle {
           0%, 88%, 100% { transform: rotate(0deg); }
