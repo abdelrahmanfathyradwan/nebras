@@ -39,6 +39,8 @@ const staticRoutes = [
   '/courses/islamic-studies',
   '/pricing',
   '/about',
+  '/teachers',
+  '/trial',
   '/blog',
   '/contact',
   '/faqs',

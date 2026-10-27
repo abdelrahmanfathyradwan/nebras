@@ -10,8 +10,14 @@ import {
   FaWhatsapp,
   FaTelegram,
   FaYoutube,
+  FaFacebook,
   FaChevronRight,
   FaArrowUp,
+  FaGraduationCap,
+  FaClock,
+  FaTags,
+  FaUserGraduate,
+  FaAward,
 } from 'react-icons/fa';
 
 /* ------------------------------------------------------------------ */
@@ -76,11 +82,11 @@ const FooterLink = ({ to, icon: Icon, children }) => (
     className="group inline-flex items-center text-white/80 hover:text-primary-300 transition-all duration-300 hover:translate-x-1"
   >
     {Icon ? (
-      <Icon className="mr-3 text-primary-300 text-sm flex-shrink-0 transition-transform duration-300 group-hover:scale-125 group-hover:rotate-6" />
+      <Icon className="mr-2.5 text-primary-300 text-xs flex-shrink-0 transition-transform duration-300 group-hover:scale-125 group-hover:rotate-6" />
     ) : (
-      <FaChevronRight className="mr-2 text-[10px] text-primary-300 opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+      <FaChevronRight className="mr-2 text-[10px] text-primary-300 opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 flex-shrink-0" />
     )}
-    <span className="relative">
+    <span className="relative text-sm">
       {children}
       <span className="absolute left-0 -bottom-0.5 h-px w-0 bg-primary-300 transition-all duration-300 group-hover:w-full" />
     </span>
@@ -96,7 +102,7 @@ const ContactItem = ({ icon: Icon, href, children, small = false }) => (
     <span className="mr-3 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary-300/10 text-primary-300 transition-all duration-300 group-hover:bg-primary-500 group-hover:text-white group-hover:scale-110 group-hover:-rotate-6">
       <Icon className="text-xs" />
     </span>
-    <span className={small ? 'break-all text-sm' : ''}>{children}</span>
+    <span className={small ? 'break-all text-sm font-medium' : 'text-sm font-medium'}>{children}</span>
   </a>
 );
 
@@ -109,37 +115,50 @@ const courses = [
   { to: '/courses/reading', label: 'Quran Reading (Noor Al Bayan)' },
   { to: '/courses/recitation', label: 'Quran Recitation' },
   { to: '/courses/memorization', label: 'Quran Memorization' },
+  { to: '/courses/memorizing-juz-amma', label: "Memorizing Juz' Amma" },
   { to: '/courses/arabic', label: 'Arabic Language Course' },
   { to: '/courses/arabic-kids', label: 'Arabic for Kids' },
   { to: '/courses/islamic-studies', label: 'Islamic Studies for Kids' },
-  { to: '/courses/memorizing-juz-amma', label: "Memorizing Juz' Amma" },
 ];
 
 const supportLinks = [
+  { to: '/teachers', label: 'Our Teachers & Ijazah', icon: FaAward },
+  { to: '/about', label: 'About Us', icon: FaUserGraduate },
+  { to: '/pricing', label: 'Pricing Plans', icon: FaTags },
   { to: '/policy', label: 'Student Policy', icon: FaFileAlt },
-  { to: '/contact', label: 'Contact', icon: FaPhone },
+  { to: '/contact', label: 'Contact Us', icon: FaPhone },
   { to: '/faqs', label: 'FAQs', icon: FaQuestionCircle },
-  { to: '/blog', label: 'Blog', icon: FaBlog },
+  { to: '/blog', label: 'Blog & Articles', icon: FaBlog },
 ];
 
 const channels = [
   {
     href: 'https://whatsapp.com/channel/0029Vb8mO30BadmjZ9lXxG2d',
-    label: 'WhatsApp Channel',
+    name: 'WhatsApp',
+    action: 'Follow',
     icon: FaWhatsapp,
     color: '#25D366',
   },
   {
     href: 'https://t.me/nebrasacademi',
-    label: 'Telegram Channel',
+    name: 'Telegram',
+    action: 'Join',
     icon: FaTelegram,
     color: '#229ED9',
   },
   {
     href: 'https://www.youtube.com/@Nebraskacadmey',
-    label: 'YouTube Channel',
+    name: 'YouTube',
+    action: 'Subscribe',
     icon: FaYoutube,
     color: '#FF0000',
+  },
+  {
+    href: 'https://www.facebook.com/people/Nebras-Academy-for-Teaching-the-Holy-Quran/61595964628884/',
+    name: 'Facebook',
+    action: 'Like Page',
+    icon: FaFacebook,
+    color: '#1877F2',
   },
 ];
 
@@ -207,15 +226,34 @@ const Footer = () => {
       />
 
       <div className="container relative mx-auto flex flex-col justify-center">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-x-8 gap-y-10 mb-14">
-          {/* About Section */}
-          <Reveal inView={inView} delay={0} className="sm:col-span-2 lg:col-span-3">
+        {/* Main 4-Column Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-x-8 gap-y-12 mb-16">
+
+          {/* 1. About Nebras (lg:col-span-4) */}
+          <Reveal inView={inView} delay={0} className="sm:col-span-2 lg:col-span-4">
             <SectionTitle>About Nebras</SectionTitle>
-            <p className="mb-6 text-white/80 leading-relaxed">
-              <strong className="text-primary-300 font-bold">Nebras Academy</strong> is a
-              trusted provider of online Quran classes worldwide.
+            <p className="mb-5 text-white/80 leading-relaxed text-sm sm:text-base">
+              <strong className="text-primary-300 font-bold">Nebras Academy</strong> is a trusted global provider of personalized 1-on-1 online Quran, Tajweed, and Arabic classes for kids and adults worldwide.
             </p>
-            <div className="space-y-3">
+
+            {/* Academy Highlights */}
+            <div className="space-y-2 mb-6">
+              <div className="flex items-center text-xs text-white/75">
+                <FaGlobe className="mr-2.5 text-primary-300 text-xs flex-shrink-0" />
+                <span>Worldwide Online Classes</span>
+              </div>
+              <div className="flex items-center text-xs text-white/75">
+                <FaGraduationCap className="mr-2.5 text-primary-300 text-xs flex-shrink-0" />
+                <span>Certified Native Al-Azhar Teachers</span>
+              </div>
+              <div className="flex items-center text-xs text-white/75">
+                <FaClock className="mr-2.5 text-primary-300 text-xs flex-shrink-0" />
+                <span>Flexible 24/7 Scheduling</span>
+              </div>
+            </div>
+
+            {/* Direct Contact info */}
+            <div className="pt-4 border-t border-white/10 space-y-2.5">
               <ContactItem icon={FaPhone} href="tel:+201146162847">
                 +20 114 616 2847
               </ContactItem>
@@ -232,10 +270,10 @@ const Footer = () => {
             </div>
           </Reveal>
 
-          {/* Courses Section */}
-          <Reveal inView={inView} delay={120} className="sm:col-span-2 lg:col-span-4">
-            <SectionTitle>Courses</SectionTitle>
-            <ul className="grid grid-cols-1 gap-x-8 gap-y-3 sm:grid-cols-2">
+          {/* 2. Courses Section (lg:col-span-3) */}
+          <Reveal inView={inView} delay={120} className="lg:col-span-3">
+            <SectionTitle>Our Courses</SectionTitle>
+            <ul className="space-y-2.5">
               {courses.map((course) => (
                 <li key={course.to}>
                   <FooterLink to={course.to}>{course.label}</FooterLink>
@@ -244,10 +282,10 @@ const Footer = () => {
             </ul>
           </Reveal>
 
-          {/* Support Section */}
+          {/* 3. Quick Links & Support (lg:col-span-2) */}
           <Reveal inView={inView} delay={240} className="lg:col-span-2">
-            <SectionTitle>Support</SectionTitle>
-            <ul className="space-y-3">
+            <SectionTitle>Quick Links</SectionTitle>
+            <ul className="space-y-2.5">
               {supportLinks.map((link) => (
                 <li key={link.to}>
                   <FooterLink to={link.to} icon={link.icon}>
@@ -258,47 +296,63 @@ const Footer = () => {
             </ul>
           </Reveal>
 
-          {/* Company & Community */}
-          <Reveal inView={inView} delay={360} className="lg:col-span-3">
-            <SectionTitle>Company</SectionTitle>
-            <p className="mb-4 text-white/80 leading-relaxed">
-              Nebras Academy is dedicated to providing authentic Quranic education with
-              certified teachers.
-            </p>
-            <div className="group mb-5 flex items-center text-white/80">
-              <FaGlobe className="nb-anim mr-3 text-primary-300 text-sm flex-shrink-0 transition-transform duration-700 group-hover:rotate-[360deg]" />
-              <span>Worldwide Online Classes</span>
+          {/* 4. Community & Channels (lg:col-span-3) */}
+          <Reveal inView={inView} delay={360} className="sm:col-span-2 lg:col-span-3">
+            <div className="flex items-center justify-between mb-6">
+              <SectionTitle>Join Our Community</SectionTitle>
+              <span className="flex h-2.5 w-2.5 relative mb-4" title="Active Community">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+              </span>
             </div>
 
-            {/* Official Channels */}
-            <div className="pt-4 border-t border-white/10">
-              <h4 className="text-xs font-semibold uppercase tracking-wider text-primary-300 mb-3">
-                Join Our Channels
-              </h4>
-              <div className="flex flex-col gap-2.5">
-                {channels.map(({ href, label, icon: Icon, color }) => (
-                  <a
-                    key={href}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ '--brand': color }}
-                    className="group flex items-center gap-2.5 text-sm text-white/85 transition-all duration-300 hover:translate-x-1 hover:text-[var(--brand)]"
-                  >
-                    <span className="relative flex h-8 w-8 items-center justify-center rounded-full bg-[var(--brand)]/20 text-[var(--brand)] transition-all duration-300 group-hover:bg-[var(--brand)] group-hover:text-white group-hover:scale-110 group-hover:shadow-lg">
-                      <Icon className="text-sm transition-transform duration-300 group-hover:rotate-12" />
+            <p className="mb-4 text-white/80 leading-relaxed text-sm">
+              Follow our official channels for daily Quran reminders, study materials, announcements, and free live sessions.
+            </p>
+
+            {/* 2x2 Modern Channel Cards */}
+            <div className="grid grid-cols-2 gap-2.5 mb-5">
+              {channels.map(({ href, name, action, icon: Icon, color }) => (
+                <a
+                  key={href}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ '--brand': color }}
+                  className="group relative flex items-center gap-2 p-2.5 rounded-xl bg-white/[0.05] border border-white/10 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--brand)] hover:bg-white/[0.1] hover:shadow-lg overflow-hidden"
+                >
+                  <span className="relative flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-[var(--brand)]/20 text-[var(--brand)] transition-all duration-300 group-hover:bg-[var(--brand)] group-hover:text-white group-hover:scale-105 shadow-sm">
+                    <Icon className="text-sm transition-transform duration-300 group-hover:rotate-6" />
+                  </span>
+                  <div className="min-w-0 flex-1">
+                    <span className="block text-xs font-semibold text-white/95 truncate group-hover:text-white">
+                      {name}
                     </span>
-                    <span>{label}</span>
-                  </a>
-                ))}
-              </div>
+                    <span className="block text-[10px] text-white/50 group-hover:text-[var(--brand)] transition-colors">
+                      {action}
+                    </span>
+                  </div>
+                </a>
+              ))}
+            </div>
+
+            {/* Free Trial Mini Banner */}
+            <div className="rounded-xl p-3 bg-gradient-to-r from-primary-500/20 to-primary-300/10 border border-primary-500/30">
+              <p className="text-xs text-white/85 mb-1.5 font-medium">Ready to start learning?</p>
+              <Link
+                to="/contact"
+                className="inline-flex items-center text-xs font-bold text-primary-300 hover:text-white transition-colors"
+              >
+                <span>Book a Free Trial Session</span>
+                <FaChevronRight className="ml-1 text-[9px]" />
+              </Link>
             </div>
           </Reveal>
         </div>
 
-        {/* QR Code Section */}
-        <Reveal inView={inView} delay={480} className="mb-12">
-          <div className="group relative mx-auto w-full max-w-3xl overflow-hidden rounded-3xl border border-white/15 bg-gradient-to-br from-white/15 via-white/5 to-transparent p-6 backdrop-blur-sm transition-all duration-500 hover:border-primary-300/40 hover:shadow-2xl hover:shadow-black/25 sm:p-8">
+        {/* QR Code Quick Contact Card */}
+        <Reveal inView={inView} delay={480} className="mb-14">
+          <div className="group relative mx-auto w-full max-w-3xl overflow-hidden rounded-3xl border border-white/15 bg-gradient-to-br from-white/10 via-white/5 to-transparent p-6 backdrop-blur-sm transition-all duration-500 hover:border-primary-300/40 hover:shadow-2xl hover:shadow-black/25 sm:p-8">
             {/* Soft glow behind the card */}
             <div
               className="pointer-events-none absolute -right-16 -top-16 h-52 w-52 rounded-full bg-primary-500/20 blur-3xl opacity-60 transition-opacity duration-500 group-hover:opacity-100"
@@ -309,7 +363,7 @@ const Footer = () => {
 
             <div className="relative flex flex-col items-center gap-6 sm:flex-row sm:gap-10">
               {/* QR with scanner frame */}
-              <div className="relative flex-shrink-0 p-4">
+              <div className="relative flex-shrink-0 p-3 sm:p-4">
                 {/* Corner brackets */}
                 {[
                   'top-0 left-0 border-t-2 border-l-2 rounded-tl-xl',
@@ -319,16 +373,16 @@ const Footer = () => {
                 ].map((pos) => (
                   <span
                     key={pos}
-                    className={`nb-anim absolute h-6 w-6 border-primary-300 animate-[nbCorner_2.4s_ease-in-out_infinite] ${pos}`}
+                    className={`nb-anim absolute h-5 w-5 sm:h-6 sm:w-6 border-primary-300 animate-[nbCorner_2.4s_ease-in-out_infinite] ${pos}`}
                     aria-hidden="true"
                   />
                 ))}
 
-                <div className="relative overflow-hidden rounded-xl bg-white p-3 shadow-xl shadow-black/30 transition-transform duration-500 group-hover:scale-105">
+                <div className="relative overflow-hidden rounded-xl bg-white p-2.5 sm:p-3 shadow-xl shadow-black/30 transition-transform duration-500 group-hover:scale-105">
                   <img
                     src="/QR.jpg"
                     alt="Scan to Contact Nebras Academy"
-                    className="h-32 w-32 rounded-lg object-contain sm:h-36 sm:w-36"
+                    className="h-28 w-28 rounded-lg object-contain sm:h-36 sm:w-36"
                     loading="lazy"
                     width="144"
                     height="144"
@@ -343,15 +397,14 @@ const Footer = () => {
 
               {/* Text + quick actions */}
               <div className="flex-1 text-center sm:text-left">
-                <span className="mb-3 inline-block rounded-full bg-primary-500/20 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-300">
-                  Quick Contact
+                <span className="mb-2.5 inline-block rounded-full bg-primary-500/20 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-300">
+                  Quick Connect
                 </span>
                 <h4 className="mb-2 text-xl font-bold text-white sm:text-2xl">
-                  Scan to <span className="text-primary-300">Contact Us</span>
+                  Scan to <span className="text-primary-300">Contact Us</span> Instantly
                 </h4>
                 <p className="mb-5 text-sm leading-relaxed text-white/75">
-                  Scan the QR code with your phone to reach Nebras Academy instantly, or use
-                  one of the quick options below.
+                  Scan the QR code with your smartphone camera to reach our student support team directly on WhatsApp, or start a chat right away.
                 </p>
 
                 <div className="flex flex-col justify-center gap-3 sm:flex-row sm:justify-start">
@@ -362,14 +415,14 @@ const Footer = () => {
                     className="group/btn inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#25D366]/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-[#25D366]/40"
                   >
                     <FaWhatsapp className="text-base transition-transform duration-300 group-hover/btn:rotate-12 group-hover/btn:scale-110" />
-                    Chat on WhatsApp
+                    <span>Chat on WhatsApp</span>
                   </a>
                   <a
                     href="tel:+201146162847"
                     className="group/btn inline-flex items-center justify-center gap-2 rounded-full border border-white/25 px-5 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-primary-300 hover:bg-white/10 hover:text-primary-300"
                   >
                     <FaPhone className="text-sm transition-transform duration-300 group-hover/btn:-rotate-12 group-hover/btn:scale-110" />
-                    Call Now
+                    <span>Call Now</span>
                   </a>
                 </div>
               </div>
@@ -386,19 +439,22 @@ const Footer = () => {
               }`}
               aria-hidden="true"
             />
-            <p className="text-white/60 text-sm">
-              &copy; Copyright {new Date().getFullYear()} Nebras Academy. All Rights Reserved.
+            <p className="text-white/70 text-sm">
+              &copy; Copyright {new Date().getFullYear()} <strong className="text-white font-semibold">Nebras Academy</strong>. All Rights Reserved.
+            </p>
+            <p className="text-white/45 text-xs mt-1">
+              Dedicated to authentic online Quran, Tajweed, and Arabic learning worldwide.
             </p>
           </div>
         </Reveal>
       </div>
 
-      {/* Back to top */}
+      {/* Back to top button */}
       <button
         type="button"
         onClick={scrollToTop}
         aria-label="Back to top"
-        className={`fixed bottom-28 right-10 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-primary-500 text-white shadow-lg shadow-black/30 transition-all duration-300 hover:-translate-y-1 hover:bg-primary-300 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-300 ${
+        className={`fixed bottom-14 left-7 sm:bottom-14 sm:left-9 z-50 flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-full bg-primary-500 text-white shadow-lg shadow-black/30 transition-all duration-300 hover:-translate-y-1 hover:bg-primary-300 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-300 ${
           showTop ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-4 opacity-0'
         }`}
       >

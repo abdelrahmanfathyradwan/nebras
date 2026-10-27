@@ -18,6 +18,8 @@ import Islamic from './courses/Islamic';
 import MemorizingJuzAmma from './courses/MemorizingJuzAmma';
 import About from './pages/About';
 import BlogDetails from './pages/BlogDetails';
+import Teachers from './pages/Teachers';
+import Trial from './pages/Trial';
 
 import ScrollToTop from './components/ScrollToTop';
 import NotFound from './pages/NotFound';
@@ -63,6 +65,8 @@ function App() {
           <Route path="/applyForJop" element={<ApplyForJop />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/about" element={<About />} />
+          <Route path="/teachers" element={<Teachers />} />
+          <Route path="/trial" element={<Trial />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>

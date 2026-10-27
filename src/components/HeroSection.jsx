@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { FaWhatsapp } from 'react-icons/fa';
 import BookingModal from './BookingModal';
 
@@ -318,22 +319,40 @@ const HeroSection = () => {
                 <span className="font-semibold text-ink-900">Book a free trial</span> and start your journey today.
               </p>
 
-              {/* Primary CTA — pulsing glow + shine sweep */}
-              <a
-                href="/free-trial"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setIsBookingOpen(true);
-                }}
-                className="hx-glow relative overflow-hidden inline-flex items-center justify-center bg-brand-green-900 hover:bg-brand-green-700 text-white font-semibold text-base sm:text-lg px-7 py-3.5 sm:px-8 sm:py-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 min-h-[44px] w-full sm:w-auto"
-                id="hero-cta"
-              >
-                <span className="relative z-10">Book Your Free Trial</span>
-                <span
-                  className="hx-sweep pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-transparent via-white/25 to-transparent"
-                  aria-hidden="true"
-                />
-              </a>
+              {/* Primary CTA + Trust Badge */}
+              <div className="flex flex-col sm:flex-row items-center gap-3.5 w-full sm:w-auto">
+                <a
+                  href="/free-trial"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setIsBookingOpen(true);
+                  }}
+                  className="hx-glow relative overflow-hidden inline-flex items-center justify-center bg-brand-green-900 hover:bg-brand-green-700 text-white font-semibold text-base sm:text-lg px-7 py-3.5 sm:px-8 sm:py-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 min-h-[44px] w-full sm:w-auto"
+                  id="hero-cta"
+                >
+                  <span className="relative z-10">Book Your Free Trial</span>
+                  <span
+                    className="hx-sweep pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-transparent via-white/25 to-transparent"
+                    aria-hidden="true"
+                  />
+                </a>
+
+                {/* Trust Badge linking to /teachers */}
+                <Link
+                  to="/teachers"
+                  className="flex items-center justify-center text-center gap-2 px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-emerald-50 hover:bg-emerald-100/90 border border-emerald-200/90 text-emerald-900 text-xs sm:text-sm font-bold shadow-sm hover:shadow transition-all duration-200 hover:-translate-y-0.5 group w-full sm:w-auto"
+                  title="Meet our certified Quran scholars and Al-Azhar graduates"
+                >
+                  <span className="flex h-2 w-2 relative flex-shrink-0">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                  </span>
+                  <span className="break-words">All Teachers Certified with Sanad • Al-Azhar Graduates</span>
+                  <span className="text-emerald-700 font-bold transition-transform duration-200 group-hover:translate-x-1 flex-shrink-0">
+                    →
+                  </span>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -347,7 +366,7 @@ const HeroSection = () => {
         href="https://wa.me/201146162847"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-50 bg-[#25D366] hover:bg-[#1fb855] text-white p-3.5 sm:p-4 rounded-full shadow-2xl transition-all duration-300 animate-pulse-gentle flex items-center hover:scale-110 focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2"
+        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 bg-[#25D366] hover:bg-[#1fb855] text-white w-14 h-14 sm:w-16 sm:h-16 rounded-full shadow-2xl transition-all duration-300 animate-pulse-gentle flex items-center justify-center hover:scale-110 focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2"
         aria-label="Contact us on WhatsApp"
       >
         <span

@@ -54,7 +54,7 @@ const Pricing = () => {
     <div className="font-sans page-enter">
       <SEO 
         title="Pricing & Tuition" 
-        description="Affordable and high-quality online Quran learning for only $10/hr. Private and group classes available 24/7 with expert Al-Azhar teachers." 
+        description="Affordable and high-quality online Quran learning for only $8/hr. Private and group classes available 24/7 with expert Al-Azhar teachers." 
         canonical="/pricing"
       />
       {/* Hero Section */}
@@ -80,7 +80,7 @@ const Pricing = () => {
       <div className="bg-white py-16 px-6 text-center border-b border-gray-100">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-extrabold text-secondary-800 mb-4 leading-tight">
-            High-Quality Quran Learning for Only <span className="text-primary-500">$10/hr</span>
+            High-Quality Quran Learning for Only <span className="text-primary-500">$8/hr</span>
           </h2>
           <p className="text-lg text-gray-600 mb-8 max-w-xl mx-auto">
             Get it All for One Low Price. Start Today at Nebras Academy.

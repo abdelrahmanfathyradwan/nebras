@@ -546,7 +546,7 @@ export const allBlogPosts = [
     datePublished: "2026-10-24",
     dateModified: "2026-10-24",
     title: "Tafsir of Surah Al-Kawthar Meaning and Lessons",
-    image: "/images/hero.jpg.jfif",
+    image: "/images/hero.jpg",
     excerpt: "Surah Al-Kawthar in English is the 108th chapter of the Quran and the shortest surah, consisting of just three verses ...",
     content: [
       {

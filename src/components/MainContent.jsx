@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from 'react-router-dom';
 import { FaWhatsapp } from "react-icons/fa";
+import TeachersSection from "./teachers/TeachersSection";
 import {
   LuSparkles,
   LuUsers,
@@ -30,7 +31,7 @@ const WEEKS_PER_MONTH = 4;
 const PRESET_HOURS = [1, 2, 3, 5, 10, 15]; // hours per week
 const MIN_HOURS = 1;
 const MAX_HOURS = 40;
-const MONTH_OPTIONS = [3, 4, 5, 6];
+const MONTH_OPTIONS = [1, 2, 3, 4, 5, 6];
 
 // Smallest weekly hours that reach the monthly threshold (10 / 4 -> 3)
 const MIN_WEEKLY_FOR_DISCOUNT = Math.ceil(
@@ -497,7 +498,7 @@ const PriceCalculator = () => {
   const [hours, setHours] = useState(5);              // hours per week (per student)
   const [hoursInput, setHoursInput] = useState('5');
   const [students, setStudents] = useState(2);        // used only in group plan
-  const [months, setMonths] = useState(3);
+  const [months, setMonths] = useState(1);
 
   const isIndividual = plan === 'individual';
   const isGroup = plan === 'group';
@@ -603,7 +604,7 @@ const PriceCalculator = () => {
             <h3 className="text-xl font-bold text-secondary-600 mb-2">Course Details</h3>
             <dl className="divide-y divide-gray-200">
               {[
-                ['Duration', '3-6 months (flexible)'],
+                ['Duration', '1-6 months (flexible)'],
                 ['Class Type', 'One-on-One or Small Groups'],
                 ['Age Group', '5+ years (Kids & Adults)'],
                 [
@@ -752,7 +753,7 @@ const PriceCalculator = () => {
                     onClick={() => setMonths(m)}
                     className={chipClass(months === m)}
                   >
-                    {m} months
+                    {m} {m === 1 ? 'month' : 'months'}
                   </button>
                 ))}
               </div>
@@ -838,7 +839,7 @@ const PriceCalculator = () => {
                       </p>
 
                       <p className="mt-1 text-sm sm:text-base text-white/80">
-                        Total for {months} months:{' '}
+                        Total for {months} {months === 1 ? 'month' : 'months'}:{' '}
                         <span className="font-bold text-white text-lg sm:text-xl">
                           <span className="sr-only">{money(periodTotal)}</span>
                           <span key={periodTotal} className="mc-bump inline-block" aria-hidden="true">
@@ -1140,6 +1141,9 @@ const MainContent = () => {
             </Reveal>
           </div>
         </section>
+
+        {/* Certified Teachers & Sanad Section */}
+        <TeachersSection />
 
         {/* Section 5: Course Details & Price Calculator */}
         <PriceCalculator />

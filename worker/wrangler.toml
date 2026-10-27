@@ -1,0 +1,48 @@
+name = "nebras-academy-assistant"
+main = "src/index.js"
+compatibility_date = "2024-04-01"
+
+# -----------------------------------------------------------------------------
+# ENVIRONMENT VARIABLES (Non-sensitive configuration)
+# -----------------------------------------------------------------------------
+[vars]
+# Model identifier for Google Gemini API.
+# Free-tier options on Google AI Studio: "gemini-2.0-flash" (recommended, current) or "gemini-1.5-flash".
+GEMINI_MODEL = "gemini-flash-lite-latest"
+
+# Allowed web origins for CORS (comma-separated).
+# Include localhost for development and your production domain names.
+ALLOWED_ORIGINS = "http://localhost:5173,http://localhost:4173,https://www.nebrasacadmy.com,https://nebrasacadmy.com"
+
+# Official academy WhatsApp phone number (numbers only with international country code, no + or spaces).
+WHATSAPP_NUMBER = "201146162847"
+
+# Feature flag to enable Cloudflare Turnstile anti-bot verification (true/false).
+ENABLE_TURNSTILE = "false"
+
+# Webhook URL for lead capture (e.g. Google Apps Script Web App writing to Google Sheets, Make, Zapier).
+# Submissions from the /trial form will be forwarded as JSON POST requests here.
+LEADS_WEBHOOK_URL = "https://script.google.com/macros/s/YOUR_APPS_SCRIPT_ID/exec"
+
+# -----------------------------------------------------------------------------
+# SECRETS (Set these using the Wrangler CLI — NEVER put secret keys in this file!)
+# -----------------------------------------------------------------------------
+# 1. GEMINI_API_KEY:
+#    Command: npx wrangler secret put GEMINI_API_KEY
+#    Obtained from: https://aistudio.google.com/app/apikey (Google AI Studio)
+#
+# 2. TURNSTILE_SECRET (Optional, only needed if ENABLE_TURNSTILE = "true"):
+#    Command: npx wrangler secret put TURNSTILE_SECRET
+#    Obtained from: Cloudflare Dashboard > Turnstile > Add Widget > Secret Key
+
+# -----------------------------------------------------------------------------
+# OPTIONAL KV NAMESPACE BINDING (For global rate limiting persistence)
+# -----------------------------------------------------------------------------
+# If you create a KV namespace for rate limiting, uncomment the block below.
+# (If not bound, the worker automatically uses an in-memory sliding window fallback).
+#
+# Command to create KV namespace: npx wrangler kv:namespace create "RATE_LIMIT_KV"
+#
+# [[kv_namespaces]]
+# binding = "RATE_LIMIT_KV"
+# id = "YOUR_KV_NAMESPACE_ID"

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { FaWhatsapp, FaTelegram, FaYoutube } from 'react-icons/fa'
+import { FaWhatsapp, FaTelegram, FaYoutube, FaFacebook } from 'react-icons/fa'
 import BookingModal from '../components/BookingModal'
 import SEO from '../components/SEO'
 import StructuredData from '../components/StructuredData'
@@ -19,7 +19,7 @@ const Contact = () => {
       "name": "Nebras Academy",
       "contactPoint": {
         "@type": "ContactPoint",
-        "telephone": "+20-100-334-2452",
+        "telephone": "+201508586055",   
         "contactType": "customer service"
       }
     }
@@ -59,6 +59,7 @@ const Contact = () => {
            <div>
              <h3 className="text-lg font-bold text-secondary-800 mb-1">Phone</h3>
              <p className="text-gray-600 font-medium">Egy: +20 114 616 2847</p>
+             <p className="text-gray-600 font-medium">Egy: +20 150 858 6055</p>
            </div>
          </div>
 
@@ -92,7 +93,7 @@ const Contact = () => {
          {/* بطاقات قنوات المجتمع */}
          <div className="pt-2">
            <h3 className="text-lg font-bold text-secondary-800 mb-3">Join Our Official Channels</h3>
-           <div className="grid sm:grid-cols-2 gap-4">
+           <div className="grid sm:grid-cols-2 gap-3.5">
              <a 
                href="https://whatsapp.com/channel/0029Vb8mO30BadmjZ9lXxG2d"
                target="_blank"
@@ -120,6 +121,36 @@ const Contact = () => {
                <div>
                  <h4 className="font-bold text-secondary-800 text-sm group-hover:text-primary-600 transition-colors">Telegram Channel</h4>
                  <p className="text-xs text-gray-500">Free events & resources</p>
+               </div>
+             </a>
+
+             <a 
+               href="https://www.youtube.com/@Nebraskacadmey"
+               target="_blank"
+               rel="noopener noreferrer"
+               className="card p-4 border-l-4 border-[#FF0000] flex items-center gap-3.5 hover:shadow-md hover:-translate-y-0.5 transition-all group"
+             >
+               <div className="bg-[#FF0000]/10 p-3 rounded-xl text-[#FF0000] group-hover:bg-[#FF0000] group-hover:text-white transition-colors flex-shrink-0">
+                 <FaYoutube className="w-6 h-6" />
+               </div>
+               <div>
+                 <h4 className="font-bold text-secondary-800 text-sm group-hover:text-primary-600 transition-colors">YouTube Channel</h4>
+                 <p className="text-xs text-gray-500">Free lessons & recitations</p>
+               </div>
+             </a>
+
+             <a 
+               href="https://www.facebook.com/people/Nebras-Academy-for-Teaching-the-Holy-Quran/61595964628884/"
+               target="_blank"
+               rel="noopener noreferrer"
+               className="card p-4 border-l-4 border-[#1877F2] flex items-center gap-3.5 hover:shadow-md hover:-translate-y-0.5 transition-all group"
+             >
+               <div className="bg-[#1877F2]/10 p-3 rounded-xl text-[#1877F2] group-hover:bg-[#1877F2] group-hover:text-white transition-colors flex-shrink-0">
+                 <FaFacebook className="w-6 h-6" />
+               </div>
+               <div>
+                 <h4 className="font-bold text-secondary-800 text-sm group-hover:text-primary-600 transition-colors">Facebook Page</h4>
+                 <p className="text-xs text-gray-500">Updates & announcements</p>
                </div>
              </a>
            </div>

@@ -31,6 +31,8 @@ const staticPages = [
   { path: '/courses/memorizing-juz-amma', lastmod: '2026-10-24' },
   { path: '/pricing',                     lastmod: '2026-10-24' },
   { path: '/about',                       lastmod: '2026-10-24' },
+  { path: '/teachers',                    lastmod: '2026-10-27' },
+  { path: '/trial',                       lastmod: '2026-10-27' },
   { path: '/blog',                        lastmod: '2026-10-24' },
   { path: '/contact',                     lastmod: '2026-10-24' },
   { path: '/faqs',                        lastmod: '2026-10-24' },

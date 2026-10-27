@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react"
 import { Link, useLocation } from "react-router-dom"
-import { FaEnvelope, FaChevronDown, FaBars, FaCheck, FaTimes, FaPhoneAlt, FaWhatsapp, FaTelegram } from "react-icons/fa"
+import { FaEnvelope, FaChevronDown, FaBars, FaCheck, FaTimes, FaPhoneAlt, FaWhatsapp, FaTelegram, FaYoutube, FaFacebook } from "react-icons/fa"
 import BookingModal from "./BookingModal"
 
 const EMAIL = "nebrasacademey2025@gmail.com"
@@ -17,6 +17,7 @@ const COURSES = [
 ]
 
 const NAV_LINKS = [
+  { to: "/teachers", label: "Teachers" },
   { to: "/pricing", label: "Pricing" },
   { to: "/blog", label: "Blog" },
   { to: "/about", label: "About" },
@@ -159,7 +160,7 @@ const Navbar = () => {
         <div className="px-4">
           {/* Desktop: contacts on the left, tagline on the right */}
           <div className="container mx-auto hidden md:flex items-center justify-between gap-6 py-2">
-            <div className="flex flex-wrap items-center gap-x-5 lg:gap-x-6 gap-y-1">
+            <div className="flex flex-wrap items-center gap-x-5 lg:gap-x-6 gap-y-1 pl-4 md:pl-8 lg:pl-12">
               <a
                 dir="ltr"
                 href="tel:+201146162847"
@@ -178,10 +179,10 @@ const Navbar = () => {
                 aria-hidden="true"
               />
 
-              {/* NOTE: the number shown below differs from the number in href. Please verify which one is correct. */}
+              
               <a
                 dir="ltr"
-                href="tel:+201003342452"
+                href="tel:+201508586055"
                 className={contactLinkClasses}
               >
                 <img
@@ -237,7 +238,7 @@ const Navbar = () => {
                 title="WhatsApp Channel"
               >
                 <FaWhatsapp className="text-[#25D366] text-sm" />
-                <span>WhatsApp Channel</span>
+                <span>WhatsApp</span>
               </a>
               <span className="h-3 w-px bg-white/20" aria-hidden="true" />
               <a
@@ -248,7 +249,29 @@ const Navbar = () => {
                 title="Telegram Channel"
               >
                 <FaTelegram className="text-[#229ED9] text-sm" />
-                <span>Telegram Channel</span>
+                <span>Telegram</span>
+              </a>
+              <span className="h-3 w-px bg-white/20" aria-hidden="true" />
+              <a
+                href="https://www.youtube.com/@Nebraskacadmey"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-white/90 hover:text-[#FF0000] transition-colors"
+                title="YouTube Channel"
+              >
+                <FaYoutube className="text-[#FF0000] text-sm" />
+                <span>YouTube</span>
+              </a>
+              <span className="h-3 w-px bg-white/20" aria-hidden="true" />
+              <a
+                href="https://www.facebook.com/people/Nebras-Academy-for-Teaching-the-Holy-Quran/61595964628884/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-white/90 hover:text-[#1877F2] transition-colors"
+                title="Facebook Page"
+              >
+                <FaFacebook className="text-[#1877F2] text-sm" />
+                <span>Facebook</span>
               </a>
             </div>
           </div>
@@ -462,7 +485,7 @@ const Navbar = () => {
           </div>
 
           {/* Official Channels in Mobile Menu */}
-          <div className="pt-3 pb-1 border-t border-gray-100 flex items-center justify-around text-xs text-secondary-700">
+          <div className="pt-3 pb-1 border-t border-gray-100 grid grid-cols-2 gap-2 text-xs text-secondary-700">
             <a
               href="https://whatsapp.com/channel/0029Vb8mO30BadmjZ9lXxG2d"
               target="_blank"
@@ -472,7 +495,7 @@ const Navbar = () => {
               <FaWhatsapp className="text-sm text-[#25D366]" />
               <span>WhatsApp Channel</span>
             </a>
-            <span className="h-3.5 w-px bg-gray-200" aria-hidden="true" />
+
             <a
               href="https://t.me/nebrasacademi"
               target="_blank"
@@ -481,6 +504,24 @@ const Navbar = () => {
             >
               <FaTelegram className="text-sm text-[#229ED9]" />
               <span>Telegram Channel</span>
+            </a>
+            <a
+              href="https://www.youtube.com/@Nebraskacadmey"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 py-1.5 px-2 rounded-md hover:bg-red-50 text-gray-700 hover:text-[#FF0000] font-medium transition-colors"
+            >
+              <FaYoutube className="text-sm text-[#FF0000]" />
+              <span>YouTube Channel</span>
+            </a>
+            <a
+              href="https://www.facebook.com/people/Nebras-Academy-for-Teaching-the-Holy-Quran/61595964628884/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 py-1.5 px-2 rounded-md hover:bg-blue-50 text-gray-700 hover:text-[#1877F2] font-medium transition-colors"
+            >
+              <FaFacebook className="text-sm text-[#1877F2]" />
+              <span>Facebook Page</span>
             </a>
           </div>
         </div>
