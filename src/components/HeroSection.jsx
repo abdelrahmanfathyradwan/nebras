@@ -1,7 +1,5 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaWhatsapp } from 'react-icons/fa';
-import BookingModal from './BookingModal';
 
 /**
  * HeroSection — Section 1 of the homepage.
@@ -47,8 +45,6 @@ const BEAMS = [
 ];
 
 const HeroSection = () => {
-  const [isBookingOpen, setIsBookingOpen] = useState(false);
-
   return (
     <>
       {/* Scoped keyframes — prefixed "hx-" so nothing else is affected */}
@@ -259,15 +255,12 @@ const HeroSection = () => {
 
                   {/* Image container with rounded corners and shadow */}
                   <div className="relative w-full h-full rounded-[1.5rem] overflow-hidden shadow-xl ring-1 ring-black/5">
-                    {/* TODO: Replace with actual hero image — person holding an ornate Quran.
-                         File needed: /public/images/hero/quran-holder.webp (≈900×1000, portrait, light bg)
-                         Also provide /public/images/hero/quran-holder.avif for modern browsers. */}
                     <img
-                      src="/images/mainContint.jpg"
-                      alt="A teacher gently holding an ornate Quran, ready for an online lesson at Nebras Academy"
-                      width="1100"
-                      height="1000"
-                      fetchpriority="high"
+                      src="/images/online-quran-lesson-with-teacher.webp"
+                      alt="A student following a live online Quran lesson on a laptop while the teacher appears on screen"
+                      width="735"
+                      height="490"
+                      fetchPriority="high"
                       decoding="async"
                       className="w-full h-full object-cover object-center"
                     />
@@ -299,7 +292,7 @@ const HeroSection = () => {
 
               {/* H1 — the only H1 on the page */}
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] xl:text-[3.5rem] font-bold leading-[1.15] text-ink-900">
-                Online{' '}
+                Authentic{' '}
                 <span className="relative inline-block">
                   <span className="hx-text-grad text-brand-orange-500">Quran</span>
                   {/* Breathing underline */}
@@ -308,9 +301,9 @@ const HeroSection = () => {
                     aria-hidden="true"
                   />
                 </span>{' '}
-                Classes
+                Learning
                 <br className="hidden sm:block" />
-                {' '}for Kids &amp; Adults
+                {' '}Live from Cairo to Your Home
               </h1>
 
               {/* Sub-line */}
@@ -319,14 +312,22 @@ const HeroSection = () => {
                 <span className="font-semibold text-ink-900">Book a free trial</span> and start your journey today.
               </p>
 
+              <p className="text-sm text-ink-800/70 max-w-xl leading-relaxed">
+                In the United States? Explore{' '}
+                <Link to="/online-quran-classes-usa" className="font-semibold text-brand-green-900 underline underline-offset-2">
+                  online Quran classes for students in the USA
+                </Link>{' '}
+                or read the{' '}
+                <Link to="/learn-quran-online-usa" className="font-semibold text-brand-green-900 underline underline-offset-2">
+                  complete guide to learning Quran online
+                </Link>
+                .
+              </p>
+
               {/* Primary CTA + Trust Badge */}
               <div className="flex flex-col sm:flex-row items-center gap-3.5 w-full sm:w-auto">
-                <a
-                  href="/free-trial"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setIsBookingOpen(true);
-                  }}
+                <Link
+                  to="/trial"
                   className="hx-glow relative overflow-hidden inline-flex items-center justify-center bg-brand-green-900 hover:bg-brand-green-700 text-white font-semibold text-base sm:text-lg px-7 py-3.5 sm:px-8 sm:py-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 min-h-[44px] w-full sm:w-auto"
                   id="hero-cta"
                 >
@@ -335,19 +336,19 @@ const HeroSection = () => {
                     className="hx-sweep pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-transparent via-white/25 to-transparent"
                     aria-hidden="true"
                   />
-                </a>
+                </Link>
 
                 {/* Trust Badge linking to /teachers */}
                 <Link
                   to="/teachers"
                   className="flex items-center justify-center text-center gap-2 px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-emerald-50 hover:bg-emerald-100/90 border border-emerald-200/90 text-emerald-900 text-xs sm:text-sm font-bold shadow-sm hover:shadow transition-all duration-200 hover:-translate-y-0.5 group w-full sm:w-auto"
-                  title="Meet our certified Quran scholars and Al-Azhar graduates"
+                  title="Meet our Ijazah-holding teachers and see their documents"
                 >
                   <span className="flex h-2 w-2 relative flex-shrink-0">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                   </span>
-                  <span className="break-words">All Teachers Certified with Sanad • Al-Azhar Graduates</span>
+                  <span className="break-words">Ijazah-holding teachers • Credentials published</span>
                   <span className="text-emerald-700 font-bold transition-transform duration-200 group-hover:translate-x-1 flex-shrink-0">
                     →
                   </span>
@@ -357,9 +358,6 @@ const HeroSection = () => {
           </div>
         </div>
       </section>
-
-      {/* Booking Modal */}
-      <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
 
       {/* Fixed WhatsApp Button — with ripple rings + periodic wiggle */}
       <a

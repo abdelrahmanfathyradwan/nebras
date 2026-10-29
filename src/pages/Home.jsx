@@ -21,8 +21,8 @@ function Home() {
   return (
     <>
       <SEO
-        title="Online Quran Classes for Kids & Adults – Nebras Academy"
-        description="Learn Quran online with live 1-on-1 Tajweed, memorization and Arabic lessons for kids and adults. Flexible schedules. Book your free trial today."
+        title="Nebras Academy | Quran, Arabic & Islamic Studies Online"
+        description="Nebras Academy teaches the Quran, Tajweed, Arabic and Islamic studies live online for kids and adults. Meet our teachers and book a free trial."
         canonical="/"
       />
       <StructuredData data={websiteSchema} />

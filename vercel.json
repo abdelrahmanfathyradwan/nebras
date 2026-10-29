@@ -1,5 +1,7 @@
 {
   "redirects": [
+    { "source": "/free-trial",                "destination": "/trial",                       "permanent": true },
+    { "source": "/free-trial/",               "destination": "/trial",                       "permanent": true },
     { "source": "/courses/secondary",         "destination": "/courses/islamic-studies",     "permanent": true },
     { "source": "/courses/Islamic",           "destination": "/courses/islamic-studies",     "permanent": true },
     { "source": "/courses/islamic",           "destination": "/courses/islamic-studies",     "permanent": true },

@@ -9,7 +9,7 @@ export const allBlogPosts = [
     datePublished: "2026-10-24",
     dateModified: "2026-10-24",
     title: "Anas Ibn Malik: A Pillar of Islamic History",
-    image: "/images/Anas-ibn-Malik.jpg",
+    image: "/images/anas-ibn-malik.webp",
     excerpt: "Anas ibn Malik was one of the prophet’s companions and he was his servant for around ten years. Therefore ...",
     content: [
       {
@@ -48,7 +48,7 @@ export const allBlogPosts = [
     datePublished: "2026-10-24",
     dateModified: "2026-10-24",
     title: "What are things that break wudu",
-    image: "/images/breakWudu.jpg",
+    image: "/images/things-that-break-wudu.webp",
     excerpt: "Wudu or ablution is an essential act for praying and reading the Quran, therefore it is essential to …",
     content: [
       {
@@ -99,7 +99,7 @@ export const allBlogPosts = [
     datePublished: "2026-10-24",
     dateModified: "2026-10-24",
     title: "How do Muslims celebrate with Eid al Fitr?",
-    image: "/images/celebrateEid.jpg",
+    image: "/images/celebrating-eid-al-fitr.webp",
     excerpt: "What is the Eid al Fitr meaning? It is called in English Festival of Breaking the Fast, and it is an important Islamic holiday ...",
     content: [
       {
@@ -150,7 +150,7 @@ export const allBlogPosts = [
     datePublished: "2026-10-24",
     dateModified: "2026-10-24",
     title: "What are the benefits of fasting in Ramadan?",
-    image: "/images/fasting in Ramadan.jpg",
+    image: "/images/benefits-of-fasting-in-ramadan.webp",
     excerpt: "The benefits of fasting in Ramadan go far beyond simply abstaining from food and drink. This sacred month offers a unique opportunity for ...",
     content: [
       {
@@ -189,7 +189,7 @@ export const allBlogPosts = [
     datePublished: "2026-10-24",
     dateModified: "2026-10-24",
     title: "What is fiqh in Islam?",
-    image: "/images/Fiqh.jpg",
+    image: "/images/what-is-fiqh-in-islam.webp",
     excerpt: "Fiqh  in Islam refers to the extracting of the Islamic law from the Quran and sunnah with the help of Ijtihad ...",
     content: [
       {
@@ -220,7 +220,7 @@ export const allBlogPosts = [
     datePublished: "2026-10-24",
     dateModified: "2026-10-24",
     title: "What Is Fajr Prayer?",
-    image: "/images/frajr_prayer.jpeg",
+    image: "/images/fajr-prayer-at-dawn.webp",
     excerpt: "Understanding fajr prayer is essential for all Muslims. As the first of the five daily obligatory prayers, it holds special significance...",
     content: [
       {
@@ -291,7 +291,7 @@ export const allBlogPosts = [
     datePublished: "2026-10-24",
     dateModified: "2026-10-24",
     title: "Islamophobia meaning",
-    image: "/images/Islamophobia.jpg",
+    image: "/images/islamophobia-meaning.webp",
     excerpt: "Islamophobia is an irrational fear, hatred, or prejudice against Islam and people who are Muslims...",
     content: [
       {
@@ -350,7 +350,7 @@ export const allBlogPosts = [
     datePublished: "2026-10-24",
     dateModified: "2026-10-24",
     title: "Modesty in Islam: What It Really Means for Men and Women?",
-    image: "/images/Modesty.jpg",
+    image: "/images/modesty-in-islam.webp",
     excerpt: "Modesty in Islam is a beautiful and essential value that shapes the way Muslims live, interact, and view themselves...",
     content: [
       {
@@ -401,7 +401,7 @@ export const allBlogPosts = [
     datePublished: "2026-10-24",
     dateModified: "2026-10-24",
     title: "10 rights of parents in Islam?",
-    image: "/images/parentsInIslam.jpg",
+    image: "/images/rights-of-parents-in-islam.webp",
     excerpt: "Islam places immense importance on respecting and caring for parents. The rights of parents in Islam are mentioned ...",
     content: [
       {
@@ -452,7 +452,7 @@ export const allBlogPosts = [
     datePublished: "2026-10-24",
     dateModified: "2026-10-24",
     title: "Is it Compulsory to Finish the Quran in Ramadan?",
-    image: "/images/quran1.jpg",
+    image: "/images/quran-open-pages.webp",
     excerpt: "No, it is not compulsory to finish the Quran in Ramadan, but it is highly recommended. Ramadan is the month in which the Quran was revealed...",
     content: [
       {
@@ -495,7 +495,7 @@ export const allBlogPosts = [
     datePublished: "2026-10-24",
     dateModified: "2026-10-24",
     title: "What are the Islamic sacred months, and why are they called that?",
-    image: "/images/sacredMonths.jpg",
+    image: "/images/islamic-sacred-months.webp",
     excerpt: "Islamic sacred months are more than just names on the Hijri calendar—they are special seasons of peace ...",
     content: [
       {
@@ -546,7 +546,7 @@ export const allBlogPosts = [
     datePublished: "2026-10-24",
     dateModified: "2026-10-24",
     title: "Tafsir of Surah Al-Kawthar Meaning and Lessons",
-    image: "/images/hero.jpg",
+    image: "/images/hero/quran-holder.webp",
     excerpt: "Surah Al-Kawthar in English is the 108th chapter of the Quran and the shortest surah, consisting of just three verses ...",
     content: [
       {
@@ -598,49 +598,49 @@ export const courses = [
   {
     id: 1,
     title: "Memorizing Juz' Amma (Part 30)",
-    image: "/images/juzAmm.jpg",
+    image: "/images/juz-amma-page.webp",
     path: "/courses/memorizing-juz-amma"
   },
   {
     id: 2,
     title: "Quran Reading (Noor Al Bayan)",
-    image: "/images/noorAlByan.jpg",
+    image: "/images/noor-al-bayan-book.webp",
     path: "/courses/reading"
   },
   {
     id: 3,
     title: "Quran Tajweed and Recitation",
-    image: "/images/quran2.jpg",
+    image: "/images/quran-with-prayer-beads.webp",
     path: "/courses/tajweed"
   },
   {
     id: 4,
     title: "Quran Recitation",
-    image: "/images/hero.jpg",
+    image: "/images/quran-open-pages.webp",
     path: "/courses/recitation"
   },
   {
     id: 5,
     title: "Quran Memorization",
-    image: "/images/quran1.jpg",
+    image: "/images/hero/quran-holder.webp",
     path: "/courses/memorization"
   },
   {
     id: 6,
     title: "Arabic Language Kids Course",
-    image: "/images/kids.jpg",
+    image: "/images/child-reading-quran.webp",
     path: "/courses/arabic-kids"
   },
   {
     id: 7,
     title: "Arabic Language Course",
-    image: "/images/arabic.jpg",
+    image: "/images/arabic-calligraphy.webp",
     path: "/courses/arabic"
   },
   {
     id: 8,
-    title: "Islamic Course",
-    image: "/images/quran2.jpg",
+    title: "Islamic Studies for Kids & Youth",
+    image: "/images/kaaba-at-sunset.webp",
     path: "/courses/islamic-studies"
   }
 ];

@@ -49,7 +49,7 @@ const SUGGESTED_QUESTIONS = [
   {
     id: 'teachers',
     label: 'Which teacher is right for me?',
-    subtitle: 'Al-Azhar scholars with connected Sanad',
+    subtitle: 'Ijazah holders with a connected Sanad',
     badge: 'CERTIFIED',
     badgeStyle: 'bg-teal-100/90 text-teal-800 border-teal-300/70',
     icon: FaAward,
@@ -447,7 +447,7 @@ const ChatWidget = () => {
             setIsOpen(!isOpen);
             setShowSuggestionsPopup(false);
           }}
-          aria-label={isOpen ? 'Close Academy Assistant' : 'Open Academy Assistant'}
+          aria-label={isOpen ? 'Close Nebras Assistant' : 'Open Nebras Assistant'}
           aria-expanded={isOpen}
           aria-controls="academy-chat-panel"
           className="group relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-secondary-600 hover:bg-secondary-500 text-white shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95 focus:outline-none focus-visible:ring-4 focus-visible:ring-primary-400 cursor-pointer"
@@ -480,7 +480,7 @@ const ChatWidget = () => {
             className="hidden sm:inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-secondary-700/95 hover:bg-secondary-600 text-white text-xs font-bold shadow-lg border border-white/10 backdrop-blur-sm transition-all hover:scale-105 active:scale-95 cursor-pointer"
           >
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-            <span>Academy Assistant</span>
+            <span>Nebras Assistant</span>
           </button>
         )}
       </div>
@@ -503,7 +503,7 @@ const ChatWidget = () => {
                 </span>
                 <div>
                   <h3 id="chat-panel-title" className="text-base font-bold flex items-center gap-2">
-                    <span>Academy Assistant</span>
+                    <span>Nebras Assistant</span>
                     <span className="flex h-2 w-2 relative" title="AI Assistant Online">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                       <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
@@ -648,7 +648,7 @@ const ChatWidget = () => {
                   <span className="w-2 h-2 rounded-full bg-secondary-500 animate-bounce" style={{ animationDelay: '0ms' }} />
                   <span className="w-2 h-2 rounded-full bg-secondary-500 animate-bounce" style={{ animationDelay: '150ms' }} />
                   <span className="w-2 h-2 rounded-full bg-secondary-500 animate-bounce" style={{ animationDelay: '300ms' }} />
-                  <span className="sr-only">Academy Assistant is typing...</span>
+                  <span className="sr-only">Nebras Assistant is typing...</span>
                 </div>
               </div>
             )}
@@ -691,7 +691,7 @@ const ChatWidget = () => {
                   disabled={isLoading}
                   placeholder="Ask about courses, prices, trial lessons..."
                   className="w-full text-xs sm:text-sm px-3.5 py-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all disabled:opacity-50"
-                  aria-label="Ask the Academy Assistant"
+                  aria-label="Ask the Nebras Assistant"
                 />
               </div>
 

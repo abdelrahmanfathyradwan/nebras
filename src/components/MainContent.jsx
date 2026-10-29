@@ -848,15 +848,13 @@ const PriceCalculator = () => {
                         </span>
                       </p>
                     </div>
-                    <a
-                      href="https://wa.me/201146162847"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <Link
+                      to="/trial"
                       className="mc-glow-cta relative overflow-hidden inline-flex justify-center items-center px-6 py-3 rounded-full bg-white text-secondary-600 font-bold hover:bg-primary-500 hover:text-white hover:-translate-y-0.5 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-secondary-600"
                     >
                       <span className="relative z-10">Book Your Free Trial</span>
                       <Shine tone="rgba(242,154,31,0.35)" />
-                    </a>
+                    </Link>
                   </div>
                 )}
               </div>
@@ -1043,7 +1041,7 @@ const MainContent = () => {
             <Reveal delay={120}>
               <p className="text-gray-700 max-w-4xl mx-auto text-base sm:text-lg leading-relaxed text-start mb-4">
                 <strong className="mc-shimmer text-primary-500 font-bold">Nebras Academy</strong> offers exceptional <strong className="text-primary-500 font-semibold">online Quran education </strong>
-                with certified teachers from Al-Azhar and other prestigious institutions. Our flexible scheduling allows students worldwide to learn at their convenience. We provide personalized one-on-one sessions tailored to each student's level and pace. With interactive learning tools and a structured curriculum.
+                with Ijazah-holding teachers based in Cairo. Our flexible scheduling allows students worldwide to learn at their convenience. We provide personalized one-on-one sessions tailored to each student's level and pace. With interactive learning tools and a structured curriculum.
               </p>
             </Reveal>
             <Reveal delay={260}>
@@ -1070,12 +1068,12 @@ const MainContent = () => {
             <Reveal variant="right" delay={150} className="md:w-1/2">
               <FramedImage>
                 <img
-                  src="/images/doaa.jpg"
-                  alt="Online Quran Learning"
+                  src="/images/man-making-dua-in-mosque.webp"
+                  alt="A man in ihram making dua inside a mosque"
                   loading="lazy"
                   decoding="async"
-                  width="800"
-                  height="600"
+                  width="600"
+                  height="314"
                   className="w-full h-auto object-cover transition-transform duration-500 hover:scale-105"
                 />
               </FramedImage>
@@ -1090,12 +1088,12 @@ const MainContent = () => {
             <Reveal variant="left" className="w-full md:w-1/2 order-2 md:order-1">
               <FramedImage delay={1.2}>
                 <img
-                  src="/images/muslim.jpg"
-                  alt="Quran and Arabic Learning"
+                  src="/images/kaaba-at-sunset.webp"
+                  alt="The Kaaba in Mecca at sunset with pilgrims gathered around it"
                   loading="lazy"
                   decoding="async"
-                  width="800"
-                  height="600"
+                  width="768"
+                  height="1344"
                   className="mc-pan-a h-[240px] md:h-[380px] w-full object-cover object-center transition-transform duration-500 hover:scale-105"
                 />
               </FramedImage>
@@ -1123,18 +1121,26 @@ const MainContent = () => {
                 Start Today with Nebras Academy</h2>
               </div>
               <p className="text-gray-700 text-base sm:text-lg leading-8">
-                Join thousands of satisfied students who have transformed their Quranic recitation and understanding through our proven teaching methods. Take the first step in your spiritual journey <span className='mc-shimmer text-primary-500 font-semibold'>with a free trial class</span> tailored to your level and goals.
+                Start with a plan built around your level and goals, and take the first step in your spiritual journey <span className='mc-shimmer text-primary-500 font-semibold'>with a free trial class</span>. If you are in the United States, you can also read the{' '}
+                <Link to="/online-quran-classes-usa" className="font-semibold text-primary-600 underline underline-offset-2">
+                  guide to online Quran classes in the USA
+                </Link>{' '}
+                or the{' '}
+                <Link to="/learn-quran-online-usa" className="font-semibold text-primary-600 underline underline-offset-2">
+                  complete guide to learning Quran online
+                </Link>
+                .
               </p>
             </Reveal>
             <Reveal variant="right" delay={150} className="w-full md:w-1/2">
               <FramedImage delay={2.4}>
                 <img
-                  src="/images/mainContint.jpg"
-                  alt="Online Quran Learning"
+                  src="/images/online-quran-lesson-with-teacher.webp"
+                  alt="A student following a live online Quran lesson on a laptop while the teacher appears on screen"
                   loading="lazy"
                   decoding="async"
-                  width="800"
-                  height="600"
+                  width="735"
+                  height="490"
                   className="mc-pan-b h-[240px] md:h-[380px] w-full object-cover object-bottom transition-transform duration-500 hover:scale-105"
                 />
               </FramedImage>
@@ -1165,15 +1171,13 @@ const MainContent = () => {
             style={{ background: 'rgba(242,154,31,0.35)', animationDelay: '1.3s' }}
             aria-hidden="true"
           />
-          <a
-            href="https://wa.me/201146162847"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            to="/trial"
             className='mc-glow-cta relative overflow-hidden inline-flex text-center bg-secondary-500 transition-all duration-300 shadow-lg text-white font-bold hover:bg-primary-500 hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 px-8 py-4 justify-center items-center rounded-full text-base sm:text-lg'
           >
             <span className="relative z-10">Book Your Free Trial</span>
             <Shine />
-          </a>
+          </Link>
         </div>
       </Reveal>
     </div>

@@ -47,7 +47,7 @@ export const CHAT_CONFIG = {
 
   // Welcome message from the assistant
   welcomeMessage:
-    "Peace be upon you! Welcome to Nebras Academy. I'm here to help you explore our Quran and Arabic courses, certified Al-Azhar teachers, pricing packages, and how to book your free trial lesson. How may I help you today?",
+    "Peace be upon you! Welcome to Nebras Academy. I'm here to help you explore our Quran and Arabic courses, Ijazah-holding teachers, pricing packages, and how to book your free trial lesson. How may I help you today?",
 
   // Friendly rate-limit & error fallback
   fallbackMessage:

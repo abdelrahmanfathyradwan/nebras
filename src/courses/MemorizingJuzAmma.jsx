@@ -7,14 +7,14 @@ const MemorizingJuzAmma = () => {
     <div className="max-w-full mx-auto">
       <SEO 
         title="Memorizing Juz' Amma | Online Classes – Nebras Academy" 
-        description="Help your child memorize Juz' Amma (Part 30) online with Nebras Academy. Short surahs for daily prayers, taught by certified Al-Azhar teachers." 
+        description="Help your child memorize Juz' Amma (Part 30) online with Nebras Academy. Short surahs for daily prayers, taught by Ijazah-holding teachers." 
         canonical="/courses/memorizing-juz-amma"
       />
       <StructuredData data={{
   "@context": "https://schema.org",
   "@type": "Course",
   "name": "Memorizing Juz' Amma (Part 30)",
-  "description": "Master the short surahs commonly recited in daily prayers with a specialized memorization program. Certified Al-Azhar teachers for kids and adults.",
+  "description": "Master the short surahs commonly recited in daily prayers with a specialized memorization program. Ijazah-holding teachers for kids and adults.",
   "provider": {
     "@type": "Organization",
     "name": "Nebras Academy",

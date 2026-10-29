@@ -37,8 +37,11 @@ const Blog = () => {
       {/* Hero Section */}
       <div className="relative h-[240px] overflow-hidden">
         <img
-          src="/images/celebrateEid.jpg"
-          alt="Blog Banner"
+          src="/images/celebrating-eid-al-fitr.webp"
+          alt="Illustration for the Eid al-Fitr article"
+          width="452"
+          height="626"
+          fetchPriority="high"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-secondary-900/80 flex items-center justify-start px-6 md:px-16">

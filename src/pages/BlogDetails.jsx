@@ -136,8 +136,20 @@ const BlogDetails = () => {
       <section className="mt-12 bg-primary-50/50 rounded-2xl border border-gray-100 p-6 sm:p-8">
         <h2 className="text-2xl font-bold text-secondary-800 mb-2">Learn with Nebras Academy</h2>
         <p className="text-gray-600 mb-5">
-          Study the Quran and Arabic online with certified Al-Azhar teachers. Explore our courses or
-          {' '}<Link to="/pricing" className="text-primary-500 font-semibold hover:underline">see pricing</Link>.
+          Study the Quran and Arabic online with Ijazah-holding teachers in Cairo. Read{' '}
+          <Link to="/online-quran-classes-usa" className="text-primary-500 font-semibold hover:underline">
+            how our online Quran classes work for students in the USA
+          </Link>
+          , the{' '}
+          <Link to="/learn-quran-online-usa" className="text-primary-500 font-semibold hover:underline">
+            complete beginner's guide to learning Quran online
+          </Link>
+          , or meet the{' '}
+          <Link to="/teachers" className="text-primary-500 font-semibold hover:underline">
+            teachers and their Ijazah
+          </Link>
+          . You can also explore our courses or{' '}
+          <Link to="/pricing" className="text-primary-500 font-semibold hover:underline">see pricing</Link>.
         </p>
         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
           {courses.map((course) => (

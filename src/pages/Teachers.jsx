@@ -5,7 +5,6 @@ import TeacherCard from '../components/teachers/TeacherCard';
 import IjazahLightbox from '../components/teachers/IjazahLightbox';
 import SEO from '../components/SEO';
 import StructuredData from '../components/StructuredData';
-import BookingModal from '../components/BookingModal';
 import {
   FaAward,
   FaBookOpen,
@@ -21,7 +20,6 @@ const Teachers = () => {
   const [activeDoc, setActiveDoc] = useState(null);
   const [activeTeacher, setActiveTeacher] = useState(null);
   const [triggerRef, setTriggerRef] = useState(null);
-  const [isBookingOpen, setIsBookingOpen] = useState(false);
 
   const handleOpenDoc = (doc, teacher, ref) => {
     setActiveDoc(doc);
@@ -39,7 +37,7 @@ const Teachers = () => {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     name: 'Nebras Academy Certified Quran Teachers & Ijazah Scholars',
-    description: 'Certified Quran teachers and Al-Azhar University graduates holding authentic Ijazah with connected chains of transmission (Sanad).',
+    description: 'Ijazah-holding Quran teachers with connected chains of transmission (Sanad); one is also an Al-Azhar University graduate.',
     url: 'https://www.nebrasacadmy.com/teachers',
     itemListElement: teachers.map((teacher, index) => ({
       '@type': 'ListItem',
@@ -75,7 +73,7 @@ const Teachers = () => {
       {/* SEO Configuration */}
       <SEO
         title="Our Teachers & Ijazah – Certified Quran Scholars with Connected Sanad | Nebras Academy"
-        description="Meet our verified Quran scholars and Al-Azhar graduates holding authentic Ijazah and unbroken chains of transmission (Sanad) back to Prophet Muhammad (PBUH)."
+        description="Meet our Quran teachers holding authentic Ijazah with unbroken chains of transmission (Sanad), and see the published credentials behind each profile."
         canonical="/teachers"
       />
       <StructuredData data={teachersSchema} />
@@ -102,7 +100,7 @@ const Teachers = () => {
             Our Teachers &amp; Ijazah
           </h1>
           <p className="text-base sm:text-lg text-primary-600 font-bold mt-2">
-            Unbroken Chain of Transmission to Prophet Muhammad ﷺ • Al-Azhar University Scholars
+            Unbroken Chain of Transmission to Prophet Muhammad ﷺ • Al-Azhar Credentials Published
           </p>
 
           <div className="w-20 h-1 rounded-full bg-primary-500 mx-auto my-6" />
@@ -118,7 +116,7 @@ const Teachers = () => {
               <em className="text-secondary-800 font-semibold">"The chain of transmission (Sanad) is part of the religion; were it not for the Sanad, anyone would say whatever they wished."</em>
             </p>
             <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
-              At <strong className="text-secondary-800 font-semibold">Nebras Academy</strong>, we uphold this sacred trust. Our instructors are not only fluent and qualified educators; they are verified scholars holding authentic Ijazahs from prominent Quran authorities at Al-Azhar University, ensuring that you and your children learn pure, precise, and authentic Quran recitation.
+              At <strong className="text-secondary-800 font-semibold">Nebras Academy</strong>, we uphold this sacred trust. Our instructors are qualified educators holding authentic Ijazahs with connected chains of transmission, and one is also a graduate of Al-Azhar University. The published documents let you check the qualification behind the claim.
             </p>
           </div>
         </header>
@@ -175,9 +173,9 @@ const Teachers = () => {
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-500 text-white font-bold">
                   <FaGraduationCap className="text-base" />
                 </div>
-                <h3 className="text-base font-bold text-primary-300">Al-Azhar Heritage</h3>
+                <h3 className="text-base font-bold text-primary-300">Al-Azhar Credentials</h3>
                 <p className="text-xs text-white/80 leading-relaxed">
-                  Graduates from the prestigious faculties of Al-Azhar University, trained in Quranic sciences, Arabic linguistics, and Islamic Da'wah.
+                  Teacher credentials include an Al-Azhar University degree and Ijazah documents, published on this page so families can review them.
                 </p>
               </div>
 
@@ -204,15 +202,25 @@ const Teachers = () => {
               Book a free 1-on-1 trial class with our instructors. Assess your level, discuss your goals, and begin reciting with confidence.
             </p>
             <div className="pt-3">
-              <button
-                type="button"
-                onClick={() => setIsBookingOpen(true)}
+              <Link
+                to="/trial"
                 className="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-primary-500 hover:bg-primary-600 active:scale-[0.98] text-white text-base font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5"
               >
                 <FaCalendarCheck className="text-lg" />
                 <span>Book Your Free Trial Class</span>
-              </button>
+              </Link>
             </div>
+            <p className="text-sm text-gray-600">
+              Looking for an overview for US families? See{' '}
+              <Link to="/online-quran-classes-usa" className="font-semibold text-primary-600 underline underline-offset-2">
+                online Quran classes in the USA
+              </Link>{' '}
+              or read the{' '}
+              <Link to="/learn-quran-online-usa" className="font-semibold text-primary-600 underline underline-offset-2">
+                guide to learning Quran online
+              </Link>
+              .
+            </p>
           </div>
         </section>
       </div>
@@ -225,9 +233,6 @@ const Teachers = () => {
         teacher={activeTeacher}
         triggerRef={triggerRef}
       />
-
-      {/* Booking Modal */}
-      <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
     </div>
   );
 };

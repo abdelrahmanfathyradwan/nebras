@@ -1,17 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaChalkboardTeacher, FaUsers, FaUniversity, FaVideo, 
          FaBook, FaTasks, FaUserTie, FaUserFriends } from 'react-icons/fa';
-import BookingModal from '../components/BookingModal';
 import SEO from '../components/SEO';
 
 const Pricing = () => {
-  const [isBookingOpen, setIsBookingOpen] = useState(false);
   const features = [
     {
       icon: <FaChalkboardTeacher className="text-3xl text-secondary-600" />,
       title: "Expert Quran Teachers",
-      description: "Certified Native Male & Female Quran Tutors available to teach 24/7. You choose the schedule and we will match you with the perfect Quran tutor."
+      description: "Certified Quran tutors available to teach online. You choose the schedule and we will match you with a suitable teacher."
     },
     {
       icon: <FaUsers className="text-3xl text-secondary-600" />,
@@ -20,13 +18,13 @@ const Pricing = () => {
     },
     {
       icon: <FaUniversity className="text-3xl text-secondary-600" />,
-      title: "Quran Teachers from Al Azhar",
-      description: "Study Quran with an Expert Quran Teacher from Al Azhar University, one of the most prestigious universities in the world."
+      title: "Al-Azhar Credentials",
+      description: "Study with teachers whose Ijazah and Al-Azhar credentials are published, so you can check the qualification behind the claim."
     },
     {
       icon: <FaVideo className="text-3xl text-secondary-600" />,
-      title: "Video Recordings",
-      description: "Students have the option to record each session anytime they want! Review your Quran lessons outside of class easily."
+      title: "English & Arabic Instruction",
+      description: "Lessons are available in English and Arabic, so beginners and non-Arabic speakers can ask questions in the language they understand."
     },
     {
       icon: <FaBook className="text-3xl text-secondary-600" />,
@@ -35,8 +33,8 @@ const Pricing = () => {
     },
     {
       icon: <FaTasks className="text-3xl text-secondary-600" />,
-      title: "Assignments & Exams",
-      description: "Students are regularly assessed with course exams to ensure that milestones are being met well. Assignments are given by the teachers throughout the course."
+      title: "Progress Check-ins",
+      description: "Teachers review what has been covered and agree the next steps with the student, so the plan adjusts as the student improves."
     },
     {
       icon: <FaUserTie className="text-3xl text-secondary-600" />,
@@ -45,8 +43,8 @@ const Pricing = () => {
     },
     {
       icon: <FaUserFriends className="text-3xl text-secondary-600" />,
-      title: "Family Discount",
-      description: "Learning Quran doesn't have to be difficult for bigger families. Nebras Academy provides a 10% discount for families of 3 or more students."
+      title: "Parents Welcome",
+      description: "Parents may sit in on a child's lesson, especially during the first weeks, to see how the teacher works and support practice at home."
     }
   ];
 
@@ -54,7 +52,7 @@ const Pricing = () => {
     <div className="font-sans page-enter">
       <SEO 
         title="Pricing & Tuition" 
-        description="Affordable and high-quality online Quran learning for only $8/hr. Private and group classes available 24/7 with expert Al-Azhar teachers." 
+        description="Affordable and high-quality online Quran learning for only $8/hr. Private and group classes available 24/7 with Ijazah-holding teachers." 
         canonical="/pricing"
       />
       {/* Hero Section */}
@@ -85,12 +83,12 @@ const Pricing = () => {
           <p className="text-lg text-gray-600 mb-8 max-w-xl mx-auto">
             Get it All for One Low Price. Start Today at Nebras Academy.
           </p>
-          <button 
-            onClick={() => setIsBookingOpen(true)}
-            className="btn-primary btn-pill px-8 py-3.5 text-base font-bold shadow-lg"
+          <Link 
+            to="/trial"
+            className="btn-primary btn-pill px-8 py-3.5 text-base font-bold shadow-lg inline-block"
           >
             SCHEDULE YOUR FREE TRIAL CLASS
-          </button>
+          </Link>
         </div>
       </div>
 
@@ -127,16 +125,26 @@ const Pricing = () => {
           <h3 className="text-2xl md:text-3xl text-secondary-800 font-bold mb-4">
             And Many Other Features
           </h3>
-          <p className="text-gray-600 mb-8">Join thousands of students learning worldwide with custom flexible hours.</p>
-          <button 
-            onClick={() => setIsBookingOpen(true)}
-            className="btn-primary btn-pill px-8 py-3.5 text-base font-bold shadow-lg"
+          <p className="text-gray-600 mb-8">Start with a free trial and keep the schedule that fits your family.</p>
+          <Link 
+            to="/trial"
+            className="btn-primary btn-pill px-8 py-3.5 text-base font-bold shadow-lg inline-block"
           >
             SCHEDULE YOUR FREE TRIAL CLASS
-          </button>
+          </Link>
+          <p className="mt-6 text-sm text-gray-600">
+            Not sure where to start? Read the{' '}
+            <Link to="/online-quran-classes-usa" className="font-semibold text-primary-600 underline underline-offset-2">
+              guide to online Quran classes for US students
+            </Link>{' '}
+            or the{' '}
+            <Link to="/learn-quran-online-usa" className="font-semibold text-primary-600 underline underline-offset-2">
+              complete guide to learning Quran online
+            </Link>
+            .
+          </p>
         </div>
       </div>
-      <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
     </div>
   );
 };

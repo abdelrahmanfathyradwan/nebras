@@ -7,14 +7,14 @@ const Islamic = () => {
     <div className="mx-auto">
       <SEO 
         title="Islamic Studies for Kids | Online Classes – Nebras Academy" 
-        description="Enroll your child in Islamic Studies online at Nebras Academy. Learn Quran, Islamic history, daily duas, and Islamic manners with certified Al-Azhar teachers." 
+        description="Enroll your child in Islamic Studies online at Nebras Academy. Learn Quran, Islamic history, daily duas, and Islamic manners with Ijazah-holding teachers." 
         canonical="/courses/islamic-studies"
       />
       <StructuredData data={{
   "@context": "https://schema.org",
   "@type": "Course",
   "name": "Islamic Studies for Kids",
-  "description": "Learn Islamic Studies online with certified teachers from Al-Azhar. Covering Islamic manners, daily duas, Prophet's teachings, and Islamic history.",
+  "description": "Learn Islamic Studies online with Ijazah-holding teachers based in Cairo. Covering Islamic manners, daily duas, Prophet's teachings, and Islamic history.",
   "provider": {
     "@type": "Organization",
     "name": "Nebras Academy",

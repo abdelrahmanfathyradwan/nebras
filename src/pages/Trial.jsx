@@ -77,7 +77,7 @@ const Trial = () => {
       'juz-amma': "Memorizing Juz' Amma (Part 30)",
       'arabic-kids': 'Arabic Language for Kids',
       'arabic-adults': 'Arabic Language (Fusha / Standard)',
-      'islamic-studies': 'Islamic Studies for Youth',
+      'islamic-studies': 'Islamic Studies for Kids & Youth',
     };
 
     // Construct formatted WhatsApp message
@@ -113,15 +113,15 @@ Looking forward to scheduling our free 1-on-1 trial session!`;
     '@context': 'https://schema.org',
     '@type': 'WebPage',
     name: 'Book a Free Trial Quran Lesson | Nebras Academy',
-    description: 'Register for a 100% free, 1-on-1 assessment lesson with certified Al-Azhar Quran teachers.',
+    description: 'Register for a free, 1-on-1 assessment lesson with Ijazah-holding Quran teachers based in Cairo, Egypt.',
     url: 'https://www.nebrasacadmy.com/trial',
   };
 
   return (
     <div className="bg-gradient-to-b from-sage-100/30 via-white to-gray-50 min-h-screen py-12 md:py-20 page-enter">
       <SEO
-        title="Book a Free Trial Lesson – Certified 1-on-1 Quran Classes | Nebras Academy"
-        description="Book your free 1-on-1 trial Quran or Arabic lesson with our certified Al-Azhar teachers. Zero payment or credit card required."
+        title="Book a Free Trial Lesson – 1-on-1 Quran Classes | Nebras Academy"
+        description="Book a free 1-on-1 trial Quran or Arabic lesson with our Ijazah-holding teachers in Cairo. Zero payment or credit card required."
         canonical="/trial"
       />
       <StructuredData data={trialSchema} />
@@ -147,7 +147,10 @@ Looking forward to scheduling our free 1-on-1 trial session!`;
             Book Your Free Trial Lesson
           </h1>
           <p className="mt-4 text-gray-600 text-base sm:text-lg leading-relaxed">
-            Experience our 1-on-1 live teaching methodology. Meet a certified Al-Azhar instructor, evaluate your current recitation, and receive a tailored curriculum.
+            Experience a live 1-on-1 lesson. Meet an Ijazah-holding teacher, review your current recitation, and leave with a plan for the next steps.
+          </p>
+          <p className="mt-3 text-sm text-gray-500">
+            Teachers are based in Cairo, Egypt and teach online worldwide, including the USA. Exact slot availability is confirmed when we reply.
           </p>
           <div className="w-16 h-1 rounded-full bg-primary-500 mx-auto mt-6" />
         </header>
@@ -347,7 +350,7 @@ Looking forward to scheduling our free 1-on-1 trial session!`;
                     <option value="juz-amma">Memorizing Juz' Amma (Part 30)</option>
                     <option value="arabic-kids">Arabic Language for Kids</option>
                     <option value="arabic-adults">Arabic Language (Fusha / Standard)</option>
-                    <option value="islamic-studies">Islamic Studies for Youth</option>
+                    <option value="islamic-studies">Islamic Studies for Kids &amp; Youth</option>
                   </select>
                 </div>
 
@@ -423,12 +426,28 @@ Looking forward to scheduling our free 1-on-1 trial session!`;
 
               <div className="text-center">
                 <p className="text-xs text-gray-500">
-                  🔒 Encrypted submission • Certified Al-Azhar teachers • Free trial with zero risk
+                  🔒 Encrypted submission • Ijazah-holding teachers • Free trial, no card required
                 </p>
               </div>
             </form>
           )}
         </div>
+
+        <p className="mt-8 text-center text-sm text-gray-600">
+          Want the details first? Read{' '}
+          <Link to="/online-quran-classes-usa" className="font-semibold text-primary-600 underline underline-offset-2">
+            how online Quran classes work for US students
+          </Link>{' '}
+          or the{' '}
+          <Link to="/learn-quran-online-usa" className="font-semibold text-primary-600 underline underline-offset-2">
+            complete guide to learning Quran online
+          </Link>
+          . You can also meet the{' '}
+          <Link to="/teachers" className="font-semibold text-primary-600 underline underline-offset-2">
+            teachers and see their Ijazah
+          </Link>
+          .
+        </p>
       </div>
     </div>
   );

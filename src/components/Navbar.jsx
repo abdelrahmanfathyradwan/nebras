@@ -1,9 +1,8 @@
 import { useState, useRef, useEffect } from "react"
 import { Link, useLocation } from "react-router-dom"
 import { FaEnvelope, FaChevronDown, FaBars, FaCheck, FaTimes, FaPhoneAlt, FaWhatsapp, FaTelegram, FaYoutube, FaFacebook } from "react-icons/fa"
-import BookingModal from "./BookingModal"
 
-const EMAIL = "nebrasacademey2025@gmail.com"
+const EMAIL = "info@nebrasacadmy.com"
 
 const COURSES = [
   { to: "/courses/memorizing-juz-amma", label: "Memorization Juz' Amma (Part 30)" },
@@ -24,6 +23,8 @@ const NAV_LINKS = [
 ]
 
 const MORE_LINKS = [
+  { to: "/online-quran-classes-usa", label: "Online Quran Classes (USA)" },
+  { to: "/learn-quran-online-usa", label: "Learn Quran Online (Guide)" },
   { to: "/faqs", label: "FAQs" },
   { to: "/contact", label: "Contact" },
 ]
@@ -35,7 +36,6 @@ const Navbar = () => {
   const [isMoreOpen, setIsMoreOpen] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isMobileCoursesOpen, setIsMobileCoursesOpen] = useState(false)
-  const [isBookingOpen, setIsBookingOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [copied, setCopied] = useState(false)
   const coursesRef = useRef(null)
@@ -163,25 +163,6 @@ const Navbar = () => {
             <div className="flex flex-wrap items-center gap-x-5 lg:gap-x-6 gap-y-1 pl-4 md:pl-8 lg:pl-12">
               <a
                 dir="ltr"
-                href="tel:+201146162847"
-                className={contactLinkClasses}
-              >
-                <img
-                  src="https://flagcdn.com/w20/eg.png"
-                  alt="Egypt Flag"
-                  className="w-5 h-[14px] mr-2 rounded-sm object-cover"
-                />
-                +20 114 616 2847
-              </a>
-
-              <span
-                className="hidden lg:block h-3.5 w-px bg-white/25"
-                aria-hidden="true"
-              />
-
-              
-              <a
-                dir="ltr"
                 href="tel:+201508586055"
                 className={contactLinkClasses}
               >
@@ -191,6 +172,18 @@ const Navbar = () => {
                   className="w-5 h-[14px] mr-2 rounded-sm object-cover"
                 />
                 +20 150 858 6055
+              </a>
+              <a
+                dir="ltr"
+                href="tel:+201146162847"
+                className={contactLinkClasses}
+              >
+                <img
+                  src="https://flagcdn.com/w20/eg.png"
+                  alt="Egypt Flag"
+                  className="w-5 h-[14px] mr-2 rounded-sm object-cover"
+                />
+                +20 114 616 2847
               </a>
 
               <span
@@ -278,12 +271,12 @@ const Navbar = () => {
 
           {/* Mobile: booking CTA */}
           <div className="md:hidden flex justify-center py-2">
-            <button
-              onClick={() => setIsBookingOpen(true)}
+            <Link
+              to="/trial"
               className={`inline-flex px-5 py-1.5 text-sm ${ctaClasses}`}
             >
               Book Your Free Trial
-            </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -384,7 +377,7 @@ const Navbar = () => {
                 </button>
 
                 {isMoreOpen && (
-                  <div className="absolute right-0 mt-4 w-48 bg-white rounded-xl shadow-lg py-1 z-50 border border-gray-100 animate-slide-down">
+                  <div className="absolute right-0 mt-4 w-64 bg-white rounded-xl shadow-lg py-1 z-50 border border-gray-100 animate-slide-down">
                     {MORE_LINKS.map(({ to, label }) => (
                       <Link
                         key={to}
@@ -400,12 +393,12 @@ const Navbar = () => {
               </div>
             </nav>
 
-            <button
-              onClick={() => setIsBookingOpen(true)}
+            <Link
+              to="/trial"
               className={`inline-flex px-4 lg:px-5 py-2 text-sm ${ctaClasses}`}
             >
               Book Your Free Trial
-            </button>
+            </Link>
           </div>
 
           {/* Mobile: tap-to-call (same width as the menu button, keeps the logo centered) */}
@@ -473,15 +466,13 @@ const Navbar = () => {
 
           {/* Book Your Free Trial CTA in Mobile Menu */}
           <div className="pt-2 pb-1">
-            <button
-              onClick={() => {
-                closeMobileMenu();
-                setIsBookingOpen(true);
-              }}
-              className="w-full btn-primary btn-pill text-sm"
+            <Link
+              to="/trial"
+              onClick={closeMobileMenu}
+              className="block w-full btn-primary btn-pill text-sm text-center"
             >
               Book Your Free Trial
-            </button>
+            </Link>
           </div>
 
           {/* Official Channels in Mobile Menu */}
@@ -526,12 +517,6 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-
-      {/* Booking Modal */}
-      <BookingModal
-        isOpen={isBookingOpen}
-        onClose={() => setIsBookingOpen(false)}
-      />
     </div>
   );
 }

@@ -13,8 +13,11 @@ const Courses = () => {
       {/* Hero Section */}
       <div className="relative w-full h-[240px] overflow-hidden">
         <img 
-          src="/images/celebrateEid.jpg" 
-          alt="Courses Banner" 
+          src="/images/celebrating-eid-al-fitr.webp" 
+          alt="Illustration of an Eid al-Fitr celebration" 
+          width="452"
+          height="626"
+          fetchPriority="high"
           className="w-full h-full object-cover object-top"
         />
         <div className="absolute inset-0 bg-secondary-900/80 flex items-center justify-start pl-6 md:pl-16">

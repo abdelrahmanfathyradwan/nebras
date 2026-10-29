@@ -118,10 +118,12 @@ const courses = [
   { to: '/courses/memorizing-juz-amma', label: "Memorizing Juz' Amma" },
   { to: '/courses/arabic', label: 'Arabic Language Course' },
   { to: '/courses/arabic-kids', label: 'Arabic for Kids' },
-  { to: '/courses/islamic-studies', label: 'Islamic Studies for Kids' },
+  { to: '/courses/islamic-studies', label: 'Islamic Studies for Kids & Youth' },
 ];
 
 const supportLinks = [
+  { to: '/online-quran-classes-usa', label: 'Online Quran Classes (USA)', icon: FaGlobe },
+  { to: '/learn-quran-online-usa', label: 'Learn Quran Online Guide', icon: FaBlog },
   { to: '/teachers', label: 'Our Teachers & Ijazah', icon: FaAward },
   { to: '/about', label: 'About Us', icon: FaUserGraduate },
   { to: '/pricing', label: 'Pricing Plans', icon: FaTags },
@@ -244,7 +246,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center text-xs text-white/75">
                 <FaGraduationCap className="mr-2.5 text-primary-300 text-xs flex-shrink-0" />
-                <span>Certified Native Al-Azhar Teachers</span>
+                <span>Ijazah-Holding Teachers</span>
               </div>
               <div className="flex items-center text-xs text-white/75">
                 <FaClock className="mr-2.5 text-primary-300 text-xs flex-shrink-0" />
@@ -262,10 +264,10 @@ const Footer = () => {
               </ContactItem>
               <ContactItem
                 icon={FaEnvelope}
-                href="mailto:nebrasacademey2025@gmail.com"
+                href="mailto:info@nebrasacadmy.com"
                 small
               >
-                nebrasacademey2025@gmail.com
+                info@nebrasacadmy.com
               </ContactItem>
             </div>
           </Reveal>
@@ -340,7 +342,7 @@ const Footer = () => {
             <div className="rounded-xl p-3 bg-gradient-to-r from-primary-500/20 to-primary-300/10 border border-primary-500/30">
               <p className="text-xs text-white/85 mb-1.5 font-medium">Ready to start learning?</p>
               <Link
-                to="/contact"
+                to="/trial"
                 className="inline-flex items-center text-xs font-bold text-primary-300 hover:text-white transition-colors"
               >
                 <span>Book a Free Trial Session</span>

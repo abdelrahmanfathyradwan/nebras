@@ -20,6 +20,8 @@ import About from './pages/About';
 import BlogDetails from './pages/BlogDetails';
 import Teachers from './pages/Teachers';
 import Trial from './pages/Trial';
+import OnlineQuranClassesUSA from './pages/OnlineQuranClassesUSA';
+import LearnQuranOnlineUSA from './pages/LearnQuranOnlineUSA';
 
 import ScrollToTop from './components/ScrollToTop';
 import NotFound from './pages/NotFound';
@@ -52,11 +54,12 @@ function App() {
             احتياط داخل المتصفح فقط: التحويل الحقيقي 301 يتم في vercel.json.
             هذه المسارات تغطي حالة الفتح المحلي (localhost) أو أي فشل في التحويل.
           */}
-          <Route path="/courses/memorizing-juz-amma" element={<Navigate to="/courses/memorizing-juz-amma" replace />} />
-          <Route path="/courses/arabic-kids" element={<Navigate to="/courses/arabic-kids" replace />} />
-          <Route path="/courses/islamic-studies" element={<Navigate to="/courses/islamic-studies" replace />} />
-          <Route path="/courses/islamic-studies" element={<Navigate to="/courses/islamic-studies" replace />} />
           <Route path="/courses/secondary" element={<Navigate to="/courses/islamic-studies" replace />} />
+          <Route path="/free-trial" element={<Navigate to="/trial" replace />} />
+
+          {/* USA landing pages */}
+          <Route path="/online-quran-classes-usa" element={<OnlineQuranClassesUSA />} />
+          <Route path="/learn-quran-online-usa" element={<LearnQuranOnlineUSA />} />
 
           {/* مسارات الدعم */}
           <Route path="/contact" element={<Contact />} />

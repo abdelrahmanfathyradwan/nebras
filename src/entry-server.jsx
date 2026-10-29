@@ -5,7 +5,7 @@ import { HelmetProvider } from 'react-helmet-async';
 // Server-side app: uses StaticRouter instead of BrowserRouter.
 // KEEP THIS ROUTE LIST IN SYNC WITH src/App.jsx (same paths, same params).
 import Layout from './pages/Layout';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages/Home';
 import Contact from './pages/Contact';
 import FAQPage from './pages/FAQPage';
@@ -26,6 +26,8 @@ import About from './pages/About';
 import BlogDetails from './pages/BlogDetails';
 import Teachers from './pages/Teachers';
 import Trial from './pages/Trial';
+import OnlineQuranClassesUSA from './pages/OnlineQuranClassesUSA';
+import LearnQuranOnlineUSA from './pages/LearnQuranOnlineUSA';
 import NotFound from './pages/NotFound';
 
 function ServerApp({ url }) {
@@ -49,6 +51,14 @@ function ServerApp({ url }) {
           <Route path="/courses/memorizing-juz-amma" element={<MemorizingJuzAmma />} />
           <Route path="/courses/arabic-kids" element={<ArabicKids />} />
           <Route path="/courses/islamic-studies" element={<Islamic />} />
+
+          {/* Browser fallbacks; the real 301s live in vercel.json */}
+          <Route path="/courses/secondary" element={<Navigate to="/courses/islamic-studies" replace />} />
+          <Route path="/free-trial" element={<Navigate to="/trial" replace />} />
+
+          {/* USA landing pages */}
+          <Route path="/online-quran-classes-usa" element={<OnlineQuranClassesUSA />} />
+          <Route path="/learn-quran-online-usa" element={<LearnQuranOnlineUSA />} />
 
           {/* Support pages */}
           <Route path="/contact" element={<Contact />} />

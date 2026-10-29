@@ -5,18 +5,30 @@ const CoursesDirectory = () => {
   const courses = [
     {
       title: "Quran Tajweed and Recitation",
-      description: "Master the art of Quranic recitation with proper Tajweed rules. Suitable for all levels with personalized feedback from certified instructors.",
-      image: "/images/quran2.jpg"
+      description: "Master the art of Quranic recitation with proper Tajweed rules. Suitable for all levels with personalized feedback from Ijazah-holding instructors.",
+      image: "/images/quran-with-prayer-beads.webp",
+      imageAlt: "A closed Quran resting beside white prayer beads on a dark prayer mat",
+      width: 736,
+      height: 981,
+      to: "/courses/tajweed"
     },
     {
       title: "Quran Memorization (Hifz)",
       description: "Structured memorization program with proven techniques. Includes revision plans and motivational support to help you achieve your Hifz goals.",
-      image: "/images/quran1.jpg"
+      image: "/images/quran-open-pages.webp",
+      imageAlt: "Open pages of the Quran showing Arabic text",
+      width: 720,
+      height: 1280,
+      to: "/courses/memorization"
     },
     {
       title: "Arabic Language Course",
       description: "Comprehensive Arabic learning to understand the Quran in its original language. Focuses on reading, writing, and conversational skills.",
-      image: "/images/arabic.jpg"
+      image: "/images/arabic-calligraphy.webp",
+      imageAlt: "Arabic calligraphy artwork in warm tones",
+      width: 736,
+      height: 736,
+      to: "/courses/arabic"
     }
   ];
 
@@ -36,14 +48,18 @@ const CoursesDirectory = () => {
               <div className="overflow-hidden">
                 <img 
                   src={course.image} 
-                  alt={course.title}
+                  alt={course.imageAlt}
+                  width={course.width}
+                  height={course.height}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-52 object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-secondary-600 mb-3 group-hover:text-primary-500 transition-colors duration-300">{course.title}</h3>
                 <p className="text-gray-600 mb-4 leading-relaxed">{course.description}</p>
-                <Link to="/courses" className="inline-flex items-center text-primary-500 font-semibold hover:text-primary-600 transition-all duration-300 group/link">
+                <Link to={course.to} className="inline-flex items-center text-primary-500 font-semibold hover:text-primary-600 transition-all duration-300 group/link">
                   Learn More 
                   <span className="ml-1 transition-transform duration-300 group-hover/link:translate-x-1">→</span>
                 </Link>

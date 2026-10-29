@@ -14,7 +14,7 @@ const Reading = () => {
   "@context": "https://schema.org",
   "@type": "Course",
   "name": "Quran Reading (Noor Al Bayan)",
-  "description": "Learn to read the Quran from scratch using the Noor Al Bayan method. Certified Al-Azhar teachers for kids and adults.",
+  "description": "Learn to read the Quran from scratch using the Noor Al Bayan method. Ijazah-holding teachers for kids and adults.",
   "provider": {
     "@type": "Organization",
     "name": "Nebras Academy",

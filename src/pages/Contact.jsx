@@ -1,13 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import { FaWhatsapp, FaTelegram, FaYoutube, FaFacebook } from 'react-icons/fa'
-import BookingModal from '../components/BookingModal'
 import SEO from '../components/SEO'
 import StructuredData from '../components/StructuredData'
+import { ACADEMY, SITE_URL } from '../data/usa/shared'
 
 const Contact = () => {
-  const [isBookingOpen, setIsBookingOpen] = useState(false)
-
   const contactSchema = {
     "@context": "https://schema.org",
     "@type": "ContactPage",
@@ -17,10 +15,15 @@ const Contact = () => {
     "mainEntity": {
       "@type": "EducationalOrganization",
       "name": "Nebras Academy",
+      "url": SITE_URL,
+      "logo": ACADEMY.logo,
+      "email": ACADEMY.email,
       "contactPoint": {
         "@type": "ContactPoint",
-        "telephone": "+201508586055",   
-        "contactType": "customer service"
+        "telephone": ACADEMY.phoneE164,
+        "email": ACADEMY.email,
+        "contactType": "customer service",
+        "availableLanguage": ["English", "Arabic"]
       }
     }
   };
@@ -33,9 +36,6 @@ const Contact = () => {
        canonical="/contact"
      />
      <StructuredData data={contactSchema} />
-     
-     {/* Booking Modal */}
-     <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
 
      {/* القسم العلوي */}
      <div className="text-center mb-16">
@@ -57,9 +57,11 @@ const Contact = () => {
              </svg>
            </div>
            <div>
-             <h3 className="text-lg font-bold text-secondary-800 mb-1">Phone</h3>
-             <p className="text-gray-600 font-medium">Egy: +20 114 616 2847</p>
-             <p className="text-gray-600 font-medium">Egy: +20 150 858 6055</p>
+             <h3 className="text-lg font-bold text-secondary-800 mb-1">Phone &amp; WhatsApp</h3>
+             <a href={`tel:${ACADEMY.telephoneE164}`} className="text-gray-600 font-medium hover:text-primary-600 transition-colors">
+               {ACADEMY.telephoneDisplay}
+             </a>
+             <p className="text-xs text-gray-500 mt-1">Egypt number, used for WhatsApp</p>
            </div>
          </div>
 
@@ -72,7 +74,9 @@ const Contact = () => {
            </div>
            <div>
              <h3 className="text-lg font-bold text-secondary-800 mb-1">Email</h3>
-             <p className="text-gray-600 font-medium break-all">nebrasacademey2025@gmail.com</p>
+             <a href={`mailto:${ACADEMY.email}`} className="text-gray-600 font-medium break-all hover:text-primary-600 transition-colors">
+               {ACADEMY.email}
+             </a>
            </div>
          </div>
 
@@ -85,8 +89,13 @@ const Contact = () => {
              </svg>
            </div>
            <div>
-             <h3 className="text-lg font-bold text-secondary-800 mb-1">Address</h3>
-             <p className="text-gray-600 font-medium">Office Branches: USA and Cairo, Egypt</p>
+             <h3 className="text-lg font-bold text-secondary-800 mb-1">Where we teach</h3>
+             <p className="text-gray-600 font-medium">
+               Online from Cairo, Egypt — students worldwide, including the USA.
+             </p>
+             <p className="text-xs text-gray-500 mt-1">
+               Nebras Academy has no US office, branch or mailing address. All lessons are live online.
+             </p>
            </div>
          </div>
 
@@ -159,13 +168,20 @@ const Contact = () => {
 
        {/* نموذج الاتصال */}
        <form 
-         action="https://formspree.io/f/afat7i2005@gmail.com" 
-         method="POST" 
+         action={`mailto:${ACADEMY.email}`}
+         method="POST"
+         encType="text/plain"
          className="bg-white p-8 rounded-2xl shadow-md border border-gray-100 space-y-6"
        >
          <div>
            <h2 className="text-2xl font-bold text-secondary-800 mb-2">Send Us a Message</h2>
-           <p className="text-sm text-gray-500">Your email address will not be published. Required fields are marked with *</p>
+           <p className="text-sm text-gray-500">
+             This form opens your email app and sends the message to {ACADEMY.email}. You can also message us on{' '}
+             <a href={ACADEMY.whatsappUrl} target="_blank" rel="noopener noreferrer" className="font-semibold text-primary-600 underline underline-offset-2">
+               WhatsApp
+             </a>
+             . Required fields are marked with *.
+           </p>
          </div>
          
          <div className="space-y-4">
@@ -250,7 +266,7 @@ const Contact = () => {
          <div className="card p-6">
            <h3 className="text-lg font-bold text-secondary-800 mb-2">Do you offer classes for kids?</h3>
            <p className="text-gray-600 leading-relaxed text-sm">
-             Yes! We specialize in teaching children from age 4+ using engaging, interactive methods tailored for young learners.
+             Yes. We teach children from age 5 using engaging, interactive methods, and parents are welcome to sit in on the lesson.
            </p>
          </div>
          
@@ -264,12 +280,23 @@ const Contact = () => {
 
        {/* زر الحجز */}
        <div className="text-center mt-12">
-         <button 
-           onClick={() => setIsBookingOpen(true)}
-           className="btn-primary btn-pill px-8 py-3.5 text-base font-bold shadow-lg"
+         <Link
+           to="/trial"
+           className="btn-primary btn-pill px-8 py-3.5 text-base font-bold shadow-lg inline-block"
          >
            SCHEDULE YOUR FREE TRIAL CLASS
-         </button>
+         </Link>
+         <p className="mt-6 text-sm text-gray-600">
+           Comparing options in the US? Read the{' '}
+           <Link to="/online-quran-classes-usa" className="font-semibold text-primary-600 underline underline-offset-2">
+             online Quran classes for US students
+           </Link>{' '}
+           page or the{' '}
+           <Link to="/learn-quran-online-usa" className="font-semibold text-primary-600 underline underline-offset-2">
+             full guide to learning Quran online
+           </Link>
+           .
+         </p>
        </div>
      </div>
    </div>

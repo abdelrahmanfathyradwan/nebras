@@ -27,3 +27,6 @@ dist-ssr
 .env
 .env.*
 !.env.example
+
+# Unredacted source photos (not deployed)
+source-assets/

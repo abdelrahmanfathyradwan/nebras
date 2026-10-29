@@ -10,7 +10,7 @@ import { FaGraduationCap, FaArrowRight, FaCheckCircle, FaAward } from 'react-ico
  *
  * Requirements:
  * - English UI.
- * - Heading: "Certified Quran Teachers with Connected Sanad"
+ * - Heading: "Quran Teachers with a Connected Sanad"
  * - Compact versions of both teacher cards
  * - Button: "Meet All Our Teachers" linking to /teachers
  * - Placed after features and BEFORE pricing & registration
@@ -52,14 +52,14 @@ const TeachersSection = () => {
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs sm:text-sm font-bold mb-4 shadow-sm">
             <FaAward className="text-emerald-600 text-sm" />
-            <span>Al-Azhar University Scholars &amp; Verified Ijazah Holders</span>
+            <span>Verified Ijazah Holders with Published Credentials</span>
           </div>
 
           <h2
             id="teachers-section-title"
             className="text-2xl sm:text-3xl md:text-4xl font-bold text-secondary-600 tracking-tight leading-snug"
           >
-            Certified Quran Teachers with Connected Sanad
+            Quran Teachers with a Connected Sanad
           </h2>
 
           <p className="mt-4 text-gray-600 text-base sm:text-lg leading-relaxed">
@@ -89,7 +89,7 @@ const TeachersSection = () => {
           </div>
           <div className="flex items-center gap-2 font-medium">
             <FaCheckCircle className="text-primary-500 text-sm" />
-            <span>Eminent graduates of Al-Azhar University</span>
+            <span>Al-Azhar credentials published where applicable</span>
           </div>
           <div className="flex items-center gap-2 font-medium">
             <FaCheckCircle className="text-primary-500 text-sm" />

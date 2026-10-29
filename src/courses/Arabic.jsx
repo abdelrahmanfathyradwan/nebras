@@ -7,7 +7,7 @@ const Arabic = () => {
     <div className="mx-auto">
       <SEO 
         title="Arabic Language | Online Classes – Nebras Academy" 
-        description="Learn Arabic online with Nebras Academy. Master reading, writing, speaking, and Quranic Arabic with experienced native teachers from Al-Azhar." 
+        description="Learn Arabic online with Nebras Academy. Master reading, writing, speaking, and Quranic Arabic with experienced teachers based in Cairo." 
         canonical="/courses/arabic"
       />
       <StructuredData data={{

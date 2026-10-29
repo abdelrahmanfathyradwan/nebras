@@ -37,6 +37,8 @@ const staticPages = [
   { path: '/contact',                     lastmod: '2026-10-24' },
   { path: '/faqs',                        lastmod: '2026-10-24' },
   { path: '/policy',                      lastmod: '2026-10-24' },
+  { path: '/online-quran-classes-usa',    lastmod: '2026-10-28' },
+  { path: '/learn-quran-online-usa',      lastmod: '2026-10-28' },
 ];
 
 const blogPages = allBlogPosts.map((post) => ({

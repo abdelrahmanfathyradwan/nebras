@@ -46,6 +46,8 @@ const staticRoutes = [
   '/faqs',
   '/policy',
   '/applyForJop', // blocked in robots.txt; keep it noindex in the page itself
+  '/online-quran-classes-usa',
+  '/learn-quran-online-usa',
 ];
 
 // Blog detail pages come from the data file (descriptive slugs)
@@ -107,18 +109,10 @@ function buildPage(template, rawHtml) {
   // Collect remaining head tags (skip the title and description we already placed)
   const additionalHeadTags = extractedHeadTags.filter((t) => t !== titleTag && t !== descTag);
 
-  // Don't inject <link rel="preload"> tags that duplicate ones already in the template
-  const filteredHeadTags = additionalHeadTags.filter((tag) => {
-    if (/rel="preload"/.test(tag) && /href="\/images\/hero\/quran-holder\.webp"/.test(tag)) {
-      return false;
-    }
-    return true;
-  });
-
-  if (filteredHeadTags.length > 0) {
+  if (additionalHeadTags.length > 0) {
     finalHtml = finalHtml.replace(
       '</head>',
-      `    ${filteredHeadTags.join('\n    ')}\n  </head>`
+      `    ${additionalHeadTags.join('\n    ')}\n  </head>`
     );
   }
 

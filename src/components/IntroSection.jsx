@@ -1,7 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
 import WaveDivider from './WaveDivider';
-import BookingModal from './BookingModal';
 
 /**
  * IntroSection — Section 2 of the homepage.
@@ -36,8 +34,6 @@ const PARTICLES = [
 ];
 
 const IntroSection = () => {
-  const [isBookingOpen, setIsBookingOpen] = useState(false);
-
   return (
     <>
       {/* Scoped keyframes — prefixed "ix-" so nothing else is affected */}
@@ -226,7 +222,7 @@ const IntroSection = () => {
                 . With flexible scheduling across time zones, you can learn at the pace
                 that suits your family. Start with a{' '}
                 <Link
-                  to="/pricing"
+                  to="/trial"
                   className="text-brand-green-900 underline underline-offset-2 decoration-brand-green-900/30 hover:decoration-brand-green-900 transition-colors"
                 >
                   free trial
@@ -235,12 +231,8 @@ const IntroSection = () => {
               </p>
 
               {/* CTA button — pulsing glow + shine sweep */}
-              <a
-                href="/free-trial"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setIsBookingOpen(true);
-                }}
+              <Link
+                to="/trial"
                 className="ix-glow relative overflow-hidden inline-flex items-center justify-center bg-brand-green-600 hover:bg-brand-green-700 text-white font-semibold text-base px-7 py-3.5 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 min-h-[44px] w-full sm:w-auto"
                 id="intro-cta"
               >
@@ -249,7 +241,7 @@ const IntroSection = () => {
                   className="ix-sweep pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-transparent via-white/25 to-transparent"
                   aria-hidden="true"
                 />
-              </a>
+              </Link>
             </div>
 
             {/* Right column — Circular photo with orange arc accents */}
@@ -315,15 +307,12 @@ const IntroSection = () => {
                   </svg>
 
                   {/* Circular photo */}
-                  {/* TODO: Replace with actual student photo — student learning/reciting in a calm setting.
-                       File needed: /public/images/hero/student-circle.webp (≥800×800, square)
-                       Also provide /public/images/hero/student-circle.avif */}
                   <div className="relative w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] md:w-[350px] md:h-[350px] lg:w-[380px] lg:h-[380px] rounded-full overflow-hidden shadow-xl">
                     <img
-                      src="/images/quran2.jpg"
-                      alt="A student reciting the Quran during an online lesson with Nebras Academy"
-                      width="800"
-                      height="800"
+                      src="/images/quran-with-prayer-beads.webp"
+                      alt="A closed Quran with white prayer beads resting on a dark prayer mat"
+                      width="736"
+                      height="981"
                       loading="lazy"
                       decoding="async"
                       className="w-full h-full object-cover"
@@ -340,9 +329,6 @@ const IntroSection = () => {
           </div>
         </div>
       </section>
-
-      {/* Booking Modal for intro CTA */}
-      <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
     </>
   );
 };

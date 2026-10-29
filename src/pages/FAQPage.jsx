@@ -1,43 +1,72 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom';
-import BookingModal from '../components/BookingModal';
 import SEO from '../components/SEO';
 import StructuredData from '../components/StructuredData';
 
-const FAQPage = () => {
-  const [isBookingOpen, setIsBookingOpen] = useState(false);
-
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "How do I start learning at Nebras Academy?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Starting is easy! Just click on 'Get a Free Trial', fill in your details, and our support team will contact you to schedule your first free evaluation session."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do I need previous knowledge of Arabic to join?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Not at all. We offer courses for absolute beginners starting from the Arabic alphabet (Noorani Qaida) all the way to advanced levels."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Are the teachers male or female?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "We have both male and female native Egyptian teachers available. Sisters and children are taught exclusively by female teachers upon request."
-        }
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is NebrasAcadmy.com?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nebras Academy is an online Quran, Arabic and Islamic Studies academy. Teachers are based in Cairo, Egypt, and teach live one-to-one or in small groups of up to five students."
       }
-    ]
-  };
+    },
+    {
+      "@type": "Question",
+      "name": "Who are your teachers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our teachers hold Ijazah in Quran recitation and teach in English and Arabic. Each public profile lists the teacher's Ijazah, its narration and the sheikh who authorised it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What courses do you offer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We offer Quran recitation and Tajweed, Hifz, Juz' Amma memorisation, reading with Noor Al-Bayan, Ijazah preparation, Arabic for adults and children, and Islamic Studies for kids and youth."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does the trial class work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You book a free trial class through the trial page. A teacher assesses your level and goals, and you experience a live lesson before deciding whether to enrol. No credit card is required."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you offer classes for kids?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. We teach children from age 5 using age-appropriate methods, and parents are welcome to sit in on the lesson."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is an Ijazah?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "An Ijazah is a licence to recite and teach the Quran, granted by an authorised teacher and carrying a chain of transmission back to the Prophet Muhammad. Our Ijazah track prepares students for that licence."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is Nebras Academy different?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We keep classes small, publish teacher credentials, and follow a structured pathway with regular progress check-ins instead of open-ended conversation practice."
+      }
+    }
+  ]
+};
 
+const FAQPage = () => {
   return (
     <div className="max-w-4xl mx-auto px-6 py-16 md:py-20 page-enter">
       <SEO 
@@ -46,8 +75,6 @@ const FAQPage = () => {
         canonical="/faqs"
       />
       <StructuredData data={faqSchema} />
-      {/* Booking Modal */}
-      <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
       
       {/* العنوان الرئيسي */}
       <div className="text-center mb-16">
@@ -64,7 +91,7 @@ const FAQPage = () => {
         <div className="card p-6 sm:p-8">
           <h3 className="text-xl font-bold text-secondary-800 mb-3">What is NebrasAcadmy.com?</h3>
           <p className="text-gray-600 leading-relaxed">
-            Nebras Academy is an online Quran and Islamic studies platform that connects students with qualified teachers worldwide. We offer personalized one-on-one and small group classes for children, adults, and families.
+            Nebras Academy is an online Quran, Arabic and Islamic Studies academy. Teachers are based in Cairo, Egypt, and teach live one-to-one or in small groups of up to five students. Lessons are available around the clock and are taught in English and Arabic.
           </p>
         </div>
 
@@ -72,7 +99,11 @@ const FAQPage = () => {
         <div className="card p-6 sm:p-8">
           <h3 className="text-xl font-bold text-secondary-800 mb-3">Who are your teachers?</h3>
           <p className="text-gray-600 leading-relaxed">
-            All our teachers are highly qualified, university-educated instructors with ijazah (certification) in Quran or Islamic sciences. They are fluent in English, Arabic, and often other languages to ensure effective communication.
+            Our teachers hold Ijazah in Quran recitation and teach in English and Arabic. Each public profile lists the teacher's Ijazah, its narration and the sheikh who authorised it, so you can check the credential for yourself on the{' '}
+            <Link to="/teachers" className="font-semibold text-primary-600 underline underline-offset-2">
+              teachers page
+            </Link>
+            .
           </p>
         </div>
 
@@ -99,7 +130,7 @@ const FAQPage = () => {
             </li>
             <li className="flex items-center space-x-2 bg-gray-50/50 p-2.5 rounded-lg border border-gray-100 sm:col-span-2">
               <span className="text-primary-500 font-bold">•</span>
-              <span className="text-sm font-medium">Islamic Studies for Kids & Adults</span>
+              <span className="text-sm font-medium">Islamic Studies for Kids &amp; Youth</span>
             </li>
           </ul>
           <p className="text-gray-500 text-sm mt-4 italic">Custom programs available based on your goals.</p>
@@ -109,7 +140,7 @@ const FAQPage = () => {
         <div className="card p-6 sm:p-8">
           <h3 className="text-xl font-bold text-secondary-800 mb-3">How does the trial class work?</h3>
           <p className="text-gray-600 leading-relaxed">
-            Book a <span className="font-semibold text-primary-500">free trial class</span> to meet a teacher, assess your level, and experience our platform before enrolling. No credit card required.
+            Book a <Link to="/trial" className="font-semibold text-primary-600 underline underline-offset-2">free trial class</Link> to meet a teacher, assess your level, and experience a live lesson before enrolling. No credit card required.
           </p>
         </div>
 
@@ -117,7 +148,7 @@ const FAQPage = () => {
         <div className="card p-6 sm:p-8">
           <h3 className="text-xl font-bold text-secondary-800 mb-3">Do you offer classes for kids?</h3>
           <p className="text-gray-600 leading-relaxed">
-            Absolutely! We specialize in teaching children from age 4+. Our kid-friendly curriculum uses games, stories, and interactive methods to make learning engaging and effective.
+            Yes. We teach children from age 5 using age-appropriate methods, and parents are welcome to sit in on the lesson.
           </p>
         </div>
 
@@ -125,7 +156,7 @@ const FAQPage = () => {
         <div className="card p-6 sm:p-8">
           <h3 className="text-xl font-bold text-secondary-800 mb-3">What is an Ijazah?</h3>
           <p className="text-gray-600 leading-relaxed">
-            An Ijazah is a certification authorizing you to teach/recite the Quran. At Nebras Academy, you can enroll in our <span className="font-semibold text-secondary-700">Ijazah Program</span> and earn your certificate upon mastering precise recitation.
+            An Ijazah is a licence to recite and teach the Quran, granted by an authorised teacher and carrying a chain of transmission back to the Prophet Muhammad ﷺ. Our Ijazah track prepares students for that licence through precise recitation and memorisation.
           </p>
         </div>
 
@@ -133,7 +164,15 @@ const FAQPage = () => {
         <div className="card p-6 sm:p-8">
           <h3 className="text-xl font-bold text-secondary-800 mb-3">How is Nebras Academy different?</h3>
           <p className="text-gray-600 leading-relaxed">
-            Unlike other platforms, we focus on <span className="font-semibold text-secondary-700">quality education</span> through handpicked teachers, structured curriculum pathways, and progress tracking for faster, lasting results.
+            We keep classes small, publish teacher credentials, and follow a structured pathway with regular progress check-ins. If you are comparing options in the US, the{' '}
+            <Link to="/online-quran-classes-usa" className="font-semibold text-primary-600 underline underline-offset-2">
+              online Quran classes for US students
+            </Link>{' '}
+            page and the{' '}
+            <Link to="/learn-quran-online-usa" className="font-semibold text-primary-600 underline underline-offset-2">
+              guide to learning Quran online
+            </Link>{' '}
+            explain how this works in practice.
           </p>
         </div>
 
@@ -143,12 +182,12 @@ const FAQPage = () => {
           <p className="text-secondary-100 mb-8 max-w-xl mx-auto leading-relaxed">
             Experience the Nebras Academy difference with a free trial class
           </p>
-          <button 
-            onClick={() => setIsBookingOpen(true)}
-            className="btn-primary btn-pill px-8 py-3.5 text-base font-bold shadow-lg"
+          <Link
+            to="/trial"
+            className="btn-primary btn-pill px-8 py-3.5 text-base font-bold shadow-lg inline-block"
           >
             SCHEDULE YOUR FREE TRIAL CLASS
-          </button>
+          </Link>
         </div>
       </div>
     </div>
